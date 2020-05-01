@@ -16,10 +16,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setUpImageView()
         
-        var renderer = Renderer(width: 8, height: 8)
-        renderer.draw()
-        
-        imageView.image = UIImage(bitmap: renderer.bitmap)
+        let displayLink = CADisplayLink(target: self, selector: #selector(update))
+        displayLink.add(to: .main, forMode: .common)
     }
     
     func setUpImageView() {
@@ -34,6 +32,12 @@ class ViewController: UIViewController {
         imageView.layer.magnificationFilter = .nearest
     }
 
+    @objc func update(_ displayLink: CADisplayLink) {
+        var renderer = Renderer(width: 8, height: 8)
+        renderer.draw()
+        
+        imageView.image = UIImage(bitmap: renderer.bitmap)
+    }
 
 }
 
