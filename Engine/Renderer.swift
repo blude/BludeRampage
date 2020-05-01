@@ -15,7 +15,7 @@ public struct Renderer {
 }
 
 public extension Renderer {
-    mutating func draw() {
-        bitmap[0, 0] = .blue
+    mutating func draw(_ player: Player) {
+        bitmap[Int(player.position.x), Int(player.position.y)] = .blue
     }
 }

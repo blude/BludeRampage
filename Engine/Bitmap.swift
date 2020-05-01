@@ -21,6 +21,7 @@ public extension Bitmap {
             pixels[y * width + x]
         }
         set {
+            guard x >= 0, y >= 0, x < width, y < height else { return }
             pixels[y * width + x] = newValue
         }
     }
