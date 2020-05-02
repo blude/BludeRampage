@@ -8,11 +8,6 @@
 
 public struct Vector {
     public var x, y: Double
-    
-    public init(x: Double, y: Double) {
-        self.x = x
-        self.y = y
-    }
 }
 
 public extension Vector {

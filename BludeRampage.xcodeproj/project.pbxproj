@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F120F490245D8A2F00264600 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120F48F245D8A2F00264600 /* World.swift */; };
+		F120F492245D8B9200264600 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120F491245D8B9200264600 /* Rect.swift */; };
 		F1730204245CA9340031949F /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1730203245CA9340031949F /* Vector.swift */; };
 		F1A5DB2F2459E449005F70D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5DB2E2459E449005F70D2 /* AppDelegate.swift */; };
 		F1A5DB312459E449005F70D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5DB302459E449005F70D2 /* SceneDelegate.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F120F48F245D8A2F00264600 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
+		F120F491245D8B9200264600 /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 		F1730203245CA9340031949F /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		F1A5DB2B2459E449005F70D2 /* BludeRampage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BludeRampage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A5DB2E2459E449005F70D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 				F1FDF1482459F4B400D6FBE3 /* Renderer.swift */,
 				F1730203245CA9340031949F /* Vector.swift */,
 				F1E07F0D245CD6F10093EA94 /* Player.swift */,
+				F120F48F245D8A2F00264600 /* World.swift */,
+				F120F491245D8B9200264600 /* Rect.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -267,6 +273,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F120F492245D8B9200264600 /* Rect.swift in Sources */,
+				F120F490245D8A2F00264600 /* World.swift in Sources */,
 				F1FDF1452459E87E00D6FBE3 /* Bitmap.swift in Sources */,
 				F1FDF1492459F4B400D6FBE3 /* Renderer.swift in Sources */,
 				F1730204245CA9340031949F /* Vector.swift in Sources */,

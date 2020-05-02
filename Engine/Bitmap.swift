@@ -12,8 +12,21 @@ public struct Bitmap {
 }
 
 public extension Bitmap {
+    init(width: Int, height: Int, color: Color) {
+        self.pixels = Array(repeating: color, count: width * height)
+        self.width = width
+    }
+    
     var height: Int {
         pixels.count / width
+    }
+    
+    mutating func fill(rect: Rect, color: Color) {
+        for y in Int(rect.min.y) ..< Int(rect.max.y) {
+            for x in Int(rect.min.x) ..< Int(rect.max.x) {
+                self[x, y] = color
+            }
+        }
     }
     
     subscript(x: Int, y: Int) -> Color {
@@ -26,8 +39,4 @@ public extension Bitmap {
         }
     }
     
-    init(width: Int, height: Int, color: Color) {
-        self.pixels = Array(repeating: color, count: width * height)
-        self.width = width
-    }
 }

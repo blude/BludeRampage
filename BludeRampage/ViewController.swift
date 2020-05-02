@@ -11,7 +11,7 @@ import Engine
 
 class ViewController: UIViewController {
     private let imageView = UIImageView()
-    private var player = Player(position: Vector(x: 4, y: 4))
+    private var world = World()
     private var lastTimeFrame = CACurrentMediaTime()
 
     override func viewDidLoad() {
@@ -36,11 +36,13 @@ class ViewController: UIViewController {
 
     @objc func update(_ displayLink: CADisplayLink) {
         let timeStep = displayLink.timestamp - lastTimeFrame
-        player.update(timeStep: timeStep)
+        let bitmapSize = Int(min(imageView.bounds.width, imageView.bounds.height))
+        
+        world.update(timeStep: timeStep)
         lastTimeFrame = displayLink.timestamp
         
-        var renderer = Renderer(width: 8, height: 8)
-        renderer.draw(player)
+        var renderer = Renderer(width: bitmapSize, height: bitmapSize)
+        renderer.draw(world)
         
         imageView.image = UIImage(bitmap: renderer.bitmap)
     }
