@@ -7,6 +7,7 @@
 //
 
 public struct Player {
+    public let speed: Double = 2
     public let radius: Double = 0.5
     public var position: Vector
     public var velocity: Vector

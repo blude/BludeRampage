@@ -8,9 +8,18 @@
 
 public struct Vector {
     public var x, y: Double
+    
+    public init(x: Double, y: Double) {
+        self.x = x
+        self.y = y
+    }
 }
 
 public extension Vector {
+    var length: Double {
+        (x * x + y * y).squareRoot()
+    }
+    
     static func + (lhs: Vector, rhs: Vector) -> Vector {
         Vector(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
     }

@@ -14,6 +14,7 @@
 		F17946DF245DBD67008A2E31 /* Tilemap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946DE245DBD67008A2E31 /* Tilemap.swift */; };
 		F17946E3245DCCB9008A2E31 /* Map.json in Resources */ = {isa = PBXBuildFile; fileRef = F17946E2245DCCB9008A2E31 /* Map.json */; };
 		F17946E5245E2878008A2E31 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946E4245E2878008A2E31 /* Thing.swift */; };
+		F17946E7245E2C54008A2E31 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946E6245E2C54008A2E31 /* Input.swift */; };
 		F1A5DB2F2459E449005F70D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5DB2E2459E449005F70D2 /* AppDelegate.swift */; };
 		F1A5DB312459E449005F70D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5DB302459E449005F70D2 /* SceneDelegate.swift */; };
 		F1A5DB332459E449005F70D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5DB322459E449005F70D2 /* ViewController.swift */; };
@@ -62,6 +63,7 @@
 		F17946DE245DBD67008A2E31 /* Tilemap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tilemap.swift; sourceTree = "<group>"; };
 		F17946E2245DCCB9008A2E31 /* Map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Map.json; sourceTree = "<group>"; };
 		F17946E4245E2878008A2E31 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
+		F17946E6245E2C54008A2E31 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		F1A5DB2B2459E449005F70D2 /* BludeRampage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BludeRampage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A5DB2E2459E449005F70D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F1A5DB302459E449005F70D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,17 +147,18 @@
 		F1FDF1362459E4EA00D6FBE3 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
-				F1FDF1382459E4EA00D6FBE3 /* Info.plist */,
-				F1FDF1422459E75600D6FBE3 /* Color.swift */,
 				F1FDF1442459E87E00D6FBE3 /* Bitmap.swift */,
-				F1FDF1482459F4B400D6FBE3 /* Renderer.swift */,
-				F1730203245CA9340031949F /* Vector.swift */,
+				F1FDF1422459E75600D6FBE3 /* Color.swift */,
+				F1FDF1382459E4EA00D6FBE3 /* Info.plist */,
+				F17946E6245E2C54008A2E31 /* Input.swift */,
 				F1E07F0D245CD6F10093EA94 /* Player.swift */,
-				F120F48F245D8A2F00264600 /* World.swift */,
 				F120F491245D8B9200264600 /* Rect.swift */,
+				F1FDF1482459F4B400D6FBE3 /* Renderer.swift */,
+				F17946E4245E2878008A2E31 /* Thing.swift */,
 				F17946DC245DBD46008A2E31 /* Tile.swift */,
 				F17946DE245DBD67008A2E31 /* Tilemap.swift */,
-				F17946E4245E2878008A2E31 /* Thing.swift */,
+				F1730203245CA9340031949F /* Vector.swift */,
+				F120F48F245D8A2F00264600 /* World.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				F120F492245D8B9200264600 /* Rect.swift in Sources */,
 				F120F490245D8A2F00264600 /* World.swift in Sources */,
 				F1FDF1452459E87E00D6FBE3 /* Bitmap.swift in Sources */,
+				F17946E7245E2C54008A2E31 /* Input.swift in Sources */,
 				F17946DD245DBD46008A2E31 /* Tile.swift in Sources */,
 				F1FDF1492459F4B400D6FBE3 /* Renderer.swift in Sources */,
 				F1730204245CA9340031949F /* Vector.swift in Sources */,
