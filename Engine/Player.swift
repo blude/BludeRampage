@@ -13,7 +13,7 @@ public struct Player {
     
     public init(position: Vector) {
         self.position = position
-        self.velocity = Vector(x: 1, y: 1)
+        self.velocity = Vector(x: 0, y: 0)
     }
 }
 
