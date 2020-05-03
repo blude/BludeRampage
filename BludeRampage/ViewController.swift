@@ -14,7 +14,7 @@ private let joystickRadius: Double = 40
 class ViewController: UIViewController {
     private let imageView = UIImageView()
     private let panGesture = UIPanGestureRecognizer()
-    private var world = World(map: loadMap())
+    private var world = World(map: Bundle.main.decode(Tilemap.self, from: "Map.json"))
     private var lastTimeFrame = CACurrentMediaTime()
 
     override func viewDidLoad() {
@@ -70,10 +70,3 @@ class ViewController: UIViewController {
     }
 
 }
-
-func loadMap() -> Tilemap {
-    let jsonURL = Bundle.main.url(forResource: "Map.json", withExtension: nil)!
-    let jsonData = try! Data(contentsOf: jsonURL)
-    return try! JSONDecoder().decode(Tilemap.self, from: jsonData)
-}
-

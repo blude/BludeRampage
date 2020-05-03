@@ -21,6 +21,7 @@
 		F1A5DB362459E449005F70D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A5DB342459E449005F70D2 /* Main.storyboard */; };
 		F1A5DB382459E44A005F70D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A5DB372459E44A005F70D2 /* Assets.xcassets */; };
 		F1A5DB3B2459E44A005F70D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A5DB392459E44A005F70D2 /* LaunchScreen.storyboard */; };
+		F1ACB6DF245EEEBF0078275D /* Bundle+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */; };
 		F1E07F0C245CD5F20093EA94 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F1E07F0B245CD5EB0093EA94 /* .gitignore */; };
 		F1E07F0E245CD6F10093EA94 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E07F0D245CD6F10093EA94 /* Player.swift */; };
 		F1FDF13C2459E4EA00D6FBE3 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1FDF1352459E4EA00D6FBE3 /* Engine.framework */; };
@@ -72,6 +73,7 @@
 		F1A5DB372459E44A005F70D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1A5DB3A2459E44A005F70D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1A5DB3C2459E44A005F70D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decodable.swift"; sourceTree = "<group>"; };
 		F1E07F0B245CD5EB0093EA94 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F1E07F0D245CD6F10093EA94 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F1FDF1352459E4EA00D6FBE3 /* Engine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Engine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +134,7 @@
 				F1A5DB3C2459E44A005F70D2 /* Info.plist */,
 				F1FDF1462459EA0000D6FBE3 /* UIImage+Bitmap.swift */,
 				F17946E2245DCCB9008A2E31 /* Map.json */,
+				F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */,
 			);
 			path = BludeRampage;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				F1FDF1472459EA0000D6FBE3 /* UIImage+Bitmap.swift in Sources */,
 				F1A5DB332459E449005F70D2 /* ViewController.swift in Sources */,
 				F1A5DB2F2459E449005F70D2 /* AppDelegate.swift in Sources */,
+				F1ACB6DF245EEEBF0078275D /* Bundle+Decodable.swift in Sources */,
 				F1A5DB312459E449005F70D2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
