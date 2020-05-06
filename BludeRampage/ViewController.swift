@@ -43,8 +43,9 @@ class ViewController: UIViewController {
 
     @objc func update(_ displayLink: CADisplayLink) {
         let timeStep = min(maximumTimeStep, displayLink.timestamp - lastTimeFrame)
-        let bitmapSize = Int(min(imageView.bounds.width, imageView.bounds.height))
-        var renderer = Renderer(width: bitmapSize, height: bitmapSize)
+        let width = Int(imageView.bounds.width)
+        let height = Int(imageView.bounds.height)
+        var renderer = Renderer(width: width, height: height)
 
         let inputVector = self.inputVector
         let rotation = inputVector.x * world.player.turningSpeed * worldTimeStep

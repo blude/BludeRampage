@@ -37,7 +37,7 @@ public extension Renderer {
          */
         
         let focalLength = 1.0
-        let viewWidth = 1.0
+        let viewWidth = Double(bitmap.width) / Double(bitmap.height)
         let viewPlane = world.player.direction.orthogonal * viewWidth
         let viewCenter = world.player.position + world.player.direction * focalLength
         let viewStart = viewCenter - viewPlane / 2
@@ -68,7 +68,9 @@ public extension Renderer {
             
             // Draw wall
             let wallHeight = 1.0
-            let height = wallHeight * focalLength / wallDistance * Double(bitmap.height)
+            let distanceRatio = viewPlaneDistance / focalLength
+            let perpendicular = wallDistance / distanceRatio
+            let height = wallHeight * focalLength / perpendicular * Double(bitmap.height)
             let wallColor: Color
             
             /**
