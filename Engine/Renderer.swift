@@ -16,25 +16,6 @@ public struct Renderer {
 
 public extension Renderer {
     mutating func draw(_ world: World) {
-        let scale = Double(bitmap.height) / world.size.y
-        
-        // Draw map
-        for y in 0 ..< world.map.height {
-            for x in 0 ..< world.map.width where world.map[x, y].isWall {
-                let rect = Rect(
-                    min: Vector(x: Double(x), y: Double(y)) * scale,
-                    max: Vector(x: Double(x + 1), y: Double(y + 1)) * scale
-                )
-                bitmap.fill(rect: rect, color: .white)
-            }
-        }
-        
-        // Draw player
-        var rect = world.player.rect
-        rect.min *= scale
-        rect.max *= scale
-        bitmap.fill(rect: rect, color: .blue)
-
         /**
          The length of the line represents the view width in world units. This has no direct relationship
          to how many pixels wide the view is on-screen, it's more about how big we want the world to appear
@@ -55,14 +36,11 @@ public extension Renderer {
          of the `Renderer.draw()` method:
          */
         
-        // Draw view plane
         let focalLength = 1.0
         let viewWidth = 1.0
         let viewPlane = world.player.direction.orthogonal * viewWidth
         let viewCenter = world.player.position + world.player.direction * focalLength
         let viewStart = viewCenter - viewPlane / 2
-        let viewEnd = viewStart + viewPlane
-        bitmap.drawLine(from: viewStart * scale, to: viewEnd * scale, color: .red)
         
         /**
          To get the direction of each ray, we subtract the player position from the current column
@@ -77,16 +55,44 @@ public extension Renderer {
          */
         
         // Cast rays
-        let columns = 10
+        let columns = bitmap.width
         let step = viewPlane / Double(columns)
         var columnPosition = viewStart
         
-        for _ in 0 ..< columns {
+        for x in 0 ..< columns {
             let rayDirection = columnPosition - world.player.position
             let viewPlaneDistance = rayDirection.length
             let ray = Ray(origin: world.player.position, direction: rayDirection / viewPlaneDistance)
             let end = world.map.hitTest(ray)
-            bitmap.drawLine(from: ray.origin * scale, to: end * scale, color: .green)
+            let wallDistance = (end - ray.origin).length
+            
+            // Draw wall
+            let wallHeight = 1.0
+            let height = wallHeight * focalLength / wallDistance * Double(bitmap.height)
+            let wallColor: Color
+            
+            /**
+             Early 3D games tended to use very simple lighting systems, as true, dynamic lights were too expensive.
+             Wolfenstein actually had no lighting at all, it just used darker wall textures for North/South facing
+             walls to add contrast.
+
+             We don't have textures yet, but we can replicate Wolfenstein's approach by simply using two color
+             tones. We know that walls are aligned on a 1x1 grid, so a wall coordinate with an exact integer Y
+             value must be a North/South facing.
+             */
+            
+            if end.x.rounded(.down) == end.x {
+                wallColor = .white
+            } else {
+                wallColor = .gray
+            }
+            
+            bitmap.drawLine(
+                from: Vector(x: Double(x), y: (Double(bitmap.height) - height) / 2),
+                to: Vector(x: Double(x), y: (Double(bitmap.height) + height) / 2),
+                color: wallColor
+            )
+            
             columnPosition += step
         }
         
