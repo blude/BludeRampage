@@ -20,6 +20,15 @@ public extension Vector {
         (x * x + y * y).squareRoot()
     }
     
+    /**
+     Since our world is two-dimensional, we can think of the view plane as a line rather than a rectangle.
+     The direction of this line is always orthogonal to the direction that the camera is facing.
+     The orthogonal vector can be computed as (-Y, X).
+    */
+    var orthogonal: Vector {
+        Vector(x: -y, y: x)
+    }
+    
     static func + (lhs: Vector, rhs: Vector) -> Vector {
         Vector(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
     }
