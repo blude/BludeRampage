@@ -56,7 +56,7 @@ public extension Renderer {
          column position by adding the step to it.
          */
         
-        // Cast rays
+        // MARK: Cast rays
         let magicTextureOffsetNumber = 0.001
         let columns = bitmap.width
         let step = viewPlane / Double(columns)
@@ -69,7 +69,7 @@ public extension Renderer {
             let end = world.map.hitTest(ray)
             let wallDistance = (end - ray.origin).length
             
-            // Draw wall
+            // MARK: Draw wall
             let wallHeight = 1.0
             let distanceRatio = viewPlaneDistance / focalLength
             let perpendicular = wallDistance / distanceRatio
@@ -92,6 +92,28 @@ public extension Renderer {
             let wallStart = Vector(x: Double(x), y: (Double(bitmap.height) - height) / 2 - magicTextureOffsetNumber)
             
             bitmap.drawColumn(textureX, of: wallTexture, at: wallStart, height: height)
+            
+            // MARK: Draw floor and ceiling
+            let floorTexture = textures[.floor]
+            let ceilingTexture = textures[.ceiling]
+            let floorStart = Int(wallStart.y + height) + 1
+            
+            for y in min(floorStart, bitmap.height) ..< bitmap.height {
+                let normalizedY = (Double(y) / Double(bitmap.height)) * 2 - 1
+                let perpendicular = wallHeight * focalLength / normalizedY
+                let distance = perpendicular * distanceRatio
+                let mapPosition = ray.origin + ray.direction * distance
+                let tileX = mapPosition.x.rounded(.down)
+                let tileY = mapPosition.y.rounded(.down)
+                let textureX = mapPosition.x - tileX
+                let textureY = mapPosition.y - tileY
+                
+                // Draw the floor
+                bitmap[x, y] = floorTexture[normalized: textureX, textureY]
+                
+                // Draw the ceiling
+                bitmap[x, bitmap.height - 1 - y] = ceilingTexture[normalized: textureX, textureY]
+            }
             
             columnPosition += step
         }

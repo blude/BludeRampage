@@ -78,4 +78,8 @@ public extension Bitmap {
         }
     }
     
+    subscript(normalized x: Double, y: Double) -> Color {
+        self[Int(x * Double(width)), Int(y * Double(height))]
+    }
+    
 }

@@ -8,6 +8,7 @@
 
 public enum Texture: String, CaseIterable {
     case wall, wall2
+    case floor, ceiling
 }
 
 public struct Textures {
