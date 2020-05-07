@@ -6,13 +6,13 @@
 //  Copyright © 2020 Pratti Design. All rights reserved.
 //
 
-public enum Tile: Int, Decodable {
-    case floor = 0
-    case crackFloor = 4
+public enum Tile: String, Decodable {
+    case floor = " "
+    case crackFloor = "~"
     
-    case wall = 1
-    case crackWall = 2
-    case slimeWall = 3
+    case wall = "#"
+    case crackWall = "%"
+    case slimeWall = "&"
 }
 
 public extension Tile {

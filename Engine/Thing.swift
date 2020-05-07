@@ -6,6 +6,7 @@
 //  Copyright © 2020 Pratti Design. All rights reserved.
 //
 
-public enum Thing: Int, Decodable {
-    case nothing, player
+public enum Thing: String, Decodable {
+    case nothing = " "
+    case player = "@"
 }
