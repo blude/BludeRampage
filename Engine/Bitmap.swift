@@ -9,6 +9,11 @@
 public struct Bitmap {
     public private(set) var pixels: [Color]
     public let width: Int
+    
+    public init(width: Int, pixels: [Color]) {
+        self.width = width
+        self.pixels = pixels
+    }
 }
 
 public extension Bitmap {
@@ -48,6 +53,18 @@ public extension Bitmap {
         for _ in 0 ..< stepCount {
             self[Int(point.x), Int(point.y)] = color
             point += step
+        }
+    }
+    
+    mutating func drawColumn(_ sourceX: Int, of source: Bitmap, at point: Vector, height: Double) {
+        let start = Int(point.y)
+        let end = Int((point.y + height).rounded(.up))
+        let stepY = Double(source.height) / height
+        
+        for y in max(0, start) ..< min(self.height, end) {
+            let sourceY = max(0, Double(y) - point.y) * stepY
+            let sourceColor = source[sourceX, Int(sourceY)]
+            self[Int(point.x), y] = sourceColor
         }
     }
     

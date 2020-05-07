@@ -24,6 +24,7 @@
 		F1A5DB3B2459E44A005F70D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A5DB392459E44A005F70D2 /* LaunchScreen.storyboard */; };
 		F1ACB6DF245EEEBF0078275D /* Bundle+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */; };
 		F1C5E69C24635C3100B9441F /* Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5E69B24635C3100B9441F /* Rotation.swift */; };
+		F1C5E69E246372F200B9441F /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5E69D246372F200B9441F /* Texture.swift */; };
 		F1E07F0C245CD5F20093EA94 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F1E07F0B245CD5EB0093EA94 /* .gitignore */; };
 		F1E07F0E245CD6F10093EA94 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E07F0D245CD6F10093EA94 /* Player.swift */; };
 		F1FDF13C2459E4EA00D6FBE3 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1FDF1352459E4EA00D6FBE3 /* Engine.framework */; };
@@ -78,6 +79,7 @@
 		F1A5DB3C2459E44A005F70D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decodable.swift"; sourceTree = "<group>"; };
 		F1C5E69B24635C3100B9441F /* Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rotation.swift; sourceTree = "<group>"; };
+		F1C5E69D246372F200B9441F /* Texture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
 		F1E07F0B245CD5EB0093EA94 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F1E07F0D245CD6F10093EA94 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F1FDF1352459E4EA00D6FBE3 /* Engine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Engine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,15 +161,16 @@
 				F1FDF1382459E4EA00D6FBE3 /* Info.plist */,
 				F17946E6245E2C54008A2E31 /* Input.swift */,
 				F1E07F0D245CD6F10093EA94 /* Player.swift */,
+				F10061D92462FB0700142F74 /* Ray.swift */,
 				F120F491245D8B9200264600 /* Rect.swift */,
 				F1FDF1482459F4B400D6FBE3 /* Renderer.swift */,
+				F1C5E69B24635C3100B9441F /* Rotation.swift */,
+				F1C5E69D246372F200B9441F /* Texture.swift */,
 				F17946E4245E2878008A2E31 /* Thing.swift */,
 				F17946DC245DBD46008A2E31 /* Tile.swift */,
 				F17946DE245DBD67008A2E31 /* Tilemap.swift */,
 				F1730203245CA9340031949F /* Vector.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
-				F10061D92462FB0700142F74 /* Ray.swift */,
-				F1C5E69B24635C3100B9441F /* Rotation.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				F1FDF1452459E87E00D6FBE3 /* Bitmap.swift in Sources */,
 				F17946E7245E2C54008A2E31 /* Input.swift in Sources */,
 				F17946DD245DBD46008A2E31 /* Tile.swift in Sources */,
+				F1C5E69E246372F200B9441F /* Texture.swift in Sources */,
 				F1FDF1492459F4B400D6FBE3 /* Renderer.swift in Sources */,
 				F1730204245CA9340031949F /* Vector.swift in Sources */,
 				F1E07F0E245CD6F10093EA94 /* Player.swift in Sources */,

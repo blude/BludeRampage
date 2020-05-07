@@ -15,6 +15,7 @@ private let worldTimeStep: Double = 1 / 120
 
 class ViewController: UIViewController {
     private let imageView = UIImageView()
+    private let textures = loadTextures()
     private let panGesture = UIPanGestureRecognizer()
     private var world = World(map: Bundle.main.decode(Tilemap.self, from: "Map.json"))
     private var lastTimeFrame = CACurrentMediaTime()
@@ -45,7 +46,7 @@ class ViewController: UIViewController {
         let timeStep = min(maximumTimeStep, displayLink.timestamp - lastTimeFrame)
         let width = Int(imageView.bounds.width)
         let height = Int(imageView.bounds.height)
-        var renderer = Renderer(width: width, height: height)
+        var renderer = Renderer(width: width, height: height, textures: textures)
 
         let inputVector = self.inputVector
         let rotation = inputVector.x * world.player.turningSpeed * worldTimeStep
@@ -82,4 +83,10 @@ class ViewController: UIViewController {
         }
     }
 
+}
+
+private func loadTextures() -> Textures {
+    Textures { name in
+        Bitmap(image: UIImage(named: name)!)!
+    }
 }

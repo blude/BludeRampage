@@ -8,9 +8,11 @@
 
 public struct Renderer {
     public private(set) var bitmap: Bitmap
+    private let textures: Textures
     
-    public init(width: Int, height: Int) {
+    public init(width: Int, height: Int, textures: Textures) {
         self.bitmap = Bitmap(width: width, height: height, color: .black)
+        self.textures = textures
     }
 }
 
@@ -55,6 +57,7 @@ public extension Renderer {
          */
         
         // Cast rays
+        let magicTextureOffsetNumber = 0.001
         let columns = bitmap.width
         let step = viewPlane / Double(columns)
         var columnPosition = viewStart
@@ -71,29 +74,24 @@ public extension Renderer {
             let distanceRatio = viewPlaneDistance / focalLength
             let perpendicular = wallDistance / distanceRatio
             let height = wallHeight * focalLength / perpendicular * Double(bitmap.height)
-            let wallColor: Color
-            
-            /**
-             Early 3D games tended to use very simple lighting systems, as true, dynamic lights were too expensive.
-             Wolfenstein actually had no lighting at all, it just used darker wall textures for North/South facing
-             walls to add contrast.
 
-             We don't have textures yet, but we can replicate Wolfenstein's approach by simply using two color
-             tones. We know that walls are aligned on a 1x1 grid, so a wall coordinate with an exact integer Y
-             value must be a North/South facing.
-             */
+            // Set up texture drawing
+            let wallTexture: Bitmap
             
+            // Check the walls orientation
+            let wallX: Double
             if end.x.rounded(.down) == end.x {
-                wallColor = .white
+                wallTexture = textures[.wall]
+                wallX = end.y - end.y.rounded(.down)
             } else {
-                wallColor = .gray
+                wallTexture = textures[.wall2]
+                wallX = end.x - end.x.rounded(.down)
             }
             
-            bitmap.drawLine(
-                from: Vector(x: Double(x), y: (Double(bitmap.height) - height) / 2),
-                to: Vector(x: Double(x), y: (Double(bitmap.height) + height) / 2),
-                color: wallColor
-            )
+            let textureX = Int(wallX * Double(wallTexture.width))
+            let wallStart = Vector(x: Double(x), y: (Double(bitmap.height) - height) / 2 - magicTextureOffsetNumber)
+            
+            bitmap.drawColumn(textureX, of: wallTexture, at: wallStart, height: height)
             
             columnPosition += step
         }
