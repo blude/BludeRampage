@@ -95,6 +95,8 @@ public extension Renderer {
             bitmap.drawColumn(textureX, of: wallTexture, at: wallStart, height: height)
             
             // MARK: Draw floor and ceiling
+            var floorTile: Tile!
+            var floorTexture, ceilingTexture: Bitmap!
             let floorStart = Int(wallStart.y + height) + 1
             
             for y in min(floorStart, bitmap.height) ..< bitmap.height {
@@ -105,8 +107,13 @@ public extension Renderer {
                 let tileX = mapPosition.x.rounded(.down)
                 let tileY = mapPosition.y.rounded(.down)
                 let tile = world.map[Int(tileX), Int(tileY)]
-                let floorTexture = textures[tile.textures[0]]
-                let ceilingTexture = textures[tile.textures[1]]
+                
+                if tile != floorTile {
+                    floorTexture = textures[tile.textures[0]]
+                    ceilingTexture = textures[tile.textures[1]]
+                    floorTile = tile
+                }
+                
                 let textureX = mapPosition.x - tileX
                 let textureY = mapPosition.y - tileY
                 
