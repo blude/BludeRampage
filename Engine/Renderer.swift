@@ -77,14 +77,15 @@ public extension Renderer {
 
             // Set up texture drawing
             let wallTexture: Bitmap
+            let wallX: Double
+            let tile = world.map.tile(at: end, from: ray.direction)
             
             // Check the walls orientation
-            let wallX: Double
             if end.x.rounded(.down) == end.x {
-                wallTexture = textures[.wall]
+                wallTexture = textures[tile.textures[0]]
                 wallX = end.y - end.y.rounded(.down)
             } else {
-                wallTexture = textures[.wall2]
+                wallTexture = textures[tile.textures[1]]
                 wallX = end.x - end.x.rounded(.down)
             }
             
@@ -94,8 +95,6 @@ public extension Renderer {
             bitmap.drawColumn(textureX, of: wallTexture, at: wallStart, height: height)
             
             // MARK: Draw floor and ceiling
-            let floorTexture = textures[.floor]
-            let ceilingTexture = textures[.ceiling]
             let floorStart = Int(wallStart.y + height) + 1
             
             for y in min(floorStart, bitmap.height) ..< bitmap.height {
@@ -105,6 +104,9 @@ public extension Renderer {
                 let mapPosition = ray.origin + ray.direction * distance
                 let tileX = mapPosition.x.rounded(.down)
                 let tileY = mapPosition.y.rounded(.down)
+                let tile = world.map[Int(tileX), Int(tileY)]
+                let floorTexture = textures[tile.textures[0]]
+                let ceilingTexture = textures[tile.textures[1]]
                 let textureX = mapPosition.x - tileX
                 let textureY = mapPosition.y - tileY
                 
