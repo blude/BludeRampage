@@ -59,7 +59,7 @@ public extension Billboard {
         }
         
         // Check that the intersection point lies between the start and end points of the sprite's billboard
-        let distanceAlongBillboard = (x - rhs.origin.x) / rhs.origin.x
+        let distanceAlongBillboard = (x - rhs.origin.x) / rhs.direction.x
         
         if distanceAlongBillboard < 0 || distanceAlongBillboard > length {
             return nil

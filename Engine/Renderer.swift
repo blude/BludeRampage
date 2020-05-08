@@ -57,7 +57,7 @@ public extension Renderer {
          */
         
         // MARK: Cast rays
-        let magicTextureOffsetNumber = 0.001
+        let epsilon = 0.0001
         let columns = bitmap.width
         let step = viewPlane / Double(columns)
         var columnPosition = viewStart
@@ -90,7 +90,7 @@ public extension Renderer {
             }
             
             let textureX = Int(wallX * Double(wallTexture.width))
-            let wallStart = Vector(x: Double(x), y: (Double(bitmap.height) - height) / 2 - magicTextureOffsetNumber)
+            let wallStart = Vector(x: Double(x), y: (Double(bitmap.height) - height) / 2 - epsilon)
             
             bitmap.drawColumn(textureX, of: wallTexture, at: wallStart, height: height)
             
@@ -122,6 +122,28 @@ public extension Renderer {
                 
                 // Draw the ceiling
                 bitmap[x, bitmap.height - 1 - y] = ceilingTexture[normalized: textureX, textureY]
+            }
+            
+            // Draw sprites
+            for sprite in world.sprites {
+                guard let hit = sprite.hitTest(ray) else {
+                    continue
+                }
+                
+                let spriteDistance = (hit - ray.origin).length
+                
+                if spriteDistance > wallDistance {
+                    continue
+                }
+                
+                let perpendicular = spriteDistance / distanceRatio
+                let height = wallHeight / perpendicular * Double(bitmap.height)
+                let spriteX = (hit - sprite.start).length / sprite.length
+                let spriteTexture = textures[.monster]
+                let textureX = min(Int(spriteX * Double(spriteTexture.width)), spriteTexture.width - 1)
+                let start = Vector(x: Double(x), y: (Double(bitmap.height) - height) / 2 + epsilon)
+                
+                bitmap.drawColumn(textureX, of: spriteTexture, at: start, height: height)
             }
             
             columnPosition += step
