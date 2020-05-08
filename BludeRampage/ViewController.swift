@@ -60,7 +60,7 @@ class ViewController: UIViewController {
             world.update(timeStep: timeStep / worldSteps, input: input)
         }
         
-        renderer.draw(world)
+        renderer.draw2D(world)
         
         lastTimeFrame = displayLink.timestamp
         
