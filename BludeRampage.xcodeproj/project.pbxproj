@@ -10,6 +10,7 @@
 		F10061DA2462FB0700142F74 /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10061D92462FB0700142F74 /* Ray.swift */; };
 		F120F490245D8A2F00264600 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120F48F245D8A2F00264600 /* World.swift */; };
 		F120F492245D8B9200264600 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120F491245D8B9200264600 /* Rect.swift */; };
+		F12184D924674A8500326F6C /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12184D824674A8500326F6C /* Actor.swift */; };
 		F1730204245CA9340031949F /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1730203245CA9340031949F /* Vector.swift */; };
 		F17946DD245DBD46008A2E31 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946DC245DBD46008A2E31 /* Tile.swift */; };
 		F17946DF245DBD67008A2E31 /* Tilemap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946DE245DBD67008A2E31 /* Tilemap.swift */; };
@@ -65,6 +66,7 @@
 		F10061D92462FB0700142F74 /* Ray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
 		F120F48F245D8A2F00264600 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		F120F491245D8B9200264600 /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
+		F12184D824674A8500326F6C /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		F1730203245CA9340031949F /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		F17946DC245DBD46008A2E31 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F17946DE245DBD67008A2E31 /* Tilemap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tilemap.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				F17946DE245DBD67008A2E31 /* Tilemap.swift */,
 				F1730203245CA9340031949F /* Vector.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
+				F12184D824674A8500326F6C /* Actor.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				F1FDF1452459E87E00D6FBE3 /* Bitmap.swift in Sources */,
 				F17946E7245E2C54008A2E31 /* Input.swift in Sources */,
 				F17946DD245DBD46008A2E31 /* Tile.swift in Sources */,
+				F12184D924674A8500326F6C /* Actor.swift in Sources */,
 				F1ABB1E52464CD1B003CF10A /* Billboard.swift in Sources */,
 				F1C5E69E246372F200B9441F /* Texture.swift in Sources */,
 				F1FDF1492459F4B400D6FBE3 /* Renderer.swift in Sources */,
