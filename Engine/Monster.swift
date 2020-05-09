@@ -12,8 +12,10 @@ public enum MonsterState {
 
 public struct Monster: Actor {
     public var position: Vector
+    public var velocity: Vector = Vector(x: 0, y: 0)
     public var state: MonsterState = .idle
     public let radius: Double = 0.4375 // Equal to: 14 / 16 / 2
+    public let speed: Double = 0.5
     
     public init(position: Vector) {
         self.position = position
@@ -27,11 +29,14 @@ public extension Monster {
             if canSeePlayer(in: world) {
                 state = .chasing
             }
+            velocity = Vector(x: 0, y: 0)
         case .chasing:
             guard canSeePlayer(in: world) else {
                 state = .idle
                 break
             }
+            let direction = world.player.position - position
+            velocity = direction * (speed / direction.length)
         }
     }
     
