@@ -53,15 +53,25 @@ public extension World {
         player.position += player.velocity * timeStep
         
         // Handle collisions
-        for i in monsters.indices {
+        for i in 0 ..< monsters.count {
             var monster = monsters[i]
+            
             if let intersection = player.intersection(with: monster) {
                 player.position -= intersection / 2
-                monster.position -= intersection / 2
+                monster.position += intersection / 2
             }
+            
+            for j in i + 1 ..< monsters.count {
+                if let intersection = monster.intersection(with: monsters[j]) {
+                    monster.position -= intersection / 2
+                    monsters[j].position += intersection / 2
+                }
+            }
+            
             while let intersection = monster.intersection(with: map) {
                 monster.position -= intersection
             }
+            
             monsters[i] = monster
         }
         
