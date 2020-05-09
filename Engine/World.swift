@@ -52,6 +52,13 @@ public extension World {
         player.velocity = player.direction * input.speed * player.speed
         player.position += player.velocity * timeStep
         
+        // MARK: Update monsters
+        for i in 0 ..< monsters.count {
+            var monster = monsters[i]
+            monster.update(in: self)
+            monsters[i] = monster
+        }
+        
         // Handle collisions
         for i in 0 ..< monsters.count {
             var monster = monsters[i]
