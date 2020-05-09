@@ -56,6 +56,15 @@ public extension Renderer {
          column position by adding the step to it.
          */
         
+        // MARK: Sort sprites by distance
+        var spritesByDistance: [(distance: Double, sprite: Billboard)] = []
+        
+        for sprite in world.sprites {
+            let spriteDistance = (sprite.start - world.player.position).length
+            spritesByDistance.append((distance: spriteDistance, sprite: sprite))
+        }
+        spritesByDistance.sort { $0.distance > $1.distance }
+
         // MARK: Cast rays
         let epsilon = 0.0001
         let columns = bitmap.width
@@ -124,8 +133,8 @@ public extension Renderer {
                 bitmap[x, bitmap.height - 1 - y] = ceilingTexture[normalized: textureX, textureY]
             }
             
-            // Draw sprites
-            for sprite in world.sprites {
+            // MARK: Draw sprites
+            for (_, sprite) in spritesByDistance {
                 guard let hit = sprite.hitTest(ray) else {
                     continue
                 }
