@@ -97,7 +97,8 @@ public extension World {
     
     mutating func hurtPlayer(_ damage: Double) {
         player.health -= damage
-        effects.append(Effect(type: .fadeIn, color: .red, duration: 0.2))
+        let customRed = Color(r: 255, g: 0, b: 0, a: 191)
+        effects.append(Effect(type: .fadeIn, color: customRed, duration: 0.2))
     }
     
     mutating func reset() {
