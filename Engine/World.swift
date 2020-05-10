@@ -54,6 +54,7 @@ public extension World {
             player.velocity = player.direction * input.speed * player.speed
             player.position += player.velocity * timeStep
         } else if effects.isEmpty {
+            effects.append(Effect(type: .fadeIn, color: .red, duration: 0.5))
             reset()
             return
         }

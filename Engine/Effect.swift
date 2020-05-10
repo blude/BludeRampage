@@ -29,6 +29,13 @@ public extension Effect {
     }
     
     var progress: Double {
-        min(1, time / duration)
+        let t = min(1, time / duration)
+        
+        switch type {
+        case .fadeIn:
+            return Easing.easeIn(t)
+        case .fadeOut:
+            return Easing.easeOut(t)
+        }
     }
 }
