@@ -49,14 +49,14 @@ public extension World {
         }
         
         // MARK: Update player
-        if player.isDead {
+        if player.isDead == false {
+            player.direction = player.direction.rotated(by: input.rotation)
+            player.velocity = player.direction * input.speed * player.speed
+            player.position += player.velocity * timeStep
+        } else if effects.isEmpty {
             reset()
             return
         }
-        
-        player.direction = player.direction.rotated(by: input.rotation)
-        player.velocity = player.direction * input.speed * player.speed
-        player.position += player.velocity * timeStep
         
         // MARK: Update monsters
         for i in 0 ..< monsters.count {
@@ -96,9 +96,15 @@ public extension World {
     }
     
     mutating func hurtPlayer(_ damage: Double) {
+        if player.isDead {
+            return
+        }
         player.health -= damage
         let customRed = Color(r: 255, g: 0, b: 0, a: 191)
         effects.append(Effect(type: .fadeIn, color: customRed, duration: 0.2))
+        if player.isDead {
+            effects.append(Effect(type: .fadeOut, color: .red, duration: 2))
+        }
     }
     
     mutating func reset() {

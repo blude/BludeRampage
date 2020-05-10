@@ -206,7 +206,13 @@ public extension Renderer {
         
         // MARK: Effects
         for effect in world.effects {
-            bitmap.tint(with: effect.color, opacity: 1 - effect.progress)
+            switch effect.type {
+            case .fadeIn:
+                bitmap.tint(with: effect.color, opacity: 1 - effect.progress)
+            case .fadeOut:
+                bitmap.tint(with: effect.color, opacity: effect.progress)
+            }
+            
         }
     }
 }

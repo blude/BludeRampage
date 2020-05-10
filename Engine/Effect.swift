@@ -7,7 +7,7 @@
 //
 
 public enum EffectType {
-    case fadeIn
+    case fadeIn, fadeOut
 }
 
 public struct Effect {
