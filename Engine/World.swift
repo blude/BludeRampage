@@ -10,24 +10,13 @@ public struct World {
     public let map: Tilemap
     public private(set) var player: Player!
     public private(set) var monsters: [Monster]
+    public private(set) var effects: [Effect]
     
     public init(map: Tilemap) {
         self.map = map
         self.monsters = []
-        for y in 0 ..< map.height {
-            for x in 0 ..< map.width {
-                let position = Vector(x: Double(x) + 0.5, y: Double(y) + 0.5)
-                let thing = map.things[y * map.width + x]
-                switch thing {
-                case .nothing:
-                    break
-                case .player:
-                    self.player = Player(position: position)
-                case .monster:
-                    self.monsters.append(Monster(position: position))
-                }
-            }
-        }
+        self.effects = []
+        reset()
     }
 }
 
@@ -49,6 +38,22 @@ public extension World {
     }
     
     mutating func update(timeStep: Double, input: Input) {
+        // MARK: Update effects
+        effects = effects.compactMap { effect in
+            if effect.isCompleted {
+                return nil
+            }
+            var effect = effect
+            effect.time += timeStep
+            return effect
+        }
+        
+        // MARK: Update player
+        if player.isDead {
+            reset()
+            return
+        }
+        
         player.direction = player.direction.rotated(by: input.rotation)
         player.velocity = player.direction * input.speed * player.speed
         player.position += player.velocity * timeStep
@@ -92,5 +97,24 @@ public extension World {
     
     mutating func hurtPlayer(_ damage: Double) {
         player.health -= damage
+        effects.append(Effect(type: .fadeIn, color: .red, duration: 0.2))
+    }
+    
+    mutating func reset() {
+        self.monsters = []
+        for y in 0 ..< map.height {
+            for x in 0 ..< map.width {
+                let position = Vector(x: Double(x) + 0.5, y: Double(y) + 0.5)
+                let thing = map.things[y * map.width + x]
+                switch thing {
+                case .nothing:
+                    break
+                case .player:
+                    self.player = Player(position: position)
+                case .monster:
+                    monsters.append(Monster(position: position))
+                }
+            }
+        }
     }
 }

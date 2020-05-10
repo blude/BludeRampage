@@ -17,6 +17,8 @@ public struct Monster: Actor {
     public var animation: Animation = .monsterIdle
     public let radius: Double = 0.4375 // Equal to: 14 / 16 / 2
     public let speed: Double = 0.5
+    public let attackCooldown: Double = 0.4
+    public private(set) var lastAttackTime: Double = 0
     
     public init(position: Vector) {
         self.position = position
@@ -41,6 +43,7 @@ public extension Monster {
             if canReachPlayer(in: world) {
                 state = .scratching
                 animation = .monsterScratch
+                lastAttackTime = -attackCooldown
             }
             let direction = world.player.position - position
             velocity = direction * (speed / direction.length)
@@ -50,7 +53,10 @@ public extension Monster {
                 animation = .monsterWalk
                 break
             }
-            world.hurtPlayer(10)
+            if animation.time - lastAttackTime >= attackCooldown {
+                lastAttackTime = animation.time
+                world.hurtPlayer(10)
+            }
         }
     }
     

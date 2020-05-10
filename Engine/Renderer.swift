@@ -204,5 +204,20 @@ public extension Renderer {
             columnPosition += step
         }
         
+        // MARK: Effects
+        for effect in world.effects {
+            let opacity = 1 - effect.progress
+            let color = Color(
+                r: UInt8(opacity * Double(effect.color.r)),
+                g: UInt8(opacity * Double(effect.color.g)),
+                b: UInt8(opacity * Double(effect.color.b)),
+                a: UInt8(opacity * 255)
+            )
+            for y in 0 ..< bitmap.height {
+                for x in 0 ..< bitmap.width {
+                    bitmap.blendPixel(at: x, y, with: color)
+                }
+            }
+        }
     }
 }
