@@ -24,7 +24,7 @@ public struct Monster: Actor {
 }
 
 public extension Monster {
-    mutating func update(in world: World) {
+    mutating func update(in world: inout World) {
         switch state {
         case .idle:
             if canSeePlayer(in: world) {
@@ -50,6 +50,7 @@ public extension Monster {
                 animation = .monsterWalk
                 break
             }
+            world.hurtPlayer(10)
         }
     }
     

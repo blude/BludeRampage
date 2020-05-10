@@ -8,8 +8,8 @@
 
 public struct World {
     public let map: Tilemap
-    public var player: Player!
-    public var monsters: [Monster]
+    public private(set) var player: Player!
+    public private(set) var monsters: [Monster]
     
     public init(map: Tilemap) {
         self.map = map
@@ -56,7 +56,7 @@ public extension World {
         // MARK: Update monsters
         for i in 0 ..< monsters.count {
             var monster = monsters[i]
-            monster.update(in: self)
+            monster.update(in: &self)
             monster.position += monster.velocity * timeStep
             monster.animation.time += timeStep
             monsters[i] = monster
@@ -88,5 +88,9 @@ public extension World {
         while let intersection = player.intersection(with: map) {
             player.position -= intersection
         }
+    }
+    
+    mutating func hurtPlayer(_ damage: Double) {
+        player.health -= damage
     }
 }
