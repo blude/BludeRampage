@@ -206,6 +206,14 @@ public extension Renderer {
             columnPosition += step
         }
         
+        // MARK: Player weapon
+        let screenHeight = Double(bitmap.height)
+        bitmap.drawImage(
+            textures[.pistol],
+            at: Vector(x: Double(bitmap.width) / 2 - screenHeight / 2, y: 0),
+            size: Vector(x: screenHeight, y: screenHeight)
+        )
+        
         // MARK: Effects
         for effect in world.effects {
             switch effect.type {
