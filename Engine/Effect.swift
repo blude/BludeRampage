@@ -7,7 +7,7 @@
 //
 
 public enum EffectType {
-    case fadeIn, fadeOut
+    case fadeIn, fadeOut, fizzleOut
 }
 
 public struct Effect {
@@ -36,6 +36,8 @@ public extension Effect {
             return Easing.easeIn(t)
         case .fadeOut:
             return Easing.easeOut(t)
+        case .fizzleOut:
+            return Easing.easeInEaseOut(t)
         }
     }
 }

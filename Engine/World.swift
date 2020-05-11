@@ -104,7 +104,7 @@ public extension World {
         let customRed = Color(r: 255, g: 0, b: 0, a: 191)
         effects.append(Effect(type: .fadeIn, color: customRed, duration: 0.2))
         if player.isDead {
-            effects.append(Effect(type: .fadeOut, color: .red, duration: 2))
+            effects.append(Effect(type: .fizzleOut, color: .red, duration: 2))
         }
     }
     

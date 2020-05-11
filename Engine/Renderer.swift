@@ -6,6 +6,8 @@
 //  Copyright © 2020 Pratti Design. All rights reserved.
 //
 
+private let fizzle = (0 ..< 10000).shuffled()
+
 public struct Renderer {
     public private(set) var bitmap: Bitmap
     private let textures: Textures
@@ -211,6 +213,18 @@ public extension Renderer {
                 bitmap.tint(with: effect.color, opacity: 1 - effect.progress)
             case .fadeOut:
                 bitmap.tint(with: effect.color, opacity: effect.progress)
+            case .fizzleOut:
+                let threshold = Int(effect.progress * Double(fizzle.count))
+                let granularity = 4
+                for y in 0 ..< bitmap.height {
+                    for x in 0 ..< bitmap.width {
+                        let index = y / granularity * bitmap.width + x / granularity
+                        let fizzleIndex = fizzle[index % fizzle.count]
+                        if fizzleIndex <= threshold {
+                            bitmap[x, y] = effect.color
+                        }
+                    }
+                }
             }
             
         }
