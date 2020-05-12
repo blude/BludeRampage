@@ -103,7 +103,7 @@ public extension Monster {
     }
     
     func hitTest(_ ray: Ray) -> Vector? {
-        guard let hit = billboard(for: ray).hitTest(ray) else {
+        guard isDead == false, let hit = billboard(for: ray).hitTest(ray) else {
             return nil
         }
         guard (hit - position).length < radius else {
