@@ -32,7 +32,7 @@ public struct Player: Actor {
     public var health: Double
     public var state: PlayerState = .idle
     public var animation: Animation = .pistolIdle
-    public let attackCooldown: Double = 0.4
+    public let attackCooldown: Double = 0.25
     
     public init(position: Vector) {
         self.position = position
@@ -47,23 +47,34 @@ public extension Player {
         health <= 0
     }
     
+    var canFire: Bool {
+        switch state {
+        case .idle:
+            return true
+        case .firing:
+            return animation.time >= attackCooldown
+        }
+    }
+    
     mutating func update(with input: Input, in world: inout World) {
         direction = direction.rotated(by: input.rotation)
         velocity = direction * input.speed * speed
         
+        if input.isFiring, canFire {
+            state = .firing
+            animation = .pistolFire
+            let ray = Ray(origin: position, direction: direction)
+            
+            if let index = world.hitTest(ray) {
+                world.hurtMonster(at: index, damage: 10)
+            }
+        }
+        
         switch state {
         case .idle:
-            if input.isFiring {
-                state = .firing
-                animation = .pistolFire
-                let ray = Ray(origin: position, direction: direction)
-
-                if let index = world.hitTest(ray) {
-                    world.hurtMonster(at: index, damage: 10)
-                }
-            }
+            break
         case .firing:
-            if animation.time >= attackCooldown {
+            if animation.isCompleted {
                 state = .idle
                 animation = .pistolIdle
             }
