@@ -9,10 +9,12 @@
 public struct Bitmap {
     public private(set) var pixels: [Color]
     public let width: Int
+    public let isOpaque: Bool
     
     public init(width: Int, pixels: [Color]) {
         self.width = width
         self.pixels = pixels
+        self.isOpaque = pixels.allSatisfy { $0.isOpaque }
     }
 }
 
@@ -20,6 +22,7 @@ public extension Bitmap {
     init(width: Int, height: Int, color: Color) {
         self.pixels = Array(repeating: color, count: width * height)
         self.width = width
+        self.isOpaque = color.isOpaque
     }
     
     var height: Int {
@@ -61,10 +64,18 @@ public extension Bitmap {
         let end = Int((point.y + height).rounded(.up))
         let stepY = Double(source.height) / height
         
-        for y in max(0, start) ..< min(self.height, end) {
-            let sourceY = max(0, Double(y) - point.y) * stepY
-            let sourceColor = source[sourceX, Int(sourceY)]
-            blendPixel(at: Int(point.x), y, with: sourceColor)
+        if source.isOpaque {
+            for y in max(0, start) ..< min(self.height, end) {
+                let sourceY = max(0, Double(y) - point.y) * stepY
+                let sourceColor = source[sourceX, Int(sourceY)]
+                self[Int(point.x), y] = sourceColor
+            }
+        } else {
+            for y in max(0, start) ..< min(self.height, end) {
+                let sourceY = max(0, Double(y) - point.y) * stepY
+                let sourceColor = source[sourceX, Int(sourceY)]
+                blendPixel(at: Int(point.x), y, with: sourceColor)
+            }
         }
     }
     
