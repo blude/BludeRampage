@@ -57,9 +57,9 @@ public extension World {
         // MARK: Update monsters
         for i in 0 ..< monsters.count {
             var monster = monsters[i]
+            monster.animation.time += timeStep
             monster.update(in: &self)
             monster.position += monster.velocity * timeStep
-            monster.animation.time += timeStep
             monsters[i] = monster
         }
         
