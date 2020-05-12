@@ -9,6 +9,7 @@
 public protocol Actor {
     var radius: Double { get }
     var position: Vector { get set }
+    var isDead: Bool { get }
 }
 
 public extension Actor {
@@ -39,6 +40,9 @@ public extension Actor {
     }
     
     func intersection(with actor: Actor) -> Vector? {
-        rect.intersection(with: actor.rect)
+        if isDead || actor.isDead {
+            return nil
+        }
+        return rect.intersection(with: actor.rect)
     }
 }
