@@ -26,6 +26,7 @@
 		F1A5DB382459E44A005F70D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1A5DB372459E44A005F70D2 /* Assets.xcassets */; };
 		F1A5DB3B2459E44A005F70D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A5DB392459E44A005F70D2 /* LaunchScreen.storyboard */; };
 		F1A8F0272468B8FB00023F9D /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8F0262468B8FB00023F9D /* Easing.swift */; };
+		F1A8F02F246B3DBB00023F9D /* BludeRampageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8F02E246B3DBB00023F9D /* BludeRampageTests.swift */; };
 		F1ABB1E32464C7A7003CF10A /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ABB1E22464C7A7003CF10A /* Monster.swift */; };
 		F1ABB1E52464CD1B003CF10A /* Billboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ABB1E42464CD1B003CF10A /* Billboard.swift */; };
 		F1ACB6DF245EEEBF0078275D /* Bundle+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */; };
@@ -42,6 +43,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F1A8F031246B3DBB00023F9D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1A5DB232459E449005F70D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1A5DB2A2459E449005F70D2;
+			remoteInfo = BludeRampage;
+		};
 		F1FDF13A2459E4EA00D6FBE3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F1A5DB232459E449005F70D2 /* Project object */;
@@ -87,6 +95,9 @@
 		F1A5DB3A2459E44A005F70D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1A5DB3C2459E44A005F70D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1A8F0262468B8FB00023F9D /* Easing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Easing.swift; sourceTree = "<group>"; };
+		F1A8F02C246B3DBB00023F9D /* BludeRampageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BludeRampageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1A8F02E246B3DBB00023F9D /* BludeRampageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BludeRampageTests.swift; sourceTree = "<group>"; };
+		F1A8F030246B3DBB00023F9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1ABB1E22464C7A7003CF10A /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		F1ABB1E42464CD1B003CF10A /* Billboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Billboard.swift; sourceTree = "<group>"; };
 		F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decodable.swift"; sourceTree = "<group>"; };
@@ -111,6 +122,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F1A8F029246B3DBB00023F9D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1FDF1322459E4EA00D6FBE3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -127,6 +145,7 @@
 				F1E07F0A245CD5EB0093EA94 /* Git */,
 				F1A5DB2D2459E449005F70D2 /* BludeRampage */,
 				F1FDF1362459E4EA00D6FBE3 /* Engine */,
+				F1A8F02D246B3DBB00023F9D /* BludeRampageTests */,
 				F1A5DB2C2459E449005F70D2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -136,6 +155,7 @@
 			children = (
 				F1A5DB2B2459E449005F70D2 /* BludeRampage.app */,
 				F1FDF1352459E4EA00D6FBE3 /* Engine.framework */,
+				F1A8F02C246B3DBB00023F9D /* BludeRampageTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,6 +175,15 @@
 				F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */,
 			);
 			path = BludeRampage;
+			sourceTree = "<group>";
+		};
+		F1A8F02D246B3DBB00023F9D /* BludeRampageTests */ = {
+			isa = PBXGroup;
+			children = (
+				F1A8F02E246B3DBB00023F9D /* BludeRampageTests.swift */,
+				F1A8F030246B3DBB00023F9D /* Info.plist */,
+			);
+			path = BludeRampageTests;
 			sourceTree = "<group>";
 		};
 		F1E07F0A245CD5EB0093EA94 /* Git */ = {
@@ -225,6 +254,24 @@
 			productReference = F1A5DB2B2459E449005F70D2 /* BludeRampage.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F1A8F02B246B3DBB00023F9D /* BludeRampageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1A8F033246B3DBB00023F9D /* Build configuration list for PBXNativeTarget "BludeRampageTests" */;
+			buildPhases = (
+				F1A8F028246B3DBB00023F9D /* Sources */,
+				F1A8F029246B3DBB00023F9D /* Frameworks */,
+				F1A8F02A246B3DBB00023F9D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1A8F032246B3DBB00023F9D /* PBXTargetDependency */,
+			);
+			name = BludeRampageTests;
+			productName = BludeRampageTests;
+			productReference = F1A8F02C246B3DBB00023F9D /* BludeRampageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F1FDF1342459E4EA00D6FBE3 /* Engine */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1FDF1412459E4EA00D6FBE3 /* Build configuration list for PBXNativeTarget "Engine" */;
@@ -256,6 +303,10 @@
 					F1A5DB2A2459E449005F70D2 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
+					F1A8F02B246B3DBB00023F9D = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = F1A5DB2A2459E449005F70D2;
+					};
 					F1FDF1342459E4EA00D6FBE3 = {
 						CreatedOnToolsVersion = 11.3.1;
 						LastSwiftMigration = 1130;
@@ -277,6 +328,7 @@
 			targets = (
 				F1A5DB2A2459E449005F70D2 /* BludeRampage */,
 				F1FDF1342459E4EA00D6FBE3 /* Engine */,
+				F1A8F02B246B3DBB00023F9D /* BludeRampageTests */,
 			);
 		};
 /* End PBXProject section */
@@ -291,6 +343,13 @@
 				F1A5DB382459E44A005F70D2 /* Assets.xcassets in Resources */,
 				F1A5DB362459E449005F70D2 /* Main.storyboard in Resources */,
 				F17946E3245DCCB9008A2E31 /* Map.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A8F02A246B3DBB00023F9D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +372,14 @@
 				F1A5DB2F2459E449005F70D2 /* AppDelegate.swift in Sources */,
 				F1ACB6DF245EEEBF0078275D /* Bundle+Decodable.swift in Sources */,
 				F1A5DB312459E449005F70D2 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1A8F028246B3DBB00023F9D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1A8F02F246B3DBB00023F9D /* BludeRampageTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +413,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F1A8F032246B3DBB00023F9D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1A5DB2A2459E449005F70D2 /* BludeRampage */;
+			targetProxy = F1A8F031246B3DBB00023F9D /* PBXContainerItemProxy */;
+		};
 		F1FDF13B2459E4EA00D6FBE3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F1FDF1342459E4EA00D6FBE3 /* Engine */;
@@ -523,6 +595,44 @@
 			};
 			name = Release;
 		};
+		F1A8F034246B3DBB00023F9D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BludeRampageTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prattidesign.BludeRampageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BludeRampage.app/BludeRampage";
+			};
+			name = Debug;
+		};
+		F1A8F035246B3DBB00023F9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = BludeRampageTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.prattidesign.BludeRampageTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BludeRampage.app/BludeRampage";
+			};
+			name = Release;
+		};
 		F1FDF13F2459E4EA00D6FBE3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -595,6 +705,15 @@
 			buildConfigurations = (
 				F1A5DB402459E44A005F70D2 /* Debug */,
 				F1A5DB412459E44A005F70D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1A8F033246B3DBB00023F9D /* Build configuration list for PBXNativeTarget "BludeRampageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1A8F034246B3DBB00023F9D /* Debug */,
+				F1A8F035246B3DBB00023F9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
