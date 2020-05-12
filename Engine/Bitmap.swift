@@ -91,14 +91,21 @@ public extension Bitmap {
     }
     
     private mutating func blendPixel(at x: Int, _ y: Int, with newColor: Color) {
-        let oldColor = self[x, y]
-        let inverseAlpha = 1 - Double(newColor.a) / 255
-        
-        self[x, y] = Color(
-            r: UInt8(Double(oldColor.r) * inverseAlpha) + newColor.r,
-            g: UInt8(Double(oldColor.g) * inverseAlpha) + newColor.g,
-            b: UInt8(Double(oldColor.b) * inverseAlpha) + newColor.b
-        )
+        switch newColor.a {
+        case 0:
+            break
+        case 255:
+            self[x, y] = newColor
+        default:
+            let oldColor = self[x, y]
+            let inverseAlpha = 1 - Double(newColor.a) / 255
+            
+            self[x, y] = Color(
+                r: UInt8(Double(oldColor.r) * inverseAlpha) + newColor.r,
+                g: UInt8(Double(oldColor.g) * inverseAlpha) + newColor.g,
+                b: UInt8(Double(oldColor.b) * inverseAlpha) + newColor.b
+            )
+        }
     }
     
     mutating func tint(with color: Color, opacity: Double) {
