@@ -24,6 +24,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Stop execution if we're running tests
+        guard NSClassFromString("XCTestCase") == nil else {
+            return
+        }
+        
         setUpImageView()
         
         view.addGestureRecognizer(panGesture)
