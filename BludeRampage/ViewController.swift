@@ -27,9 +27,11 @@ class ViewController: UIViewController {
         setUpImageView()
         
         view.addGestureRecognizer(panGesture)
+        panGesture.delegate = self
         
         view.addGestureRecognizer(tapGesture)
         tapGesture.addTarget(self, action: #selector(fire))
+        tapGesture.delegate = self
         
         let displayLink = CADisplayLink(target: self, selector: #selector(update))
         displayLink.add(to: .main, forMode: .common)
@@ -98,5 +100,14 @@ class ViewController: UIViewController {
 private func loadTextures() -> Textures {
     Textures { name in
         Bitmap(image: UIImage(named: name)!)!
+    }
+}
+
+extension ViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
+        true
     }
 }
