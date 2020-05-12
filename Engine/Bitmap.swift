@@ -8,11 +8,11 @@
 
 public struct Bitmap {
     public private(set) var pixels: [Color]
-    public let width: Int
+    public let height: Int
     public let isOpaque: Bool
     
-    public init(width: Int, pixels: [Color]) {
-        self.width = width
+    public init(height: Int, pixels: [Color]) {
+        self.height = height
         self.pixels = pixels
         self.isOpaque = pixels.allSatisfy { $0.isOpaque }
     }
@@ -21,12 +21,12 @@ public struct Bitmap {
 public extension Bitmap {
     init(width: Int, height: Int, color: Color) {
         self.pixels = Array(repeating: color, count: width * height)
-        self.width = width
+        self.height = height
         self.isOpaque = color.isOpaque
     }
     
-    var height: Int {
-        pixels.count / width
+    var width: Int {
+        pixels.count / height
     }
     
     mutating func fill(rect: Rect, color: Color) {
@@ -63,12 +63,13 @@ public extension Bitmap {
         let start = Int(point.y)
         let end = Int((point.y + height).rounded(.up))
         let stepY = Double(source.height) / height
+        let offset = Int(point.x) * self.height
         
         if source.isOpaque {
             for y in max(0, start) ..< min(self.height, end) {
                 let sourceY = max(0, Double(y) - point.y) * stepY
                 let sourceColor = source[sourceX, Int(sourceY)]
-                pixels[y * width + Int(point.x)] = sourceColor
+                pixels[offset + y] = sourceColor
             }
         } else {
             for y in max(0, start) ..< min(self.height, end) {
@@ -125,11 +126,11 @@ public extension Bitmap {
     
     subscript(x: Int, y: Int) -> Color {
         get {
-            pixels[y * width + x]
+            pixels[x * height + y]
         }
         set {
             guard x >= 0, y >= 0, x < width, y < height else { return }
-            pixels[y * width + x] = newValue
+            pixels[x * height + y] = newValue
         }
     }
     
