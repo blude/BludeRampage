@@ -18,6 +18,10 @@
  Because we are fudging things a little by doing the trigonometry in the platform layer, we'll need to multiply the rotation by the `timeStep` and `turningSpeed` on the platform layer side instead of in `World.update()` as we did for the velocity. This is a bit inelegant, but still preferable to writing our own `sin` and `cos` functions.
  */
 
+public enum PlayerState {
+    case idle, firing
+}
+
 public struct Player: Actor {
     public let speed: Double = 3
     public let turningSpeed: Double = .pi
@@ -26,6 +30,9 @@ public struct Player: Actor {
     public var velocity: Vector
     public var direction: Vector
     public var health: Double
+    public var state: PlayerState = .idle
+    public var animation: Animation = .pistolIdle
+    public let attackCooldown: Double = 0.4
     
     public init(position: Vector) {
         self.position = position
@@ -39,5 +46,33 @@ public extension Player {
     var isDead: Bool {
         health <= 0
     }
+    
+    mutating func update(with input: Input) {
+        direction = direction.rotated(by: input.rotation)
+        velocity = direction * input.speed * speed
+        
+        switch state {
+        case .idle:
+            if input.isFiring {
+                state = .firing
+                animation = .pistolFire
+            }
+        case .firing:
+            if animation.time >= attackCooldown {
+                state = .idle
+                animation = .pistolIdle
+            }
+        }
+    }
 }
     
+public extension Animation {
+    static let pistolIdle = Animation(frames: [.pistol], duration: 0)
+    static let pistolFire = Animation(frames: [
+        .pistolFire1,
+        .pistolFire2,
+        .pistolFire3,
+        .pistolFire4,
+        .pistol,
+    ], duration: 0.5)
+}

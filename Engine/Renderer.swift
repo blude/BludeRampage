@@ -209,7 +209,7 @@ public extension Renderer {
         // MARK: Player weapon
         let screenHeight = Double(bitmap.height)
         bitmap.drawImage(
-            textures[.pistol],
+            textures[world.player.animation.texture],
             at: Vector(x: Double(bitmap.width) / 2 - screenHeight / 2, y: 0),
             size: Vector(x: screenHeight, y: screenHeight)
         )

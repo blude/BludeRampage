@@ -50,8 +50,8 @@ public extension World {
         
         // MARK: Update player
         if player.isDead == false {
-            player.direction = player.direction.rotated(by: input.rotation)
-            player.velocity = player.direction * input.speed * player.speed
+            player.animation.time += timeStep
+            player.update(with: input)
             player.position += player.velocity * timeStep
         } else if effects.isEmpty {
             effects.append(Effect(type: .fadeIn, color: .red, duration: 0.5))

@@ -17,14 +17,19 @@ class ViewController: UIViewController {
     private let imageView = UIImageView()
     private let textures = loadTextures()
     private let panGesture = UIPanGestureRecognizer()
+    private let tapGesture = UITapGestureRecognizer()
     private var world = World(map: Bundle.main.decode(Tilemap.self, from: "Map.json"))
-    private var lastTimeFrame = CACurrentMediaTime()
+    private var lastFrameTime = CACurrentMediaTime()
+    private var lastFiredTime = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpImageView()
         
         view.addGestureRecognizer(panGesture)
+        
+        view.addGestureRecognizer(tapGesture)
+        tapGesture.addTarget(self, action: #selector(fire))
         
         let displayLink = CADisplayLink(target: self, selector: #selector(update))
         displayLink.add(to: .main, forMode: .common)
@@ -43,7 +48,7 @@ class ViewController: UIViewController {
     }
 
     @objc func update(_ displayLink: CADisplayLink) {
-        let timeStep = min(maximumTimeStep, displayLink.timestamp - lastTimeFrame)
+        let timeStep = min(maximumTimeStep, displayLink.timestamp - lastFrameTime)
         let width = Int(imageView.bounds.width)
         let height = Int(imageView.bounds.height)
         var renderer = Renderer(width: width, height: height, textures: textures)
@@ -52,7 +57,8 @@ class ViewController: UIViewController {
         let rotation = inputVector.x * world.player.turningSpeed * worldTimeStep
         let input = Input(
             speed: -inputVector.y,
-            rotation: Rotation(sine: sin(rotation), cosine: cos(rotation))
+            rotation: Rotation(sine: sin(rotation), cosine: cos(rotation)),
+            isFiring: lastFiredTime > lastFrameTime
         )
         
         let worldSteps = (timeStep / worldTimeStep).rounded(.up)
@@ -62,9 +68,13 @@ class ViewController: UIViewController {
         
         renderer.draw(world)
         
-        lastTimeFrame = displayLink.timestamp
+        lastFrameTime = displayLink.timestamp
         
         imageView.image = UIImage(bitmap: renderer.bitmap)
+    }
+    
+    @objc func fire(_ gestureRecognizer: UITapGestureRecognizer) {
+        lastFiredTime = CACurrentMediaTime()
     }
     
     private var inputVector: Vector {
