@@ -47,7 +47,7 @@ public extension Player {
         health <= 0
     }
     
-    mutating func update(with input: Input) {
+    mutating func update(with input: Input, in world: inout World) {
         direction = direction.rotated(by: input.rotation)
         velocity = direction * input.speed * speed
         
@@ -56,6 +56,11 @@ public extension Player {
             if input.isFiring {
                 state = .firing
                 animation = .pistolFire
+                let ray = Ray(origin: position, direction: direction)
+
+                if let index = world.hitTest(ray) {
+                    world.hurtMonster(at: index, damage: 10)
+                }
             }
         case .firing:
             if animation.time >= attackCooldown {

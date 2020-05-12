@@ -8,6 +8,7 @@
 
 public enum MonsterState {
     case idle, chasing, scratching
+    case hurt, dead
 }
 
 public struct Monster: Actor {
@@ -19,6 +20,7 @@ public struct Monster: Actor {
     public let speed: Double = 0.5
     public let attackCooldown: Double = 0.4
     public private(set) var lastAttackTime: Double = 0
+    public var health: Double = 50
     
     public init(position: Vector) {
         self.position = position
@@ -26,6 +28,10 @@ public struct Monster: Actor {
 }
 
 public extension Monster {
+    var isDead: Bool {
+        health <= 0
+    }
+    
     mutating func update(in world: inout World) {
         switch state {
         case .idle:
@@ -57,6 +63,15 @@ public extension Monster {
                 lastAttackTime = animation.time
                 world.hurtPlayer(10)
             }
+        case .hurt:
+            if animation.isCompleted {
+                state = .idle
+                animation = .monsterIdle
+            }
+        case .dead:
+            if animation.isCompleted {
+                animation = .monsterDead
+            }
         }
     }
     
@@ -75,11 +90,39 @@ public extension Monster {
         let playerDistance = (world.player.position - position).length
         return playerDistance - radius - world.player.radius < reach
     }
+    
+    func billboard(for ray: Ray) -> Billboard {
+        let plane = ray.direction.orthogonal
+        return Billboard(
+            start: position - plane / 2,
+            direction: plane, length: 1,
+            texture: animation.texture
+        )
+    }
+    
+    func hitTest(_ ray: Ray) -> Vector? {
+        guard let hit = billboard(for: ray).hitTest(ray) else {
+            return nil
+        }
+        guard (hit - position).length < radius else {
+            return nil
+        }
+        return hit
+    }
 }
 
 public extension Animation {
-    static let monsterIdle = Animation(frames: [.monster], duration: 0)
-    static let monsterWalk = Animation(frames: [.monsterWalk1, .monster, .monsterWalk2, .monster], duration: 0.5)
+    static let monsterIdle = Animation(frames: [
+        .monster
+    ], duration: 0)
+    
+    static let monsterWalk = Animation(frames: [
+        .monsterWalk1,
+        .monster,
+        .monsterWalk2,
+        .monster
+    ], duration: 0.5)
+    
     static let monsterScratch = Animation(frames: [
         .monsterScratch1,
         .monsterScratch2,
@@ -90,4 +133,18 @@ public extension Animation {
         .monsterScratch7,
         .monsterScratch8
     ], duration: 0.8)
+    
+    static let monsterHurt = Animation(frames: [
+        .monsterHurt
+    ], duration: 0.2)
+    
+    static let monsterDeath = Animation(frames: [
+        .monsterHurt,
+        .monsterDeath1,
+        .monsterDeath2
+    ], duration: 0.5)
+    
+    static let monsterDead = Animation(frames: [
+        .monsterDead
+    ], duration: 0)
 }

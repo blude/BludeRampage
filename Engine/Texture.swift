@@ -12,6 +12,7 @@ public enum Texture: String, CaseIterable {
     case floor, crackFloor
     case ceiling
     case monster, monsterWalk1, monsterWalk2
+    case monsterHurt, monsterDeath1, monsterDeath2, monsterDead
     case monsterScratch1, monsterScratch2, monsterScratch3, monsterScratch4,
         monsterScratch5, monsterScratch6, monsterScratch7, monsterScratch8
     case pistol, pistolFire1, pistolFire2, pistolFire3, pistolFire4
