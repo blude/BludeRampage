@@ -68,7 +68,7 @@ public extension Bitmap {
             for y in max(0, start) ..< min(self.height, end) {
                 let sourceY = max(0, Double(y) - point.y) * stepY
                 let sourceColor = source[sourceX, Int(sourceY)]
-                self[Int(point.x), y] = sourceColor
+                pixels[y * width + Int(point.x)] = sourceColor
             }
         } else {
             for y in max(0, start) ..< min(self.height, end) {
