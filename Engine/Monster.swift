@@ -39,17 +39,19 @@ public extension Monster {
                 state = .chasing
                 animation = .monsterWalk
             }
-            velocity = Vector(x: 0, y: 0)
         case .chasing:
             guard canSeePlayer(in: world) else {
                 state = .idle
                 animation = .monsterIdle
+                velocity = Vector(x: 0, y: 0)
                 break
             }
             if canReachPlayer(in: world) {
                 state = .scratching
                 animation = .monsterScratch
                 lastAttackTime = -attackCooldown
+                velocity = Vector(x: 0, y: 0)
+                break
             }
             let direction = world.player.position - position
             velocity = direction * (speed / direction.length)

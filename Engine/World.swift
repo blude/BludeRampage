@@ -95,9 +95,13 @@ public extension World {
         if player.isDead {
             return
         }
+        
         player.health -= damage
+        player.velocity = Vector(x: 0, y: 0)
+        
         let customRed = Color(r: 255, g: 0, b: 0, a: 191)
         effects.append(Effect(type: .fadeIn, color: customRed, duration: 0.2))
+        
         if player.isDead {
             effects.append(Effect(type: .fizzleOut, color: .red, duration: 2))
         }
@@ -111,6 +115,7 @@ public extension World {
         }
         
         monster.health -= damage
+        monster.velocity = Vector(x: 0, y: 0)
         
         if monster.isDead {
             monster.state = .dead
