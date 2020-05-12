@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     private let textures = loadTextures()
     private let panGesture = UIPanGestureRecognizer()
     private let tapGesture = UITapGestureRecognizer()
-    private var world = World(map: Bundle.main.decode(Tilemap.self, from: "Map.json"))
+    private var world = World(map: loadMap())
     private var lastFrameTime = CACurrentMediaTime()
     private var lastFiredTime = 0.0
 
@@ -97,7 +97,11 @@ class ViewController: UIViewController {
 
 }
 
-private func loadTextures() -> Textures {
+public func loadMap() -> Tilemap {
+    Bundle.main.decode(Tilemap.self, from: "Map.json")
+}
+
+public func loadTextures() -> Textures {
     Textures { name in
         Bitmap(image: UIImage(named: name)!)!
     }
