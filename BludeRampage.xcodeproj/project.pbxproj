@@ -27,6 +27,7 @@
 		F1A5DB3B2459E44A005F70D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1A5DB392459E44A005F70D2 /* LaunchScreen.storyboard */; };
 		F1A8F0272468B8FB00023F9D /* Easing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8F0262468B8FB00023F9D /* Easing.swift */; };
 		F1A8F02F246B3DBB00023F9D /* BludeRampageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8F02E246B3DBB00023F9D /* BludeRampageTests.swift */; };
+		F1A8F037246B735500023F9D /* Door.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A8F036246B735500023F9D /* Door.swift */; };
 		F1ABB1E32464C7A7003CF10A /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ABB1E22464C7A7003CF10A /* Monster.swift */; };
 		F1ABB1E52464CD1B003CF10A /* Billboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ABB1E42464CD1B003CF10A /* Billboard.swift */; };
 		F1ACB6DF245EEEBF0078275D /* Bundle+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */; };
@@ -98,6 +99,7 @@
 		F1A8F02C246B3DBB00023F9D /* BludeRampageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BludeRampageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A8F02E246B3DBB00023F9D /* BludeRampageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BludeRampageTests.swift; sourceTree = "<group>"; };
 		F1A8F030246B3DBB00023F9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F1A8F036246B735500023F9D /* Door.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Door.swift; sourceTree = "<group>"; };
 		F1ABB1E22464C7A7003CF10A /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		F1ABB1E42464CD1B003CF10A /* Billboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Billboard.swift; sourceTree = "<group>"; };
 		F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decodable.swift"; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				F17946DE245DBD67008A2E31 /* Tilemap.swift */,
 				F1730203245CA9340031949F /* Vector.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
+				F1A8F036246B735500023F9D /* Door.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 				F1C5E69C24635C3100B9441F /* Rotation.swift in Sources */,
 				F1ABB1E32464C7A7003CF10A /* Monster.swift in Sources */,
 				F10061DA2462FB0700142F74 /* Ray.swift in Sources */,
+				F1A8F037246B735500023F9D /* Door.swift in Sources */,
 				F17946DF245DBD67008A2E31 /* Tilemap.swift in Sources */,
 				F17946E5245E2878008A2E31 /* Thing.swift in Sources */,
 				F12184DB246764B000326F6C /* Animation.swift in Sources */,
