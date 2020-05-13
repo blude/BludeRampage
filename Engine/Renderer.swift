@@ -224,8 +224,8 @@ public extension Renderer {
             case .fizzleOut:
                 let threshold = Int(effect.progress * Double(fizzle.count))
                 let granularity = 4
-                for y in 0 ..< bitmap.height {
-                    for x in 0 ..< bitmap.width {
+                for x in 0 ..< bitmap.width {
+                    for y in 0 ..< bitmap.height {
                         let index = y / granularity * bitmap.width + x / granularity
                         let fizzleIndex = fizzle[index % fizzle.count]
                         if fizzleIndex <= threshold {

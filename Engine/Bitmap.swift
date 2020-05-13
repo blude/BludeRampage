@@ -75,7 +75,7 @@ public extension Bitmap {
             for y in max(0, start) ..< min(self.height, end) {
                 let sourceY = max(0, Double(y) - point.y) * stepY
                 let sourceColor = source[sourceX, Int(sourceY)]
-                blendPixel(at: Int(point.x), y, with: sourceColor)
+                blendPixel(at: offset + y, with: sourceColor)
             }
         }
     }
@@ -91,17 +91,17 @@ public extension Bitmap {
         }
     }
     
-    private mutating func blendPixel(at x: Int, _ y: Int, with newColor: Color) {
+    private mutating func blendPixel(at index: Int, with newColor: Color) {
         switch newColor.a {
         case 0:
             break
         case 255:
-            self[x, y] = newColor
+            pixels[index] = newColor
         default:
-            let oldColor = self[x, y]
+            let oldColor = pixels[index]
             let inverseAlpha = 1 - Double(newColor.a) / 255
             
-            self[x, y] = Color(
+            pixels[index] = Color(
                 r: UInt8(Double(oldColor.r) * inverseAlpha) + newColor.r,
                 g: UInt8(Double(oldColor.g) * inverseAlpha) + newColor.g,
                 b: UInt8(Double(oldColor.b) * inverseAlpha) + newColor.b
@@ -117,10 +117,9 @@ public extension Bitmap {
             b: UInt8(opacity * Double(color.b)),
             a: UInt8(opacity * 255)
         )
-        for y in 0 ..< height {
-            for x in 0 ..< width {
-                blendPixel(at: x, y, with: color)
-            }
+        
+        for i in pixels.indices {
+            blendPixel(at: i, with: color)
         }
     }
     
