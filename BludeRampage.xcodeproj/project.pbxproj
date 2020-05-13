@@ -204,6 +204,7 @@
 				F1ABB1E42464CD1B003CF10A /* Billboard.swift */,
 				F1FDF1442459E87E00D6FBE3 /* Bitmap.swift */,
 				F1FDF1422459E75600D6FBE3 /* Color.swift */,
+				F1A8F036246B735500023F9D /* Door.swift */,
 				F1A8F0262468B8FB00023F9D /* Easing.swift */,
 				F17E1F6B24682029003E14CD /* Effect.swift */,
 				F1FDF1382459E4EA00D6FBE3 /* Info.plist */,
@@ -220,7 +221,6 @@
 				F17946DE245DBD67008A2E31 /* Tilemap.swift */,
 				F1730203245CA9340031949F /* Vector.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
-				F1A8F036246B735500023F9D /* Door.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";

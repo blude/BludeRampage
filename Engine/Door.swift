@@ -11,10 +11,15 @@ public struct Door {
     public let direction: Vector
     public let texture: Texture
     
-    public init(position: Vector, direction: Vector, texture: Texture) {
+    public init(position: Vector, isVertical: Bool) {
         self.position = position
-        self.direction = direction
-        self.texture = texture
+        if isVertical {
+            self.direction = Vector(x: 0, y: 1)
+            self.texture = .door
+        } else {
+            self.direction = Vector(x: 1, y: 0)
+            self.texture = .door2
+        }
     }
 }
 

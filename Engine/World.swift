@@ -8,12 +8,14 @@
 
 public struct World {
     public let map: Tilemap
+    public private(set) var doors: [Door]
     public private(set) var player: Player!
     public private(set) var monsters: [Monster]
     public private(set) var effects: [Effect]
     
     public init(map: Tilemap) {
         self.map = map
+        self.doors = []
         self.monsters = []
         self.effects = []
         reset()
@@ -27,7 +29,7 @@ public extension World {
     
     var sprites: [Billboard] {
         let ray = Ray(origin: player.position, direction: player.direction)
-        return monsters.map { $0.billboard(for: ray) }
+        return monsters.map { $0.billboard(for: ray) } + doors.map { $0.billboard }
     }
     
     mutating func update(timeStep: Double, input: Input) {
@@ -161,6 +163,13 @@ public extension World {
                     self.player = Player(position: position)
                 case .monster:
                     monsters.append(Monster(position: position))
+                case .door:
+                    precondition(y > 0 && y < map.height, "Door cannot be placed on map edge")
+                    let isVertical = map[x, y - 1].isWall && map[x, y + 1].isWall
+                    doors.append(Door(
+                        position: position,
+                        isVertical: isVertical
+                    ))
                 }
             }
         }
