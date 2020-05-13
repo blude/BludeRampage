@@ -37,4 +37,8 @@ public extension Door {
             texture: texture
         )
     }
+    
+    func hitTest(_ ray: Ray) -> Vector? {
+        billboard.hitTest(ray)
+    }
 }

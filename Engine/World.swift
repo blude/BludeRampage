@@ -130,8 +130,27 @@ public extension World {
         monsters[index] = monster
     }
     
+    func hitTest(_ ray: Ray) -> Vector {
+        var wallHit = map.hitTest(ray)
+        var distance = (wallHit - ray.origin).length
+        
+        for door in doors {
+            guard let hit = door.hitTest(ray) else {
+                continue
+            }
+            let hitDistance = (hit - ray.origin).length
+            guard hitDistance < distance else {
+                continue
+            }
+            wallHit = hit
+            distance = hitDistance
+        }
+        
+        return wallHit
+    }
+    
     func pickMonster(_ ray: Ray) -> Int? {
-        let wallHit = map.hitTest(ray)
+        let wallHit = hitTest(ray)
         var distance = (wallHit - ray.origin).length
         var result: Int? = nil
         
