@@ -130,7 +130,7 @@ public extension World {
         monsters[index] = monster
     }
     
-    func hitTest(_ ray: Ray) -> Int? {
+    func pickMonster(_ ray: Ray) -> Int? {
         let wallHit = map.hitTest(ray)
         var distance = (wallHit - ray.origin).length
         var result: Int? = nil
