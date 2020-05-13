@@ -8,10 +8,12 @@
 
 public struct Bitmap {
     public private(set) var pixels: [Color]
+    public let width: Int
     public let height: Int
     public let isOpaque: Bool
     
     public init(height: Int, pixels: [Color]) {
+        self.width = pixels.count / height
         self.height = height
         self.pixels = pixels
         self.isOpaque = pixels.allSatisfy { $0.isOpaque }
@@ -21,12 +23,9 @@ public struct Bitmap {
 public extension Bitmap {
     init(width: Int, height: Int, color: Color) {
         self.pixels = Array(repeating: color, count: width * height)
+        self.width = width
         self.height = height
         self.isOpaque = color.isOpaque
-    }
-    
-    var width: Int {
-        pixels.count / height
     }
     
     mutating func fill(rect: Rect, color: Color) {
