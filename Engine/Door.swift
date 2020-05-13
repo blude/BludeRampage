@@ -24,6 +24,11 @@ public struct Door {
 }
 
 public extension Door {
+    var rect: Rect {
+        let position = self.position - direction * 0.5
+        return Rect(min: position, max: position + direction)
+    }
+    
     var billboard: Billboard {
         Billboard(
             start: position - direction * 0.5,

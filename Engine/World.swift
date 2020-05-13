@@ -81,14 +81,14 @@ public extension World {
                 }
             }
             
-            while let intersection = monster.intersection(with: map) {
+            while let intersection = monster.intersection(with: self) {
                 monster.position -= intersection
             }
             
             monsters[i] = monster
         }
         
-        while let intersection = player.intersection(with: map) {
+        while let intersection = player.intersection(with: self) {
             player.position -= intersection
         }
     }
