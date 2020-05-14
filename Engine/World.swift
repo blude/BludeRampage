@@ -173,6 +173,10 @@ public extension World {
         return result
     }
     
+    func isDoor(at x: Int, _ y: Int) -> Bool {
+        map.things[y * map.width + x] == .door
+    }
+    
     mutating func reset() {
         self.monsters = []
         for y in 0 ..< map.height {
