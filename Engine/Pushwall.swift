@@ -23,7 +23,7 @@ public struct Pushwall: Actor {
 public extension Pushwall {
     var isDead: Bool { false }
     
-    var billboards: [Billboard] {
+    func billboards(facing viewpoint: Vector) -> [Billboard] {
         let topLeft = rect.min
         let bottomRight = rect.max
         let topRight = Vector(x: bottomRight.x, y: topLeft.y)
@@ -35,7 +35,11 @@ public extension Pushwall {
             Billboard(start: topRight, direction: Vector(x: -1, y: 0), length: 1, texture: textures[1]),
             Billboard(start: bottomRight, direction: Vector(x: 0, y: -1), length: 1, texture: textures[0]),
             Billboard(start: bottomLeft, direction: Vector(x: 1, y: 0), length: 1, texture: textures[1])
-        ]
+        ].filter { billboard in
+            let ray = billboard.start - viewpoint
+            let faceNormal = billboard.direction.orthogonal
+            return ray.dot(faceNormal) < 0
+        }
     }
     
     var isMoving: Bool {

@@ -33,7 +33,7 @@ public extension World {
         let ray = Ray(origin: player.position, direction: player.direction)
         return monsters.map { $0.billboard(for: ray) } +
             doors.map { $0.billboard } +
-            pushwalls.flatMap { $0.billboards }
+            pushwalls.flatMap { $0.billboards(facing: player.position) }
     }
     
     mutating func update(timeStep: Double, input: Input) {
@@ -150,7 +150,7 @@ public extension World {
         var wallHit = map.hitTest(ray)
         var distance = (wallHit - ray.origin).length
         let billboards = doors.map { $0.billboard } +
-            pushwalls.flatMap { $0.billboards }
+            pushwalls.flatMap { $0.billboards(facing: ray.origin) }
 
         for billboard in billboards {
             guard let hit = billboard.hitTest(ray) else {

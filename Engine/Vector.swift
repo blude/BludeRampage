@@ -20,6 +20,10 @@ public extension Vector {
         (x * x + y * y).squareRoot()
     }
     
+    func dot(_ rhs: Vector) -> Double {
+        x * rhs.x + y * rhs.y
+    }
+    
     /**
      Since our world is two-dimensional, we can think of the view plane as a line rather than a rectangle.
      The direction of this line is always orthogonal to the direction that the camera is facing.
