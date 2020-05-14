@@ -65,6 +65,14 @@ public extension World {
             monsters[i] = monster
         }
         
+        // MARK: Update doors
+        for i in 0 ..< doors.count {
+            var door = doors[i]
+            door.time += timeStep
+            door.update(in: &self)
+            doors[i] = door
+        }
+        
         // Handle collisions
         for i in 0 ..< monsters.count {
             var monster = monsters[i]
