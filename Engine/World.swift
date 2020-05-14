@@ -31,7 +31,9 @@ public extension World {
     
     var sprites: [Billboard] {
         let ray = Ray(origin: player.position, direction: player.direction)
-        return monsters.map { $0.billboard(for: ray) } + doors.map { $0.billboard }
+        return monsters.map { $0.billboard(for: ray) } +
+            doors.map { $0.billboard } +
+            pushWalls.flatMap { $0.billboards }
     }
     
     mutating func update(timeStep: Double, input: Input) {
