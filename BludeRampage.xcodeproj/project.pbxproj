@@ -12,6 +12,7 @@
 		F120F492245D8B9200264600 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120F491245D8B9200264600 /* Rect.swift */; };
 		F12184D924674A8500326F6C /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12184D824674A8500326F6C /* Actor.swift */; };
 		F12184DB246764B000326F6C /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12184DA246764B000326F6C /* Animation.swift */; };
+		F13D5877246DEE0B008396B4 /* Pushwall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13D5876246DEE0B008396B4 /* Pushwall.swift */; };
 		F1730204245CA9340031949F /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1730203245CA9340031949F /* Vector.swift */; };
 		F17946DD245DBD46008A2E31 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946DC245DBD46008A2E31 /* Tile.swift */; };
 		F17946DF245DBD67008A2E31 /* Tilemap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946DE245DBD67008A2E31 /* Tilemap.swift */; };
@@ -80,6 +81,7 @@
 		F120F491245D8B9200264600 /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 		F12184D824674A8500326F6C /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		F12184DA246764B000326F6C /* Animation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
+		F13D5876246DEE0B008396B4 /* Pushwall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pushwall.swift; sourceTree = "<group>"; };
 		F1730203245CA9340031949F /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		F17946DC245DBD46008A2E31 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F17946DE245DBD67008A2E31 /* Tilemap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tilemap.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				F17946E6245E2C54008A2E31 /* Input.swift */,
 				F1ABB1E22464C7A7003CF10A /* Monster.swift */,
 				F1E07F0D245CD6F10093EA94 /* Player.swift */,
+				F13D5876246DEE0B008396B4 /* Pushwall.swift */,
 				F10061D92462FB0700142F74 /* Ray.swift */,
 				F120F491245D8B9200264600 /* Rect.swift */,
 				F1FDF1482459F4B400D6FBE3 /* Renderer.swift */,
@@ -393,6 +396,7 @@
 				F120F492245D8B9200264600 /* Rect.swift in Sources */,
 				F120F490245D8A2F00264600 /* World.swift in Sources */,
 				F1FDF1452459E87E00D6FBE3 /* Bitmap.swift in Sources */,
+				F13D5877246DEE0B008396B4 /* Pushwall.swift in Sources */,
 				F17946E7245E2C54008A2E31 /* Input.swift in Sources */,
 				F17946DD245DBD46008A2E31 /* Tile.swift in Sources */,
 				F1A8F0272468B8FB00023F9D /* Easing.swift in Sources */,

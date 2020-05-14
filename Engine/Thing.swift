@@ -11,4 +11,5 @@ public enum Thing: String, Decodable {
     case player = "@"
     case monster = "*"
     case door = "|"
+    case pushwall = ">"
 }
