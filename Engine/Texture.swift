@@ -10,7 +10,7 @@ public enum Texture: String, CaseIterable {
     case wall, crackWall, slimeWall
     case wall2, crackWall2, slimeWall2
     case floor, crackFloor
-    case door, door2
+    case door, door2, doorjamb, doorjamb2
     case ceiling
     case monster, monsterWalk1, monsterWalk2
     case monsterHurt, monsterDeath1, monsterDeath2, monsterDead
