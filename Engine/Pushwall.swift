@@ -6,10 +6,11 @@
 //  Copyright © 2020 Pratti Design. All rights reserved.
 //
 
-public struct Pushwall {
+public struct Pushwall: Actor {
     public var position: Vector
     public var velocity: Vector
     public let speed: Double = 0.25
+    public let radius: Double = 0.5
     public let tile: Tile
     
     public init(position: Vector, tile: Tile) {
@@ -20,12 +21,7 @@ public struct Pushwall {
 }
 
 public extension Pushwall {
-    var rect: Rect {
-        Rect(
-            min: position - Vector(x: 0.5, y: 0.5),
-            max: Vector(x: 0.5, y: 0.5)
-        )
-    }
+    var isDead: Bool { false }
     
     var billboards: [Billboard] {
         let topLeft = rect.min
@@ -53,6 +49,13 @@ public extension Pushwall {
             } else {
                 velocity = Vector(x: 0, y: intersection.y > 0 ? speed : -speed)
             }
+        }
+        
+        if let intersection = self.intersection(with: world.map),
+            abs(intersection.x) > 0.001 || abs(intersection.y) > 0.001 {
+            velocity = Vector(x: 0, y: 0)
+            position.x = position.x.rounded(.down) + 0.5
+            position.y = position.y.rounded(.down) + 0.5
         }
     }
 }
