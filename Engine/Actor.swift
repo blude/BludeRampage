@@ -61,4 +61,13 @@ public extension Actor {
         }
         return rect.intersection(with: actor.rect)
     }
+    
+    mutating func avoidWalls(in world: World) {
+        var attempts = 10
+        
+        while attempts > 0, let intersection = intersection(with: world) {
+            position -= intersection
+            attempts -= 1
+        }
+    }
 }

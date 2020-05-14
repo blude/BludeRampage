@@ -89,16 +89,12 @@ public extension World {
                 }
             }
             
-            while let intersection = monster.intersection(with: self) {
-                monster.position -= intersection
-            }
+            monster.avoidWalls(in: self)
             
             monsters[i] = monster
         }
         
-        while let intersection = player.intersection(with: self) {
-            player.position -= intersection
-        }
+        player.avoidWalls(in: self)
     }
     
     mutating func hurtPlayer(_ damage: Double) {
