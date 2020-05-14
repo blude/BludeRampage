@@ -6,7 +6,7 @@
 //  Copyright © 2020 Pratti Design. All rights reserved.
 //
 
-public struct Vector {
+public struct Vector: Equatable {
     public var x, y: Double
     
     public init(x: Double, y: Double) {
