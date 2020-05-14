@@ -43,12 +43,21 @@ public extension Actor {
         rect.intersection(with: door.rect)
     }
     
+    func intersection(with pushwall: Pushwall) -> Vector? {
+        rect.intersection(with: pushwall.rect)
+    }
+    
     func intersection(with world: World) -> Vector? {
         if let intersection = intersection(with: world.map) {
             return intersection
         }
         for door in world.doors {
             if let intersection = intersection(with: door) {
+                return intersection
+            }
+        }
+        for pushwall in world.pushWalls {
+            if let intersection = intersection(with: pushwall) {
                 return intersection
             }
         }
