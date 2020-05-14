@@ -9,7 +9,7 @@
 public struct World {
     public let map: Tilemap
     public private(set) var doors: [Door]
-    public private(set) var pushWalls: [Pushwall]
+    public private(set) var pushwalls: [Pushwall]
     public private(set) var player: Player!
     public private(set) var monsters: [Monster]
     public private(set) var effects: [Effect]
@@ -17,7 +17,7 @@ public struct World {
     public init(map: Tilemap) {
         self.map = map
         self.doors = []
-        self.pushWalls = []
+        self.pushwalls = []
         self.monsters = []
         self.effects = []
         reset()
@@ -33,7 +33,7 @@ public extension World {
         let ray = Ray(origin: player.position, direction: player.direction)
         return monsters.map { $0.billboard(for: ray) } +
             doors.map { $0.billboard } +
-            pushWalls.flatMap { $0.billboards }
+            pushwalls.flatMap { $0.billboards }
     }
     
     mutating func update(timeStep: Double, input: Input) {
@@ -75,6 +75,14 @@ public extension World {
             door.time += timeStep
             door.update(in: &self)
             doors[i] = door
+        }
+        
+        // MARK: Update pushwalls
+        for i in 0 ..< pushwalls.count {
+            var pushwall = pushwalls[i]
+            pushwall.update(in: &self)
+            pushwall.position += pushwall.velocity * timeStep
+            pushwalls[i] = pushwall
         }
         
         // Handle collisions

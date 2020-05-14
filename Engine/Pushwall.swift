@@ -8,10 +8,13 @@
 
 public struct Pushwall {
     public var position: Vector
+    public var velocity: Vector
+    public let speed: Double = 0.25
     public let tile: Tile
     
     public init(position: Vector, tile: Tile) {
         self.position = position
+        self.velocity = Vector(x: 0, y: 0)
         self.tile = tile
     }
 }
@@ -37,5 +40,19 @@ public extension Pushwall {
             Billboard(start: bottomRight, direction: Vector(x: 0, y: -1), length: 1, texture: textures[0]),
             Billboard(start: bottomLeft, direction: Vector(x: 1, y: 0), length: 1, texture: textures[1])
         ]
+    }
+    
+    var isMoving: Bool {
+        velocity.x != 0 || velocity.y != 0
+    }
+    
+    mutating func update(in world: inout World) {
+        if isMoving == false, let intersection = world.player.intersection(with: self) {
+            if abs(intersection.x) > abs(intersection.y) {
+                velocity = Vector(x: intersection.x > 0 ? speed : -speed, y: 0)
+            } else {
+                velocity = Vector(x: 0, y: intersection.y > 0 ? speed : -speed)
+            }
+        }
     }
 }
