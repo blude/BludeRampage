@@ -141,9 +141,11 @@ public extension World {
     func hitTest(_ ray: Ray) -> Vector {
         var wallHit = map.hitTest(ray)
         var distance = (wallHit - ray.origin).length
-        
-        for door in doors {
-            guard let hit = door.hitTest(ray) else {
+        let billboards = doors.map { $0.billboard } +
+            pushWalls.flatMap { $0.billboards }
+
+        for billboard in billboards {
+            guard let hit = billboard.hitTest(ray) else {
                 continue
             }
             let hitDistance = (hit - ray.origin).length
