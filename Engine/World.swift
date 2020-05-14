@@ -150,7 +150,7 @@ public extension World {
         var wallHit = map.hitTest(ray)
         var distance = (wallHit - ray.origin).length
         let billboards = doors.map { $0.billboard } +
-            pushWalls.flatMap { $0.billboards }
+            pushwalls.flatMap { $0.billboards }
 
         for billboard in billboards {
             guard let hit = billboard.hitTest(ray) else {
@@ -194,7 +194,7 @@ public extension World {
     mutating func reset() {
         self.monsters = []
         self.doors = []
-        self.pushWalls = []
+        self.pushwalls = []
         
         for y in 0 ..< map.height {
             for x in 0 ..< map.width {
@@ -209,7 +209,7 @@ public extension World {
                     monsters.append(Monster(position: position))
                 case .pushwall:
                     precondition(!map[x, y].isWall, "Pushwall must be placed on a floor tile")
-                    pushWalls.append(Pushwall(position: position, tile: .wall))
+                    pushwalls.append(Pushwall(position: position, tile: .wall))
                 case .door:
                     precondition(y > 0 && y < map.height, "Door cannot be placed on map edge")
                     let isVertical = map[x, y - 1].isWall && map[x, y + 1].isWall

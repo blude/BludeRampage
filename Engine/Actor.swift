@@ -56,7 +56,7 @@ public extension Actor {
                 return intersection
             }
         }
-        for pushwall in world.pushWalls {
+        for pushwall in world.pushwalls {
             if let intersection = intersection(with: pushwall) {
                 return intersection
             }
