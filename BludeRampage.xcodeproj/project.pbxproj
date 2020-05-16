@@ -34,6 +34,7 @@
 		F1ACB6DF245EEEBF0078275D /* Bundle+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */; };
 		F1C5E69C24635C3100B9441F /* Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5E69B24635C3100B9441F /* Rotation.swift */; };
 		F1C5E69E246372F200B9441F /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5E69D246372F200B9441F /* Texture.swift */; };
+		F1E021C924707B6A00EE5E75 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E021C824707B6A00EE5E75 /* Switch.swift */; };
 		F1E07F0C245CD5F20093EA94 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F1E07F0B245CD5EB0093EA94 /* .gitignore */; };
 		F1E07F0E245CD6F10093EA94 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E07F0D245CD6F10093EA94 /* Player.swift */; };
 		F1FDF13C2459E4EA00D6FBE3 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1FDF1352459E4EA00D6FBE3 /* Engine.framework */; };
@@ -107,6 +108,7 @@
 		F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decodable.swift"; sourceTree = "<group>"; };
 		F1C5E69B24635C3100B9441F /* Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rotation.swift; sourceTree = "<group>"; };
 		F1C5E69D246372F200B9441F /* Texture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
+		F1E021C824707B6A00EE5E75 /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		F1E07F0B245CD5EB0093EA94 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F1E07F0D245CD6F10093EA94 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F1FDF1352459E4EA00D6FBE3 /* Engine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Engine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -224,6 +226,7 @@
 				F17946DE245DBD67008A2E31 /* Tilemap.swift */,
 				F1730203245CA9340031949F /* Vector.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
+				F1E021C824707B6A00EE5E75 /* Switch.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 				F17946DF245DBD67008A2E31 /* Tilemap.swift in Sources */,
 				F17946E5245E2878008A2E31 /* Thing.swift in Sources */,
 				F12184DB246764B000326F6C /* Animation.swift in Sources */,
+				F1E021C924707B6A00EE5E75 /* Switch.swift in Sources */,
 				F1FDF1432459E75600D6FBE3 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,9 +7,10 @@
 //
 
 public enum Thing: String, Decodable {
-    case nothing = " "
-    case player = "@"
-    case monster = "*"
-    case door = "|"
-    case pushwall = "<"
+    case nothing = " " // 0
+    case player = "@" // 1
+    case monster = "*" // 2
+    case door = "|" // 3
+    case pushwall = "<" // 4
+    case `switch` = "l" // 5
 }
