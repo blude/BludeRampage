@@ -106,6 +106,14 @@ public extension World {
             monsters[i] = monster
         }
         
+        // MARK: Check for stuck actors
+        if player.isStuck(in: self) {
+            hurtPlayer(1)
+        }
+        for i in 0 ..< monsters.count where monsters[i].isStuck(in: self) {
+            hurtMonster(at: i, damage: 1)
+        }
+        
         player.avoidWalls(in: self)
     }
     

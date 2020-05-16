@@ -79,4 +79,22 @@ public extension Actor {
             attempts -= 1
         }
     }
+    
+    func isStuck(in world: World) -> Bool {
+        // If outside map
+        if position.x < 1 || position.x > world.map.size.x - 1 ||
+            position.y < 1 || position.y > world.map.size.y - 1 {
+            return true
+        }
+        
+        // IF stuck in a wall
+        if world.map[Int(position.x), Int(position.y)].isWall {
+            return true
+        }
+        
+        // If stuck in a pushwall
+        return world.pushwalls.contains {
+            abs(position.x - $0.position.x) < 0.6 && abs(position.y - $0.position.y) < 0.6
+        }
+    }
 }
