@@ -10,6 +10,7 @@ public struct World {
     public private(set) var map: Tilemap
     public private(set) var doors: [Door]
     public private(set) var pushwalls: [Pushwall]
+    public private(set) var switches: [Switch]
     public private(set) var player: Player!
     public private(set) var monsters: [Monster]
     public private(set) var effects: [Effect]
@@ -18,6 +19,7 @@ public struct World {
         self.map = map
         self.doors = []
         self.pushwalls = []
+        self.switches = []
         self.monsters = []
         self.effects = []
         reset()
@@ -83,6 +85,14 @@ public extension World {
             pushwall.update(in: &self)
             pushwall.position += pushwall.velocity * timeStep
             pushwalls[i] = pushwall
+        }
+        
+        // MARK: Update switches
+        for i in 0 ..< switches.count {
+            var s = switches[i]
+            s.animation.time += timeStep
+            s.update(in: &self)
+            switches[i] = s
         }
         
         // Handle collisions
@@ -202,6 +212,8 @@ public extension World {
     mutating func reset() {
         self.monsters = []
         self.doors = []
+        self.switches = []
+        
         var pushwallCount = 0
         
         for y in 0 ..< map.height {
@@ -239,6 +251,9 @@ public extension World {
                         position: position,
                         isVertical: isVertical
                     ))
+                case .switch:
+                    precondition(map[x, y].isWall, "Switch must be placed on a wall tile")
+                    switches.append(Switch(position: position))
                 }
             }
         }

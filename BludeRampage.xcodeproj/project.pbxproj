@@ -220,13 +220,13 @@
 				F120F491245D8B9200264600 /* Rect.swift */,
 				F1FDF1482459F4B400D6FBE3 /* Renderer.swift */,
 				F1C5E69B24635C3100B9441F /* Rotation.swift */,
+				F1E021C824707B6A00EE5E75 /* Switch.swift */,
 				F1C5E69D246372F200B9441F /* Texture.swift */,
 				F17946E4245E2878008A2E31 /* Thing.swift */,
 				F17946DC245DBD46008A2E31 /* Tile.swift */,
 				F17946DE245DBD67008A2E31 /* Tilemap.swift */,
 				F1730203245CA9340031949F /* Vector.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
-				F1E021C824707B6A00EE5E75 /* Switch.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
