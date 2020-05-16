@@ -233,12 +233,12 @@ public extension Renderer {
                 bitmap.tint(with: effect.color, opacity: effect.progress)
             case .fizzleOut:
                 let threshold = Int(effect.progress * Double(fizzle.count))
-                let granularity = 4
                 for x in 0 ..< bitmap.width {
                     for y in 0 ..< bitmap.height {
+                        let granularity = 4
                         let index = y / granularity * bitmap.width + x / granularity
-                        let fizzleIndex = fizzle[index % fizzle.count]
-                        if fizzleIndex <= threshold {
+                        let fizzledIndex = fizzle[index % fizzle.count]
+                        if fizzledIndex <= threshold {
                             bitmap[x, y] = effect.color
                         }
                     }

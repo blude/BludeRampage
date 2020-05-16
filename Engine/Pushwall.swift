@@ -55,7 +55,7 @@ public extension Pushwall {
             }
         }
         
-        if let intersection = self.intersection(with: world.map),
+        if let intersection = self.intersection(with: world),
             abs(intersection.x) > 0.001 || abs(intersection.y) > 0.001 {
             velocity = Vector(x: 0, y: 0)
             position.x = position.x.rounded(.down) + 0.5

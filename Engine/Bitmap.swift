@@ -37,10 +37,9 @@ public extension Bitmap {
     }
     
     mutating func drawLine(from: Vector, to: Vector, color: Color) {
-        var point = from
         let difference = to - from
-        let stepCount: Int
         let step: Vector
+        let stepCount: Int
         
         if abs(difference.x) > abs(difference.y) {
             stepCount = Int(abs(difference.x).rounded(.up))
@@ -51,7 +50,7 @@ public extension Bitmap {
             let sign = difference.y > 0 ? 1.0 : -1.0
             step = Vector(x: difference.x / difference.y, y: 1) * sign
         }
-        
+        var point = from
         for _ in 0 ..< stepCount {
             self[Int(point.x), Int(point.y)] = color
             point += step
@@ -109,12 +108,12 @@ public extension Bitmap {
     }
     
     mutating func tint(with color: Color, opacity: Double) {
-        let opacity = min(1, max(0, Double(color.a) / 255 * opacity))
+        let alpha = min(1, max(0, Double(color.a) / 255 * opacity))
         let color = Color(
-            r: UInt8(opacity * Double(color.r)),
-            g: UInt8(opacity * Double(color.g)),
-            b: UInt8(opacity * Double(color.b)),
-            a: UInt8(opacity * 255)
+            r: UInt8(alpha * Double(color.r)),
+            g: UInt8(alpha * Double(color.g)),
+            b: UInt8(alpha * Double(color.b)),
+            a: UInt8(alpha * 255)
         )
         
         for i in pixels.indices {

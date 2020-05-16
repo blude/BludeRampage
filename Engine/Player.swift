@@ -23,7 +23,7 @@ public enum PlayerState {
 }
 
 public struct Player: Actor {
-    public let speed: Double = 3
+    public let speed: Double = 2
     public let turningSpeed: Double = .pi
     public let radius: Double = 0.25
     public var position: Vector
@@ -83,12 +83,15 @@ public extension Player {
 }
     
 public extension Animation {
-    static let pistolIdle = Animation(frames: [.pistol], duration: 0)
+    static let pistolIdle = Animation(frames: [
+        .pistol
+    ], duration: 0)
+
     static let pistolFire = Animation(frames: [
         .pistolFire1,
         .pistolFire2,
         .pistolFire3,
         .pistolFire4,
-        .pistol,
+        .pistol
     ], duration: 0.5)
 }

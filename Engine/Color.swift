@@ -6,12 +6,14 @@
 //  Copyright © 2020 Pratti Design. All rights reserved.
 //
 
-public struct Color: CustomStringConvertible {
-    public var r, g, b: UInt8
-    public var a: UInt8 = 255
+public struct Color {
+    public var r, g, b, a: UInt8
     
-    public var description: String {
-        String("rgba(\(r), \(g), \(b), \(a))")
+    public init(r: UInt8, g: UInt8, b: UInt8, a: UInt8 = 255) {
+        self.r = r
+        self.g = g
+        self.b = b
+        self.a = a
     }
 }
 
