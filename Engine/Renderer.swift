@@ -178,7 +178,7 @@ public extension Renderer {
             }
             
             // MARK: Sort sprites by distance
-            var spritesByDistance: [(distance: Double, sprite: Billboard)] = []
+            var spritesByDistance: [(hit: Vector, distance: Double, sprite: Billboard)] = []
             
             for sprite in world.sprites {
                 guard let hit = sprite.hitTest(ray) else  {
@@ -188,22 +188,15 @@ public extension Renderer {
                 if spriteDistance > wallDistance {
                     continue
                 }
-                spritesByDistance.append((distance: spriteDistance, sprite: sprite))
+                
+                spritesByDistance.append(
+                    (hit: hit, distance: spriteDistance, sprite: sprite)
+                )
             }
             spritesByDistance.sort { $0.distance > $1.distance }
             
             // MARK: Draw sprites
-            for (_, sprite) in spritesByDistance {
-                guard let hit = sprite.hitTest(ray) else {
-                    continue
-                }
-                
-                let spriteDistance = (hit - ray.origin).length
-                
-                if spriteDistance > wallDistance {
-                    continue
-                }
-                
+            for (hit, spriteDistance, sprite) in spritesByDistance {
                 let perpendicular = spriteDistance / distanceRatio
                 let height = wallHeight / perpendicular * Double(bitmap.height)
                 let spriteX = (hit - sprite.start).length / sprite.length
