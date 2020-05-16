@@ -229,7 +229,7 @@ public extension World {
                     if tile.isWall {
                         map[x, y] = .floor
                     } else {
-                        tile = .wall
+                        tile = map.closestFloorTile(to: x, y) ?? .wall
                     }
                     pushwalls.append(Pushwall(position: position, tile: tile))
                 case .door:

@@ -71,6 +71,18 @@ public extension Tilemap {
         
         return position
     }
+    
+    func closestFloorTile(to x: Int, _ y: Int) -> Tile? {
+        for y in max(0, y - 1) ... min(height - 1, y + 1) {
+            for x in max(0, x - 1) ... min(width - 1, x + 1) {
+                let tile = self[x, y]
+                if tile.isWall == false {
+                    return tile
+                }
+            }
+        }
+        return nil
+    }
 
     subscript(x: Int, y: Int) -> Tile {
         get {
