@@ -36,8 +36,9 @@ public extension Switch {
                 animation = .switchFlip
             }
         case .on:
-            if animation.isCompleted {
+            if animation.time >= animation.duration {
                 animation = .switchOn
+                world.endLevel()
             }
         }
     }

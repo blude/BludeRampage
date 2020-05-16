@@ -14,6 +14,7 @@ public struct World {
     public private(set) var player: Player!
     public private(set) var monsters: [Monster]
     public private(set) var effects: [Effect]
+    public private(set) var isLevelEnded: Bool
     
     public init(map: Tilemap) {
         self.map = map
@@ -22,6 +23,7 @@ public struct World {
         self.switches = []
         self.monsters = []
         self.effects = []
+        self.isLevelEnded = false
         reset()
     }
 }
@@ -47,6 +49,15 @@ public extension World {
             var effect = effect
             effect.time += timeStep
             return effect
+        }
+        
+        // MARK: Check for level end
+        if isLevelEnded {
+            if effects.isEmpty {
+                reset()
+                effects.append(Effect(type: .fadeIn, color: .black, duration: 0.5))
+            }
+            return
         }
         
         // MARK: Update player
@@ -218,10 +229,16 @@ public extension World {
         }
     }
     
+    mutating func endLevel() {
+        isLevelEnded = true
+        effects.append(Effect(type: .fadeOut, color: .black, duration: 2))
+    }
+    
     mutating func reset() {
         self.monsters = []
         self.doors = []
         self.switches = []
+        self.isLevelEnded = false
         
         var pushwallCount = 0
         
