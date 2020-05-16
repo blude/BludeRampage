@@ -7,7 +7,7 @@
 //
 
 public struct World {
-    public let map: Tilemap
+    public private(set) var map: Tilemap
     public private(set) var doors: [Door]
     public private(set) var pushwalls: [Pushwall]
     public private(set) var player: Player!
@@ -202,7 +202,7 @@ public extension World {
     mutating func reset() {
         self.monsters = []
         self.doors = []
-        self.pushwalls = []
+        var pushwallCount = 0
         
         for y in 0 ..< map.height {
             for x in 0 ..< map.width {
@@ -216,8 +216,22 @@ public extension World {
                 case .monster:
                     monsters.append(Monster(position: position))
                 case .pushwall:
-                    precondition(!map[x, y].isWall, "Pushwall must be placed on a floor tile")
-                    pushwalls.append(Pushwall(position: position, tile: .wall))
+                    pushwallCount += 1
+                    if pushwalls.count >= pushwallCount {
+                        let tile = pushwalls[pushwallCount - 1].tile
+                        pushwalls[pushwallCount - 1] = Pushwall(
+                            position: position,
+                            tile: tile
+                        )
+                        break
+                    }
+                    var tile = map[x, y]
+                    if tile.isWall {
+                        map[x, y] = .floor
+                    } else {
+                        tile = .wall
+                    }
+                    pushwalls.append(Pushwall(position: position, tile: tile))
                 case .door:
                     precondition(y > 0 && y < map.height, "Door cannot be placed on map edge")
                     let isVertical = map[x, y - 1].isWall && map[x, y + 1].isWall
