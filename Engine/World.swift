@@ -209,6 +209,15 @@ public extension World {
         map.things[y * map.width + x] == .door
     }
     
+    func `switch`(at x: Int, _ y: Int) -> Switch? {
+        guard map.things[y * map.width + x] == .switch else {
+            return nil
+        }
+        return switches.first {
+            Int($0.position.x) == x && Int($0.position.y) == y
+        }
+    }
+    
     mutating func reset() {
         self.monsters = []
         self.doors = []

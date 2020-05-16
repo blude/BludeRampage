@@ -177,6 +177,12 @@ public extension Renderer {
                 bitmap[x, bitmap.height - 1 - y] = ceilingTexture[normalized: textureX, textureY]
             }
             
+            // MARK: Draw switch
+            if let s = world.switch(at: tileX, tileY) {
+                let switchTexture = textures[s.animation.texture]
+                bitmap.drawColumn(textureX, of: switchTexture, at: wallStart, height: height)
+            }
+            
             // MARK: Sort sprites by distance
             var spritesByDistance: [(hit: Vector, distance: Double, sprite: Billboard)] = []
             
