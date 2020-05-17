@@ -72,7 +72,13 @@ class ViewController: UIViewController {
         
         let worldSteps = (timeStep / worldTimeStep).rounded(.up)
         for _ in 0 ..< Int(worldSteps) {
-            world.update(timeStep: timeStep / worldSteps, input: input)
+            if let action = world.update(timeStep: timeStep / worldSteps, input: input) {
+                switch action {
+                case .loadLevel(let index):
+                    let index = index % levels.count
+                    world = World(map: levels[index])
+                }
+            }
         }
         
         renderer.draw(world)

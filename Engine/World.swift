@@ -6,6 +6,10 @@
 //  Copyright © 2020 Pratti Design. All rights reserved.
 //
 
+public enum WorldAction {
+    case loadLevel(Int)
+}
+
 public struct World {
     public private(set) var map: Tilemap
     public private(set) var doors: [Door]
@@ -40,7 +44,7 @@ public extension World {
             pushwalls.flatMap { $0.billboards(facing: player.position) }
     }
     
-    mutating func update(timeStep: Double, input: Input) {
+    mutating func update(timeStep: Double, input: Input) -> WorldAction? {
         // MARK: Update effects
         effects = effects.compactMap { effect in
             if effect.isCompleted {
@@ -54,10 +58,10 @@ public extension World {
         // MARK: Check for level end
         if isLevelEnded {
             if effects.isEmpty {
-                reset()
                 effects.append(Effect(type: .fadeIn, color: .black, duration: 0.5))
+                return .loadLevel(map.index + 1)
             }
-            return
+            return nil
         }
         
         // MARK: Update player
@@ -70,7 +74,7 @@ public extension World {
         } else if effects.isEmpty {
             effects.append(Effect(type: .fadeIn, color: .red, duration: 0.5))
             reset()
-            return
+            return nil
         }
         
         // MARK: Update monsters
@@ -127,6 +131,8 @@ public extension World {
             monsters[i] = monster
         }
         
+        player.avoidWalls(in: self)
+
         // MARK: Check for stuck actors
         if player.isStuck(in: self) {
             hurtPlayer(1)
@@ -135,7 +141,7 @@ public extension World {
             hurtMonster(at: i, damage: 1)
         }
         
-        player.avoidWalls(in: self)
+        return nil
     }
     
     mutating func hurtPlayer(_ damage: Double) {
