@@ -105,7 +105,10 @@ class ViewController: UIViewController {
 }
 
 public func loadLevels() -> [Tilemap] {
-    Bundle.main.decode([Tilemap].self, from: "Levels.json")
+    let levels = Bundle.main.decode([MapData].self, from: "Levels.json")
+    return levels.enumerated().map {
+        Tilemap($0.element, index: $0.offset)
+    }
 }
 
 public func loadTextures() -> Textures {
