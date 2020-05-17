@@ -16,7 +16,7 @@
 		F1730204245CA9340031949F /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1730203245CA9340031949F /* Vector.swift */; };
 		F17946DD245DBD46008A2E31 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946DC245DBD46008A2E31 /* Tile.swift */; };
 		F17946DF245DBD67008A2E31 /* Tilemap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946DE245DBD67008A2E31 /* Tilemap.swift */; };
-		F17946E3245DCCB9008A2E31 /* Map.json in Resources */ = {isa = PBXBuildFile; fileRef = F17946E2245DCCB9008A2E31 /* Map.json */; };
+		F17946E3245DCCB9008A2E31 /* Levels.json in Resources */ = {isa = PBXBuildFile; fileRef = F17946E2245DCCB9008A2E31 /* Levels.json */; };
 		F17946E5245E2878008A2E31 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946E4245E2878008A2E31 /* Thing.swift */; };
 		F17946E7245E2C54008A2E31 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946E6245E2C54008A2E31 /* Input.swift */; };
 		F17E1F6C24682029003E14CD /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17E1F6B24682029003E14CD /* Effect.swift */; };
@@ -86,7 +86,7 @@
 		F1730203245CA9340031949F /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		F17946DC245DBD46008A2E31 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F17946DE245DBD67008A2E31 /* Tilemap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tilemap.swift; sourceTree = "<group>"; };
-		F17946E2245DCCB9008A2E31 /* Map.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Map.json; sourceTree = "<group>"; };
+		F17946E2245DCCB9008A2E31 /* Levels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Levels.json; sourceTree = "<group>"; };
 		F17946E4245E2878008A2E31 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		F17946E6245E2C54008A2E31 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		F17E1F6B24682029003E14CD /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 				F1A5DB392459E44A005F70D2 /* LaunchScreen.storyboard */,
 				F1A5DB3C2459E44A005F70D2 /* Info.plist */,
 				F1FDF1462459EA0000D6FBE3 /* UIImage+Bitmap.swift */,
-				F17946E2245DCCB9008A2E31 /* Map.json */,
+				F17946E2245DCCB9008A2E31 /* Levels.json */,
 				F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */,
 			);
 			path = BludeRampage;
@@ -351,7 +351,7 @@
 				F1A5DB3B2459E44A005F70D2 /* LaunchScreen.storyboard in Resources */,
 				F1A5DB382459E44A005F70D2 /* Assets.xcassets in Resources */,
 				F1A5DB362459E449005F70D2 /* Main.storyboard in Resources */,
-				F17946E3245DCCB9008A2E31 /* Map.json in Resources */,
+				F17946E3245DCCB9008A2E31 /* Levels.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
