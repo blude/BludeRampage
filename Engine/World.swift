@@ -240,6 +240,12 @@ public extension World {
         effects.append(Effect(type: .fadeOut, color: .black, duration: 2))
     }
     
+    mutating func setLevel(_ map: Tilemap) {
+        let effects = self.effects
+        self = World(map: map)
+        self.effects = effects
+    }
+    
     mutating func reset() {
         self.monsters = []
         self.doors = []

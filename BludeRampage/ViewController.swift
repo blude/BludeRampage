@@ -76,7 +76,7 @@ class ViewController: UIViewController {
                 switch action {
                 case .loadLevel(let index):
                     let index = index % levels.count
-                    world = World(map: levels[index])
+                    world.setLevel(levels[index])
                 }
             }
         }
