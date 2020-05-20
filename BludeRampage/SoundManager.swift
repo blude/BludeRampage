@@ -30,10 +30,11 @@ public extension SoundManager {
         try AVAudioPlayer(contentsOf: url)
     }
     
-    func play(_ url: URL) throws {
+    func play(_ url: URL, volume: Double) throws {
         let player = try AVAudioPlayer(contentsOf: url)
         playing.insert(player)
         player.delegate = self
+        player.volume = Float(volume)
         player.play()
     }
 }

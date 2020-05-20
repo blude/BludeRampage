@@ -241,8 +241,13 @@ public extension World {
         }
     }
     
-    mutating func playSound(_ name: SoundName) {
-        sounds.append(Sound(name: name))
+    mutating func playSound(_ name: SoundName, at position: Vector) {
+        let delta = position - player.position
+        let distance = delta.length
+        let dropOff = 0.5
+        let volume = 1 / (distance * distance * dropOff + 1)
+        let delay = distance * 2 / 343
+        sounds.append(Sound(name: name, volume: volume, delay: delay))
     }
 
     mutating func endLevel() {

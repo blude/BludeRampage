@@ -67,9 +67,10 @@ public extension Player {
             
             if let index = world.pickMonster(ray) {
                 world.hurtMonster(at: index, damage: 10)
-                world.playSound(.monsterHit)
+                world.playSound(.monsterHit, at: world.monsters[index].position)
             } else {
-                world.playSound(.ricochet)
+                let hitPosition = world.hitTest(ray)
+                world.playSound(.ricochet, at: hitPosition)
             }
         }
         
@@ -80,7 +81,7 @@ public extension Player {
             if animation.isCompleted {
                 state = .idle
                 animation = .pistolIdle
-                world.playSound(.pistolFire)
+                world.playSound(.pistolFire, at: position)
             }
         }
     }

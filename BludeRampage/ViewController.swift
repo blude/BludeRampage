@@ -80,10 +80,12 @@ class ViewController: UIViewController {
                     world.setLevel(levels[index])
                 case .playSounds(let sounds):
                     for sound in sounds {
-                        guard let url = sound.name.url else {
-                            continue
+                        DispatchQueue.main.asyncAfter(deadline: .now() + sound.delay) {
+                            guard let url = sound.name.url else {
+                                return
+                            }
+                            try? SoundManager.shared.play(url, volume: sound.volume)
                         }
-                        try? SoundManager.shared.play(url)
                     }
                 }
             }
