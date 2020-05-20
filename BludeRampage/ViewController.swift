@@ -84,7 +84,7 @@ class ViewController: UIViewController {
                             guard let url = sound.name.url else {
                                 return
                             }
-                            try? SoundManager.shared.play(url, volume: sound.volume)
+                            try? SoundManager.shared.play(url, volume: sound.volume, pan: sound.pan)
                         }
                     }
                 }

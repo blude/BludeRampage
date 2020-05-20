@@ -247,7 +247,9 @@ public extension World {
         let dropOff = 0.5
         let volume = 1 / (distance * distance * dropOff + 1)
         let delay = distance * 2 / 343
-        sounds.append(Sound(name: name, volume: volume, delay: delay))
+        let direction = distance > 0 ? delta / distance : player.direction
+        let pan = player.direction.orthogonal.dot(direction)
+        sounds.append(Sound(name: name, volume: volume, pan: pan, delay: delay))
     }
 
     mutating func endLevel() {
