@@ -77,6 +77,7 @@ public extension Player {
             if animation.isCompleted {
                 state = .idle
                 animation = .pistolIdle
+                world.playSound(.pistolFire)
             }
         }
     }

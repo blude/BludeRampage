@@ -1,0 +1,20 @@
+//
+//  Sounds.swift
+//  Engine
+//
+//  Created by Saulo Pratti on 19.05.20.
+//  Copyright © 2020 Pratti Design. All rights reserved.
+//
+
+public enum SoundName {
+    case pistolFire, ricochet
+    case monsterHit, monsterGroan, monsterDeath, monsterSwipe
+    case doorSlide, wallSlide, wallThud
+    case switchFlip
+    case playerDeath, playerWalk
+    case squelch
+}
+
+public struct Sound {
+    public let name: SoundName
+}

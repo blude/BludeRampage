@@ -8,6 +8,7 @@
 
 public enum WorldAction {
     case loadLevel(Int)
+    case playSounds([Sound])
 }
 
 public struct World {
@@ -18,6 +19,7 @@ public struct World {
     public private(set) var player: Player!
     public private(set) var monsters: [Monster]
     public private(set) var effects: [Effect]
+    private var sounds: [Sound] = []
     public private(set) var isLevelEnded: Bool
     
     public init(map: Tilemap) {
@@ -141,7 +143,11 @@ public extension World {
             hurtMonster(at: i, damage: 1)
         }
         
-        return nil
+        // MARK: Play sounds
+        defer {
+            sounds.removeAll()
+        }
+        return .playSounds(sounds)
     }
     
     mutating func hurtPlayer(_ damage: Double) {
@@ -235,6 +241,10 @@ public extension World {
         }
     }
     
+    mutating func playSound(_ name: SoundName) {
+        sounds.append(Sound(name: name))
+    }
+
     mutating func endLevel() {
         isLevelEnded = true
         effects.append(Effect(type: .fadeOut, color: .black, duration: 2))
