@@ -47,6 +47,8 @@ public extension Pushwall {
     }
     
     mutating func update(in world: inout World) {
+        let wasMoving = isMoving
+        
         if isMoving == false, let intersection = world.player.intersection(with: self) {
             if abs(intersection.x) > abs(intersection.y) {
                 velocity = Vector(x: intersection.x > 0 ? speed : -speed, y: 0)
@@ -60,6 +62,12 @@ public extension Pushwall {
             velocity = Vector(x: 0, y: 0)
             position.x = position.x.rounded(.down) + 0.5
             position.y = position.y.rounded(.down) + 0.5
+        }
+        
+        if isMoving, !wasMoving {
+            world.playSound(.wallSlide, at: position)
+        } else if !isMoving, wasMoving {
+            world.playSound(.wallThud, at: position)
         }
     }
 }
