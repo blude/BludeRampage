@@ -152,6 +152,10 @@ public extension World {
     
     mutating func hurtPlayer(_ damage: Double) {
         if player.isDead {
+            playSound(.playerDeath, at: player.position)
+            if player.isStuck(in: self) {
+                playSound(.squelch, at: player.position)
+            }
             return
         }
         
@@ -177,6 +181,10 @@ public extension World {
         monster.velocity = Vector(x: 0, y: 0)
         
         if monster.isDead {
+            playSound(.monsterDeath, at: monster.position)
+            if monster.isStuck(in: self) {
+                playSound(.squelch, at: monster.position)
+            }
             monster.state = .dead
             monster.animation = .monsterDead
         } else {
