@@ -67,6 +67,9 @@ public extension Player {
             
             if let index = world.pickMonster(ray) {
                 world.hurtMonster(at: index, damage: 10)
+                world.playSound(.monsterHit)
+            } else {
+                world.playSound(.ricochet)
             }
         }
         

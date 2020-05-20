@@ -31,6 +31,7 @@ class ViewController: UIViewController {
             return
         }
         
+        setUpAudio()
         setUpImageView()
         
         view.addGestureRecognizer(panGesture)
@@ -77,6 +78,13 @@ class ViewController: UIViewController {
                 case .loadLevel(let index):
                     let index = index % levels.count
                     world.setLevel(levels[index])
+                case .playSounds(let sounds):
+                    for sound in sounds {
+                        guard let url = sound.name.url else {
+                            continue
+                        }
+                        try? SoundManager.shared.play(url)
+                    }
                 }
             }
         }
@@ -120,6 +128,20 @@ public func loadLevels() -> [Tilemap] {
 public func loadTextures() -> Textures {
     Textures { name in
         Bitmap(image: UIImage(named: name)!)!
+    }
+}
+
+func setUpAudio() {
+    for soundName in SoundName.allCases {
+        precondition(soundName.url != nil, "Missing mp3 file for \(soundName.rawValue)")
+    }
+    try? SoundManager.shared.activate()
+    _ = try? SoundManager.shared.preload(SoundName.allCases[0].url!)
+}
+
+public extension SoundName {
+    var url: URL? {
+        Bundle.main.url(forResource: rawValue, withExtension: "mp3")
     }
 }
 

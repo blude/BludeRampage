@@ -6,7 +6,7 @@
 //  Copyright © 2020 Pratti Design. All rights reserved.
 //
 
-public enum SoundName {
+public enum SoundName: String, CaseIterable {
     case pistolFire, ricochet
     case monsterHit, monsterGroan, monsterDeath, monsterSwipe
     case doorSlide, wallSlide, wallThud
