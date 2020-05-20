@@ -50,10 +50,19 @@ public extension Pushwall {
         let wasMoving = isMoving
         
         if isMoving == false, let intersection = world.player.intersection(with: self) {
+            let direction: Vector
+            
             if abs(intersection.x) > abs(intersection.y) {
-                velocity = Vector(x: intersection.x > 0 ? speed : -speed, y: 0)
+                direction = Vector(x: intersection.x > 0 ? 1 : -1, y: 0)
             } else {
-                velocity = Vector(x: 0, y: intersection.y > 0 ? speed : -speed)
+                direction = Vector(x: 0, y: intersection.y > 0 ? 1 : -1)
+            }
+            
+            let x = Int(position.x + direction.x)
+            let y = Int(position.y + direction.y)
+            
+            if world.map[x, y].isWall == false {
+                velocity = direction * speed
             }
         }
         
