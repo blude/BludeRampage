@@ -31,7 +31,8 @@ public struct Player: Actor {
     public var direction: Vector
     public var health: Double
     public var state: PlayerState = .idle
-    public var animation: Animation = .pistolIdle
+    public private(set) var weapon: Weapon = .shotgun
+    public var animation: Animation
     public let attackCooldown: Double = 0.25
     public let soundChannel: Int
     
@@ -41,6 +42,7 @@ public struct Player: Actor {
         self.direction = Vector(x: 1, y: 0)
         self.health = 100
         self.soundChannel = soundChannel
+        self.animation = weapon.attributes.idleAnimation
     }
 }
 
@@ -62,6 +64,11 @@ public extension Player {
         }
     }
     
+    mutating func setWeapon(_ weapon: Weapon) {
+        self.weapon = weapon
+        self.animation = weapon.attributes.idleAnimation
+    }
+    
     mutating func update(with input: Input, in world: inout World) {
         let wasMoving = isMoving
         
@@ -70,7 +77,9 @@ public extension Player {
         
         if input.isFiring, canFire {
             state = .firing
-            animation = .pistolFire
+            animation = weapon.attributes.fireAnimation
+            world.playSound(weapon.attributes.fireSound, at: position)
+            
             let ray = Ray(origin: position, direction: direction)
             
             if let index = world.pickMonster(ray) {
@@ -88,8 +97,7 @@ public extension Player {
         case .firing:
             if animation.isCompleted {
                 state = .idle
-                animation = .pistolIdle
-                world.playSound(.pistolFire, at: position)
+                animation = weapon.attributes.idleAnimation
             }
         }
         
@@ -100,17 +108,4 @@ public extension Player {
         }
     }
 }
-    
-public extension Animation {
-    static let pistolIdle = Animation(frames: [
-        .pistol
-    ], duration: 0)
 
-    static let pistolFire = Animation(frames: [
-        .pistolFire1,
-        .pistolFire2,
-        .pistolFire3,
-        .pistolFire4,
-        .pistol
-    ], duration: 0.5)
-}
