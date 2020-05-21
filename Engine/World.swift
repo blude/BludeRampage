@@ -142,7 +142,7 @@ public extension World {
         for i in (0 ..< pickups.count).reversed() {
             let pickup = pickups[i]
             if player.intersection(with: pickup) != nil {
-                pickups.remove(at: i)
+                pickups.remove(at: i)   
                 switch pickup.type {
                 case .medkit:
                     player.health += 25
