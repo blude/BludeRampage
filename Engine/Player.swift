@@ -31,7 +31,7 @@ public struct Player: Actor {
     public var direction: Vector
     public var health: Double
     public var state: PlayerState = .idle
-    public private(set) var weapon: Weapon = .shotgun
+    public private(set) var weapon: Weapon = .pistol
     public var animation: Animation
     public let soundChannel: Int
     

@@ -148,6 +148,10 @@ public extension World {
                     player.health += 25
                     effects.append(Effect(type: .fadeIn, color: .green, duration: 0.5))
                     playSound(.medkit, at: pickup.position)
+                case .shotgun:
+                    player.setWeapon(.shotgun)
+                    playSound(.shotgunPickup, at: pickup.position)
+                    effects.append(Effect(type: .fadeIn, color: .white, duration: 0.5))
                 }
             }
         }
@@ -342,6 +346,8 @@ public extension World {
                     switches.append(Switch(position: position))
                 case .medkit:
                     pickups.append(Pickup(type: .medkit, position: position))
+                case .shotgun:
+                    pickups.append(Pickup(type: .shotgun, position: position))
                 }
             }
         }

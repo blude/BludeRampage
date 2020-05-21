@@ -7,7 +7,7 @@
 //
 
 public enum PickupType {
-    case medkit
+    case medkit, shotgun
 }
 
 public struct Pickup: Actor {
@@ -28,6 +28,8 @@ public extension Pickup {
         switch type {
         case .medkit:
             return .medkit
+        case .shotgun:
+            return .shotgunPickup
         }
     }
     
