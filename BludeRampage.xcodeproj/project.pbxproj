@@ -19,7 +19,6 @@
 		F1757F9124751AD8002908A7 /* pistolFire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1757F8424751AD8002908A7 /* pistolFire.mp3 */; };
 		F1757F9224751AD8002908A7 /* wallSlide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1757F8524751AD8002908A7 /* wallSlide.mp3 */; };
 		F1757F9324751AD8002908A7 /* doorSlide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1757F8624751AD8002908A7 /* doorSlide.mp3 */; };
-		F1757F9424751AD8002908A7 /* playerWalk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1757F8724751AD8002908A7 /* playerWalk.mp3 */; };
 		F1757F9524751AD8002908A7 /* monsterHit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1757F8824751AD8002908A7 /* monsterHit.mp3 */; };
 		F1757F9624751AD8002908A7 /* squelch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1757F8924751AD8002908A7 /* squelch.mp3 */; };
 		F1757F9724751AD8002908A7 /* ricochet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1757F8A24751AD8002908A7 /* ricochet.mp3 */; };
@@ -107,7 +106,6 @@
 		F1757F8424751AD8002908A7 /* pistolFire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pistolFire.mp3; sourceTree = "<group>"; };
 		F1757F8524751AD8002908A7 /* wallSlide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wallSlide.mp3; sourceTree = "<group>"; };
 		F1757F8624751AD8002908A7 /* doorSlide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = doorSlide.mp3; sourceTree = "<group>"; };
-		F1757F8724751AD8002908A7 /* playerWalk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playerWalk.mp3; sourceTree = "<group>"; };
 		F1757F8824751AD8002908A7 /* monsterHit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = monsterHit.mp3; sourceTree = "<group>"; };
 		F1757F8924751AD8002908A7 /* squelch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = squelch.mp3; sourceTree = "<group>"; };
 		F1757F8A24751AD8002908A7 /* ricochet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ricochet.mp3; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 				F1757F8424751AD8002908A7 /* pistolFire.mp3 */,
 				F1757F8C24751AD8002908A7 /* playerDeath.mp3 */,
 				F1757FA324769666002908A7 /* playerWalk.mp3 */,
-				F1757F8724751AD8002908A7 /* playerWalk.mp3 */,
 				F1757F8A24751AD8002908A7 /* ricochet.mp3 */,
 				F1757F8924751AD8002908A7 /* squelch.mp3 */,
 				F1757F8E24751AD8002908A7 /* switchFlip.mp3 */,
@@ -424,7 +421,6 @@
 				F1757F9524751AD8002908A7 /* monsterHit.mp3 in Resources */,
 				F1A5DB382459E44A005F70D2 /* Assets.xcassets in Resources */,
 				F1A5DB362459E449005F70D2 /* Main.storyboard in Resources */,
-				F1757F9424751AD8002908A7 /* playerWalk.mp3 in Resources */,
 				F1757F9A24751AD8002908A7 /* monsterGroan.mp3 in Resources */,
 				F17946E3245DCCB9008A2E31 /* Levels.json in Resources */,
 				F1757F9B24751AD8002908A7 /* switchFlip.mp3 in Resources */,
