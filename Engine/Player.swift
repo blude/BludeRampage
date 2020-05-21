@@ -33,6 +33,7 @@ public struct Player: Actor {
     public var state: PlayerState = .idle
     public var animation: Animation = .pistolIdle
     public let attackCooldown: Double = 0.25
+    public let soundChannel: Int = 0
     
     public init(position: Vector) {
         self.position = position
@@ -47,6 +48,10 @@ public extension Player {
         health <= 0
     }
     
+    var isMoving: Bool {
+        velocity.x != 0 || velocity.y != 0
+    }
+    
     var canFire: Bool {
         switch state {
         case .idle:
@@ -57,6 +62,8 @@ public extension Player {
     }
     
     mutating func update(with input: Input, in world: inout World) {
+        let wasMoving = isMoving
+        
         direction = direction.rotated(by: input.rotation)
         velocity = direction * input.speed * speed
         
@@ -83,6 +90,12 @@ public extension Player {
                 animation = .pistolIdle
                 world.playSound(.pistolFire, at: position)
             }
+        }
+        
+        if isMoving, !wasMoving {
+            world.playSound(.playerWalk, at: position, in: soundChannel)
+        } else if !isMoving {
+            world.playSound(nil, at: position, in: soundChannel)
         }
     }
 }

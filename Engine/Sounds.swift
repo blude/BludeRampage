@@ -16,7 +16,8 @@ public enum SoundName: String, CaseIterable {
 }
 
 public struct Sound {
-    public let name: SoundName
+    public let name: SoundName?
+    public let channel: Int?
     public let volume: Double
     public let pan: Double
     public let delay: Double

@@ -10,7 +10,9 @@ import AVFoundation
 
 public class SoundManager: NSObject, AVAudioPlayerDelegate {
     private var playing: Set<AVAudioPlayer> = []
+    private var channels: [Int: (url: URL, player: AVAudioPlayer)] = [:]
     public static let shared: SoundManager = .init()
+    
     
     private override init() {
         
@@ -30,12 +32,27 @@ public extension SoundManager {
         try AVAudioPlayer(contentsOf: url)
     }
     
-    func play(_ url: URL, volume: Double, pan: Double) throws {
+    func play(_ url: URL, channel: Int?, volume: Double, pan: Double) throws {
         let player = try AVAudioPlayer(contentsOf: url)
+        
+        if let channel = channel {
+            channels[channel] = (url, player)
+            player.numberOfLoops = -1
+        }
+        
         playing.insert(player)
         player.delegate = self
         player.volume = Float(volume)
         player.pan = Float(pan)
         player.play()
+    }
+    
+    func clearChannel(_ channel: Int) {
+        channels[channel]?.player.stop()
+        channels[channel] = nil
+    }
+    
+    func clearAllChannels() {
+        channels.keys.forEach(clearChannel)
     }
 }

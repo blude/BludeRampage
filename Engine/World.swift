@@ -249,7 +249,7 @@ public extension World {
         }
     }
     
-    mutating func playSound(_ name: SoundName, at position: Vector) {
+    mutating func playSound(_ name: SoundName?, at position: Vector, in channel: Int? = nil) {
         let delta = position - player.position
         let distance = delta.length
         let dropOff = 0.5
@@ -257,7 +257,7 @@ public extension World {
         let delay = distance * 2 / 343
         let direction = distance > 0 ? delta / distance : player.direction
         let pan = player.direction.orthogonal.dot(direction)
-        sounds.append(Sound(name: name, volume: volume, pan: pan, delay: delay))
+        sounds.append(Sound(name: name, channel: channel, volume: volume, pan: pan, delay: delay))
     }
 
     mutating func endLevel() {
