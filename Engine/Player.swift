@@ -33,13 +33,14 @@ public struct Player: Actor {
     public var state: PlayerState = .idle
     public var animation: Animation = .pistolIdle
     public let attackCooldown: Double = 0.25
-    public let soundChannel: Int = 0
+    public let soundChannel: Int
     
-    public init(position: Vector) {
+    public init(position: Vector, soundChannel: Int) {
         self.position = position
         self.velocity = Vector(x: 0, y: 0)
         self.direction = Vector(x: 1, y: 0)
         self.health = 100
+        self.soundChannel = soundChannel
     }
 }
 

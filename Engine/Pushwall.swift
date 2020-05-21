@@ -12,11 +12,13 @@ public struct Pushwall: Actor {
     public let speed: Double = 0.25
     public let radius: Double = 0.5
     public let tile: Tile
+    public let soundChannel: Int
     
-    public init(position: Vector, tile: Tile) {
+    public init(position: Vector, tile: Tile, soundChannel: Int) {
         self.position = position
         self.velocity = Vector(x: 0, y: 0)
         self.tile = tile
+        self.soundChannel = soundChannel
     }
 }
 
@@ -74,9 +76,12 @@ public extension Pushwall {
         }
         
         if isMoving, !wasMoving {
-            world.playSound(.wallSlide, at: position)
-        } else if !isMoving, wasMoving {
-            world.playSound(.wallThud, at: position)
+            world.playSound(.wallSlide, at: position, in: soundChannel)
+        } else if !isMoving {
+            world.playSound(nil, at: position, in: soundChannel)
+            if wasMoving {
+                world.playSound(.wallThud, at: position)
+            }
         }
     }
 }

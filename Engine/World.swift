@@ -278,6 +278,7 @@ public extension World {
         self.isLevelEnded = false
         
         var pushwallCount = 0
+        var soundChannel = 0
         
         for y in 0 ..< map.height {
             for x in 0 ..< map.width {
@@ -287,7 +288,8 @@ public extension World {
                 case .nothing:
                     break
                 case .player:
-                    self.player = Player(position: position)
+                    self.player = Player(position: position, soundChannel: soundChannel)
+                    soundChannel += 1
                 case .monster:
                     monsters.append(Monster(position: position))
                 case .pushwall:
@@ -296,8 +298,10 @@ public extension World {
                         let tile = pushwalls[pushwallCount - 1].tile
                         pushwalls[pushwallCount - 1] = Pushwall(
                             position: position,
-                            tile: tile
+                            tile: tile,
+                            soundChannel: soundChannel
                         )
+                        soundChannel += 1
                         break
                     }
                     var tile = map[x, y]
@@ -306,7 +310,8 @@ public extension World {
                     } else {
                         tile = map.closestFloorTile(to: x, y) ?? .wall
                     }
-                    pushwalls.append(Pushwall(position: position, tile: tile))
+                    pushwalls.append(Pushwall(position: position, tile: tile, soundChannel: soundChannel))
+                    soundChannel += 1
                 case .door:
                     precondition(y > 0 && y < map.height, "Door cannot be placed on map edge")
                     let isVertical = map[x, y - 1].isWall && map[x, y + 1].isWall
