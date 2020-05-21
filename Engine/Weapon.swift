@@ -19,6 +19,7 @@ public extension Weapon {
         let cooldown: Double
         let projectiles: Int
         let spread: Double
+        let defaultAmmo: Double
     }
     
     var attributes: Attributes {
@@ -31,7 +32,8 @@ public extension Weapon {
                 damage: 10,
                 cooldown: 0.25,
                 projectiles: 1,
-                spread: 0
+                spread: 0,
+                defaultAmmo: .infinity
             )
         case .shotgun:
             return Attributes(
@@ -41,7 +43,8 @@ public extension Weapon {
                 damage: 50,
                 cooldown: 0.5,
                 projectiles: 5,
-                spread: 0.4
+                spread: 0.4,
+                defaultAmmo: 5
             )
         }
     }

@@ -32,6 +32,7 @@ public struct Player: Actor {
     public var health: Double
     public var state: PlayerState = .idle
     public private(set) var weapon: Weapon = .pistol
+    public private(set) var ammo: Double
     public var animation: Animation
     public let soundChannel: Int
     
@@ -42,6 +43,7 @@ public struct Player: Actor {
         self.health = 100
         self.soundChannel = soundChannel
         self.animation = weapon.attributes.idleAnimation
+        self.ammo = weapon.attributes.defaultAmmo
     }
 }
 
@@ -55,6 +57,10 @@ public extension Player {
     }
     
     var canFire: Bool {
+        guard ammo > 0 else {
+            return false
+        }
+
         switch state {
         case .idle:
             return true
@@ -66,11 +72,13 @@ public extension Player {
     mutating func setWeapon(_ weapon: Weapon) {
         self.weapon = weapon
         self.animation = weapon.attributes.idleAnimation
+        self.ammo = weapon.attributes.defaultAmmo
     }
     
     mutating func inherit(from player: Player) {
         health = player.health
         setWeapon(player.weapon)
+        ammo = player.ammo
     }
     
     mutating func update(with input: Input, in world: inout World) {
@@ -81,6 +89,7 @@ public extension Player {
         
         if input.isFiring, canFire {
             state = .firing
+            ammo -= 1
             animation = weapon.attributes.fireAnimation
             
             world.playSound(weapon.attributes.fireSound, at: position)
@@ -117,7 +126,9 @@ public extension Player {
         
         switch state {
         case .idle:
-            break
+            if ammo == 0 {
+                setWeapon(.pistol)
+            }
         case .firing:
             if animation.isCompleted {
                 state = .idle
