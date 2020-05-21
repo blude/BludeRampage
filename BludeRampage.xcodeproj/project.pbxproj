@@ -271,6 +271,7 @@
 				F1FDF1382459E4EA00D6FBE3 /* Info.plist */,
 				F17946E6245E2C54008A2E31 /* Input.swift */,
 				F1ABB1E22464C7A7003CF10A /* Monster.swift */,
+				F1757F9F24768BFC002908A7 /* Pickup.swift */,
 				F1E07F0D245CD6F10093EA94 /* Player.swift */,
 				F13D5876246DEE0B008396B4 /* Pushwall.swift */,
 				F10061D92462FB0700142F74 /* Ray.swift */,
@@ -285,7 +286,6 @@
 				F17946DE245DBD67008A2E31 /* Tilemap.swift */,
 				F1730203245CA9340031949F /* Vector.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
-				F1757F9F24768BFC002908A7 /* Pickup.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";

@@ -169,10 +169,6 @@ public extension World {
     
     mutating func hurtPlayer(_ damage: Double) {
         if player.isDead {
-            playSound(.playerDeath, at: player.position)
-            if player.isStuck(in: self) {
-                playSound(.squelch, at: player.position)
-            }
             return
         }
         
@@ -183,6 +179,10 @@ public extension World {
         effects.append(Effect(type: .fadeIn, color: customRed, duration: 0.2))
         
         if player.isDead {
+            playSound(.playerDeath, at: player.position)
+            if player.isStuck(in: self) {
+                playSound(.squelch, at: player.position)
+            }
             effects.append(Effect(type: .fizzleOut, color: .red, duration: 2))
         }
     }
