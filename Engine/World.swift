@@ -137,6 +137,20 @@ public extension World {
         }
         
         player.avoidWalls(in: self)
+        
+        // MARK: Handle pickups
+        for i in (0 ..< pickups.count).reversed() {
+            let pickup = pickups[i]
+            if player.intersection(with: pickup) != nil {
+                pickups.remove(at: i)
+                switch pickup.type {
+                case .medkit:
+                    player.health += 25
+                    effects.append(Effect(type: .fadeIn, color: .green, duration: 0.5))
+                    playSound(.medkit, at: pickup.position)
+                }
+            }
+        }
 
         // MARK: Check for stuck actors
         if player.isStuck(in: self) {
