@@ -11,6 +11,12 @@
 		F102F30E2476E34B0055E38A /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102F30D2476E34B0055E38A /* Weapon.swift */; };
 		F102F3112476EE540055E38A /* shotgunPickup.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F102F30F2476EE540055E38A /* shotgunPickup.mp3 */; };
 		F102F3122476EE540055E38A /* shotgunFire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F102F3102476EE540055E38A /* shotgunFire.mp3 */; };
+		F102F31F24771DE70055E38A /* Renderer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F102F31824771DE70055E38A /* Renderer.framework */; };
+		F102F32024771DE70055E38A /* Renderer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F102F31824771DE70055E38A /* Renderer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F102F326247721B60055E38A /* Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FDF1442459E87E00D6FBE3 /* Bitmap.swift */; };
+		F102F327247721B60055E38A /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FDF1482459F4B400D6FBE3 /* Renderer.swift */; };
+		F102F328247721B60055E38A /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5E69D246372F200B9441F /* Texture.swift */; };
+		F102F32A247722030055E38A /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102F329247722030055E38A /* Texture.swift */; };
 		F120F490245D8A2F00264600 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120F48F245D8A2F00264600 /* World.swift */; };
 		F120F492245D8B9200264600 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120F491245D8B9200264600 /* Rect.swift */; };
 		F12184D924674A8500326F6C /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12184D824674A8500326F6C /* Actor.swift */; };
@@ -53,19 +59,30 @@
 		F1ABB1E52464CD1B003CF10A /* Billboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ABB1E42464CD1B003CF10A /* Billboard.swift */; };
 		F1ACB6DF245EEEBF0078275D /* Bundle+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */; };
 		F1C5E69C24635C3100B9441F /* Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5E69B24635C3100B9441F /* Rotation.swift */; };
-		F1C5E69E246372F200B9441F /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5E69D246372F200B9441F /* Texture.swift */; };
 		F1E021C924707B6A00EE5E75 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E021C824707B6A00EE5E75 /* Switch.swift */; };
 		F1E07F0C245CD5F20093EA94 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F1E07F0B245CD5EB0093EA94 /* .gitignore */; };
 		F1E07F0E245CD6F10093EA94 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E07F0D245CD6F10093EA94 /* Player.swift */; };
 		F1FDF13C2459E4EA00D6FBE3 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1FDF1352459E4EA00D6FBE3 /* Engine.framework */; };
 		F1FDF13D2459E4EA00D6FBE3 /* Engine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F1FDF1352459E4EA00D6FBE3 /* Engine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1FDF1432459E75600D6FBE3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FDF1422459E75600D6FBE3 /* Color.swift */; };
-		F1FDF1452459E87E00D6FBE3 /* Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FDF1442459E87E00D6FBE3 /* Bitmap.swift */; };
 		F1FDF1472459EA0000D6FBE3 /* UIImage+Bitmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FDF1462459EA0000D6FBE3 /* UIImage+Bitmap.swift */; };
-		F1FDF1492459F4B400D6FBE3 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FDF1482459F4B400D6FBE3 /* Renderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F102F31D24771DE70055E38A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1A5DB232459E449005F70D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F102F31724771DE70055E38A;
+			remoteInfo = Renderer;
+		};
+		F102F32424771E5E0055E38A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1A5DB232459E449005F70D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1FDF1342459E4EA00D6FBE3;
+			remoteInfo = Engine;
+		};
 		F1A8F031246B3DBB00023F9D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F1A5DB232459E449005F70D2 /* Project object */;
@@ -90,6 +107,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				F1FDF13D2459E4EA00D6FBE3 /* Engine.framework in Embed Frameworks */,
+				F102F32024771DE70055E38A /* Renderer.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +119,9 @@
 		F102F30D2476E34B0055E38A /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		F102F30F2476EE540055E38A /* shotgunPickup.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shotgunPickup.mp3; sourceTree = "<group>"; };
 		F102F3102476EE540055E38A /* shotgunFire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shotgunFire.mp3; sourceTree = "<group>"; };
+		F102F31824771DE70055E38A /* Renderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Renderer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F102F31B24771DE70055E38A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F102F329247722030055E38A /* Texture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
 		F120F48F245D8A2F00264600 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		F120F491245D8B9200264600 /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 		F12184D824674A8500326F6C /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
@@ -160,11 +181,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F102F31524771DE70055E38A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1A5DB282459E449005F70D2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F1FDF13C2459E4EA00D6FBE3 /* Engine.framework in Frameworks */,
+				F102F31F24771DE70055E38A /* Renderer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +214,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F102F31924771DE70055E38A /* Renderer */ = {
+			isa = PBXGroup;
+			children = (
+				F1FDF1442459E87E00D6FBE3 /* Bitmap.swift */,
+				F102F31B24771DE70055E38A /* Info.plist */,
+				F1FDF1482459F4B400D6FBE3 /* Renderer.swift */,
+				F1C5E69D246372F200B9441F /* Texture.swift */,
+			);
+			path = Renderer;
+			sourceTree = "<group>";
+		};
 		F1757F8224751AD8002908A7 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +255,7 @@
 				F1A5DB2D2459E449005F70D2 /* BludeRampage */,
 				F1FDF1362459E4EA00D6FBE3 /* Engine */,
 				F1A8F02D246B3DBB00023F9D /* BludeRampageTests */,
+				F102F31924771DE70055E38A /* Renderer */,
 				F1A5DB2C2459E449005F70D2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -225,6 +266,7 @@
 				F1A5DB2B2459E449005F70D2 /* BludeRampage.app */,
 				F1FDF1352459E4EA00D6FBE3 /* Engine.framework */,
 				F1A8F02C246B3DBB00023F9D /* BludeRampageTests.xctest */,
+				F102F31824771DE70055E38A /* Renderer.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -271,7 +313,6 @@
 				F12184D824674A8500326F6C /* Actor.swift */,
 				F12184DA246764B000326F6C /* Animation.swift */,
 				F1ABB1E42464CD1B003CF10A /* Billboard.swift */,
-				F1FDF1442459E87E00D6FBE3 /* Bitmap.swift */,
 				F1FDF1422459E75600D6FBE3 /* Color.swift */,
 				F1A8F036246B735500023F9D /* Door.swift */,
 				F1A8F0262468B8FB00023F9D /* Easing.swift */,
@@ -284,17 +325,16 @@
 				F13D5876246DEE0B008396B4 /* Pushwall.swift */,
 				F10061D92462FB0700142F74 /* Ray.swift */,
 				F120F491245D8B9200264600 /* Rect.swift */,
-				F1FDF1482459F4B400D6FBE3 /* Renderer.swift */,
 				F1C5E69B24635C3100B9441F /* Rotation.swift */,
 				F1757F8024734CDC002908A7 /* Sounds.swift */,
 				F1E021C824707B6A00EE5E75 /* Switch.swift */,
-				F1C5E69D246372F200B9441F /* Texture.swift */,
 				F17946E4245E2878008A2E31 /* Thing.swift */,
 				F17946DC245DBD46008A2E31 /* Tile.swift */,
 				F17946DE245DBD67008A2E31 /* Tilemap.swift */,
 				F1730203245CA9340031949F /* Vector.swift */,
 				F102F30D2476E34B0055E38A /* Weapon.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
+				F102F329247722030055E38A /* Texture.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -302,6 +342,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		F102F31324771DE70055E38A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1FDF1302459E4EA00D6FBE3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -312,6 +359,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		F102F31724771DE70055E38A /* Renderer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F102F32124771DE70055E38A /* Build configuration list for PBXNativeTarget "Renderer" */;
+			buildPhases = (
+				F102F31324771DE70055E38A /* Headers */,
+				F102F31424771DE70055E38A /* Sources */,
+				F102F31524771DE70055E38A /* Frameworks */,
+				F102F31624771DE70055E38A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F102F32524771E5E0055E38A /* PBXTargetDependency */,
+			);
+			name = Renderer;
+			productName = Renderer;
+			productReference = F102F31824771DE70055E38A /* Renderer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		F1A5DB2A2459E449005F70D2 /* BludeRampage */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1A5DB3F2459E44A005F70D2 /* Build configuration list for PBXNativeTarget "BludeRampage" */;
@@ -325,6 +391,7 @@
 			);
 			dependencies = (
 				F1FDF13B2459E4EA00D6FBE3 /* PBXTargetDependency */,
+				F102F31E24771DE70055E38A /* PBXTargetDependency */,
 			);
 			name = BludeRampage;
 			productName = BludeRampage;
@@ -377,6 +444,9 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Pratti Design";
 				TargetAttributes = {
+					F102F31724771DE70055E38A = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 					F1A5DB2A2459E449005F70D2 = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -406,11 +476,19 @@
 				F1A5DB2A2459E449005F70D2 /* BludeRampage */,
 				F1FDF1342459E4EA00D6FBE3 /* Engine */,
 				F1A8F02B246B3DBB00023F9D /* BludeRampageTests */,
+				F102F31724771DE70055E38A /* Renderer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F102F31624771DE70055E38A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1A5DB292459E449005F70D2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,6 +534,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F102F31424771DE70055E38A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F102F327247721B60055E38A /* Renderer.swift in Sources */,
+				F102F328247721B60055E38A /* Texture.swift in Sources */,
+				F102F326247721B60055E38A /* Bitmap.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1A5DB272459E449005F70D2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -482,8 +570,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F120F492245D8B9200264600 /* Rect.swift in Sources */,
+				F102F32A247722030055E38A /* Texture.swift in Sources */,
 				F120F490245D8A2F00264600 /* World.swift in Sources */,
-				F1FDF1452459E87E00D6FBE3 /* Bitmap.swift in Sources */,
 				F1757F8124734CDC002908A7 /* Sounds.swift in Sources */,
 				F1757FA024768BFC002908A7 /* Pickup.swift in Sources */,
 				F13D5877246DEE0B008396B4 /* Pushwall.swift in Sources */,
@@ -493,8 +581,6 @@
 				F17E1F6C24682029003E14CD /* Effect.swift in Sources */,
 				F12184D924674A8500326F6C /* Actor.swift in Sources */,
 				F1ABB1E52464CD1B003CF10A /* Billboard.swift in Sources */,
-				F1C5E69E246372F200B9441F /* Texture.swift in Sources */,
-				F1FDF1492459F4B400D6FBE3 /* Renderer.swift in Sources */,
 				F1730204245CA9340031949F /* Vector.swift in Sources */,
 				F1E07F0E245CD6F10093EA94 /* Player.swift in Sources */,
 				F1C5E69C24635C3100B9441F /* Rotation.swift in Sources */,
@@ -513,6 +599,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F102F31E24771DE70055E38A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F102F31724771DE70055E38A /* Renderer */;
+			targetProxy = F102F31D24771DE70055E38A /* PBXContainerItemProxy */;
+		};
+		F102F32524771E5E0055E38A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1FDF1342459E4EA00D6FBE3 /* Engine */;
+			targetProxy = F102F32424771E5E0055E38A /* PBXContainerItemProxy */;
+		};
 		F1A8F032246B3DBB00023F9D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F1A5DB2A2459E449005F70D2 /* BludeRampage */;
@@ -545,6 +641,67 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F102F32224771DE70055E38A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Renderer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LLVM_LTO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prattidesign.Renderer;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_DISABLE_SAFETY_CHECKS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F102F32324771DE70055E38A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_USE_OPTIMIZATION_PROFILE = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				INFOPLIST_FILE = Renderer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				LLVM_LTO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.prattidesign.Renderer;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_DISABLE_SAFETY_CHECKS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		F1A5DB3D2459E44A005F70D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -793,6 +950,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F102F32124771DE70055E38A /* Build configuration list for PBXNativeTarget "Renderer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F102F32224771DE70055E38A /* Debug */,
+				F102F32324771DE70055E38A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F1A5DB262459E449005F70D2 /* Build configuration list for PBXProject "BludeRampage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

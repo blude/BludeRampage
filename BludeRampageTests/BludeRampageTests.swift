@@ -9,6 +9,7 @@
 import XCTest
 import Engine
 import BludeRampage
+import Renderer
 
 class BludeRampageTests: XCTestCase {
     let world = World(map: loadLevels()[0])
