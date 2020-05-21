@@ -30,6 +30,8 @@
 		F1757F9C24751AD8002908A7 /* wallThud.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1757F8F24751AD8002908A7 /* wallThud.mp3 */; };
 		F1757F9E24751B8F002908A7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F9D24751B8F002908A7 /* SoundManager.swift */; };
 		F1757FA024768BFC002908A7 /* Pickup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F9F24768BFC002908A7 /* Pickup.swift */; };
+		F1757FA224769637002908A7 /* medkit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1757FA124769637002908A7 /* medkit.mp3 */; };
+		F1757FA424769666002908A7 /* playerWalk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1757FA324769666002908A7 /* playerWalk.mp3 */; };
 		F17946DD245DBD46008A2E31 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946DC245DBD46008A2E31 /* Tile.swift */; };
 		F17946DF245DBD67008A2E31 /* Tilemap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946DE245DBD67008A2E31 /* Tilemap.swift */; };
 		F17946E3245DCCB9008A2E31 /* Levels.json in Resources */ = {isa = PBXBuildFile; fileRef = F17946E2245DCCB9008A2E31 /* Levels.json */; };
@@ -116,6 +118,8 @@
 		F1757F8F24751AD8002908A7 /* wallThud.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wallThud.mp3; sourceTree = "<group>"; };
 		F1757F9D24751B8F002908A7 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		F1757F9F24768BFC002908A7 /* Pickup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickup.swift; sourceTree = "<group>"; };
+		F1757FA124769637002908A7 /* medkit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = medkit.mp3; sourceTree = "<group>"; };
+		F1757FA324769666002908A7 /* playerWalk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = playerWalk.mp3; path = "../../../../../Downloads/RetroRampage-master/Source/Rampage/Sounds/playerWalk.mp3"; sourceTree = "<group>"; };
 		F17946DC245DBD46008A2E31 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F17946DE245DBD67008A2E31 /* Tilemap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tilemap.swift; sourceTree = "<group>"; };
 		F17946E2245DCCB9008A2E31 /* Levels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Levels.json; sourceTree = "<group>"; };
@@ -180,18 +184,20 @@
 		F1757F8224751AD8002908A7 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				F1757F8624751AD8002908A7 /* doorSlide.mp3 */,
+				F1757FA124769637002908A7 /* medkit.mp3 */,
+				F1757F8B24751AD8002908A7 /* monsterDeath.mp3 */,
+				F1757F8D24751AD8002908A7 /* monsterGroan.mp3 */,
+				F1757F8824751AD8002908A7 /* monsterHit.mp3 */,
 				F1757F8324751AD8002908A7 /* monsterSwipe.mp3 */,
 				F1757F8424751AD8002908A7 /* pistolFire.mp3 */,
-				F1757F8524751AD8002908A7 /* wallSlide.mp3 */,
-				F1757F8624751AD8002908A7 /* doorSlide.mp3 */,
-				F1757F8724751AD8002908A7 /* playerWalk.mp3 */,
-				F1757F8824751AD8002908A7 /* monsterHit.mp3 */,
-				F1757F8924751AD8002908A7 /* squelch.mp3 */,
-				F1757F8A24751AD8002908A7 /* ricochet.mp3 */,
-				F1757F8B24751AD8002908A7 /* monsterDeath.mp3 */,
 				F1757F8C24751AD8002908A7 /* playerDeath.mp3 */,
-				F1757F8D24751AD8002908A7 /* monsterGroan.mp3 */,
+				F1757FA324769666002908A7 /* playerWalk.mp3 */,
+				F1757F8724751AD8002908A7 /* playerWalk.mp3 */,
+				F1757F8A24751AD8002908A7 /* ricochet.mp3 */,
+				F1757F8924751AD8002908A7 /* squelch.mp3 */,
 				F1757F8E24751AD8002908A7 /* switchFlip.mp3 */,
+				F1757F8524751AD8002908A7 /* wallSlide.mp3 */,
 				F1757F8F24751AD8002908A7 /* wallThud.mp3 */,
 			);
 			path = Sounds;
@@ -407,9 +413,11 @@
 				F1757F9324751AD8002908A7 /* doorSlide.mp3 in Resources */,
 				F1757F9624751AD8002908A7 /* squelch.mp3 in Resources */,
 				F1757F9C24751AD8002908A7 /* wallThud.mp3 in Resources */,
+				F1757FA224769637002908A7 /* medkit.mp3 in Resources */,
 				F1E07F0C245CD5F20093EA94 /* .gitignore in Resources */,
 				F1A5DB3B2459E44A005F70D2 /* LaunchScreen.storyboard in Resources */,
 				F1757F9724751AD8002908A7 /* ricochet.mp3 in Resources */,
+				F1757FA424769666002908A7 /* playerWalk.mp3 in Resources */,
 				F1757F9824751AD8002908A7 /* monsterDeath.mp3 in Resources */,
 				F1757F9124751AD8002908A7 /* pistolFire.mp3 in Resources */,
 				F1757F9224751AD8002908A7 /* wallSlide.mp3 in Resources */,
