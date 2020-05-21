@@ -28,12 +28,18 @@ public extension SoundManager {
         try AVAudioSession.sharedInstance().setActive(true)
     }
     
-    func preload(_ url: URL) throws -> AVAudioPlayer {
-        try AVAudioPlayer(contentsOf: url)
+    func preload(_ url: URL, channel: Int? = nil) throws -> AVAudioPlayer {
+        if let channel = channel, let (oldURL, oldSound) = channels[channel] {
+            if oldURL == url {
+                return oldSound
+            }
+            oldSound.stop()
+        }
+        return try AVAudioPlayer(contentsOf: url)
     }
     
     func play(_ url: URL, channel: Int?, volume: Double, pan: Double) throws {
-        let player = try AVAudioPlayer(contentsOf: url)
+        let player = try preload(url, channel: channel)
         
         if let channel = channel {
             channels[channel] = (url, player)
