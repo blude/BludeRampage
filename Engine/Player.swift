@@ -33,7 +33,6 @@ public struct Player: Actor {
     public var state: PlayerState = .idle
     public private(set) var weapon: Weapon = .shotgun
     public var animation: Animation
-    public let attackCooldown: Double = 0.25
     public let soundChannel: Int
     
     public init(position: Vector, soundChannel: Int) {
@@ -60,7 +59,7 @@ public extension Player {
         case .idle:
             return true
         case .firing:
-            return animation.time >= attackCooldown
+            return animation.time >= weapon.attributes.cooldown
         }
     }
     
@@ -83,7 +82,7 @@ public extension Player {
             let ray = Ray(origin: position, direction: direction)
             
             if let index = world.pickMonster(ray) {
-                world.hurtMonster(at: index, damage: 10)
+                world.hurtMonster(at: index, damage: weapon.attributes.damage)
                 world.playSound(.monsterHit, at: world.monsters[index].position)
             } else {
                 let hitPosition = world.hitTest(ray)

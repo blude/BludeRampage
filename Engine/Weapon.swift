@@ -15,14 +15,28 @@ public extension Weapon {
         let idleAnimation: Animation
         let fireAnimation: Animation
         let fireSound: SoundName
+        let damage: Double
+        let cooldown: Double
     }
     
     var attributes: Attributes {
         switch self {
         case .pistol:
-            return Attributes(idleAnimation: .pistolIdle, fireAnimation: .pistolFire, fireSound: .pistolFire)
+            return Attributes(
+                idleAnimation: .pistolIdle,
+                fireAnimation: .pistolFire,
+                fireSound: .pistolFire,
+                damage: 10,
+                cooldown: 0.25
+            )
         case .shotgun:
-            return Attributes(idleAnimation: .shotgunIdle, fireAnimation: .shotgunFire, fireSound: .shotgunFire)
+            return Attributes(
+                idleAnimation: .shotgunIdle,
+                fireAnimation: .shotgunFire,
+                fireSound: .shotgunFire,
+                damage: 50,
+                cooldown: 0.5
+            )
         }
     }
 }
