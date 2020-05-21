@@ -17,6 +17,8 @@ public extension Weapon {
         let fireSound: SoundName
         let damage: Double
         let cooldown: Double
+        let projectiles: Int
+        let spread: Double
     }
     
     var attributes: Attributes {
@@ -27,7 +29,9 @@ public extension Weapon {
                 fireAnimation: .pistolFire,
                 fireSound: .pistolFire,
                 damage: 10,
-                cooldown: 0.25
+                cooldown: 0.25,
+                projectiles: 1,
+                spread: 0
             )
         case .shotgun:
             return Attributes(
@@ -35,7 +39,9 @@ public extension Weapon {
                 fireAnimation: .shotgunFire,
                 fireSound: .shotgunFire,
                 damage: 50,
-                cooldown: 0.5
+                cooldown: 0.5,
+                projectiles: 5,
+                spread: 0.4
             )
         }
     }

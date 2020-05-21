@@ -77,17 +77,37 @@ public extension Player {
         if input.isFiring, canFire {
             state = .firing
             animation = weapon.attributes.fireAnimation
+            
             world.playSound(weapon.attributes.fireSound, at: position)
             
-            let ray = Ray(origin: position, direction: direction)
+            let projectiles = weapon.attributes.projectiles
+            var hitPosition, missPosition: Vector?
             
-            if let index = world.pickMonster(ray) {
-                world.hurtMonster(at: index, damage: weapon.attributes.damage)
-                world.playSound(.monsterHit, at: world.monsters[index].position)
-            } else {
-                let hitPosition = world.hitTest(ray)
-                world.playSound(.ricochet, at: hitPosition)
+            for _ in 0 ..< projectiles {
+                let spread = weapon.attributes.spread
+                let sine = Double.random(in: -spread ... spread)
+                let cosine = (1 - sine * sine).squareRoot()
+                let rotation = Rotation(sine: sine, cosine: cosine)
+                let direction = self.direction.rotated(by: rotation)
+                let ray = Ray(origin: position, direction: direction)
+                
+                if let index = world.pickMonster(ray) {
+                    let damage = weapon.attributes.damage / Double(projectiles)
+                    world.hurtMonster(at: index, damage: damage)
+                    hitPosition = world.monsters[index].position
+                } else {
+                    missPosition = world.hitTest(ray)
+                }
             }
+
+            if let hitPosition = hitPosition {
+                world.playSound(.monsterHit, at: hitPosition)
+            }
+            
+            if let missPosition = missPosition {
+                world.playSound(.ricochet, at: missPosition)
+            }
+            
         }
         
         switch state {

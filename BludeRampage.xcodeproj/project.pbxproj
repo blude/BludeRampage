@@ -293,8 +293,8 @@
 				F17946DC245DBD46008A2E31 /* Tile.swift */,
 				F17946DE245DBD67008A2E31 /* Tilemap.swift */,
 				F1730203245CA9340031949F /* Vector.swift */,
-				F120F48F245D8A2F00264600 /* World.swift */,
 				F102F30D2476E34B0055E38A /* Weapon.swift */,
+				F120F48F245D8A2F00264600 /* World.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
