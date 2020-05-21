@@ -288,8 +288,10 @@ public extension World {
     
     mutating func setLevel(_ map: Tilemap) {
         let effects = self.effects
+        let player = self.player!
         self = World(map: map)
         self.effects = effects
+        self.player.inherit(from: player)
     }
     
     mutating func reset() {

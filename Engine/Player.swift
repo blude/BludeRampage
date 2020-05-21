@@ -68,6 +68,11 @@ public extension Player {
         self.animation = weapon.attributes.idleAnimation
     }
     
+    mutating func inherit(from player: Player) {
+        health = player.health
+        setWeapon(player.weapon)
+    }
+    
     mutating func update(with input: Input, in world: inout World) {
         let wasMoving = isMoving
         
