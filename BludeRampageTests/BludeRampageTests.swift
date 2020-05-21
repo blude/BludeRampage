@@ -11,7 +11,7 @@ import Engine
 import BludeRampage
 
 class BludeRampageTests: XCTestCase {
-    let world = World(map: loadMap())
+    let world = World(map: loadLevels()[0])
     let textures = loadTextures()
     
     func testExample() {
