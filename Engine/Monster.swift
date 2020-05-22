@@ -20,6 +20,7 @@ public struct Monster: Actor {
     public let speed: Double = 0.5
     public let attackCooldown: Double = 0.4
     public private(set) var lastAttackTime: Double = 0
+    public private(set) var lastKnownPlayerPosition: Vector?
     public var health: Double = 50
     
     public init(position: Vector) {
@@ -42,6 +43,7 @@ public extension Monster {
             }
         case .chasing:
             if canSeePlayer(in: world) {
+                lastKnownPlayerPosition = world.player.position
                 if canReachPlayer(in: world) {
                     state = .scratching
                     animation = .monsterScratch
@@ -50,7 +52,10 @@ public extension Monster {
                     break
                 }
             }
-            let direction = world.player.position - position
+            guard let destination = lastKnownPlayerPosition else {
+                break
+            }
+            let direction = destination - position
             velocity = direction * (speed / direction.length)
         case .scratching:
             guard canReachPlayer(in: world) else {
