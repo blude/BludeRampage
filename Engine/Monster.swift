@@ -108,14 +108,34 @@ public extension Monster {
         return (direction / distance).dot(velocity / velocity.length) > threshold
     }
     
+    /**
+     It's quite noticeable (particularly when entering the last room) that the monsters aren't very good at spotting the player. Even when you can clearly see a monster's eye poking out from behind a wall, it doesn't always react to you.
+
+     The monsters "see" by projecting a single ray from their center towards the player. If it hits a wall or door before it reaches the player, they are considered to be obscured. This extreme tunnel vision means the monster can't see the player at all if the midpoint of either party is obscured.
+
+     This is a very low-fidelity view of the world compared to the player's own, where we cast hundreds of rays. It would be too expensive to do this for every monster, but we can compromise by using two rays to give the monster binocular vision.
+     */
     func canSeePlayer(in world: World) -> Bool {
-        let direction = world.player.position - position
+        var direction = world.player.position - position
         let playerDistance = direction.length
-        let ray = Ray(origin: position, direction: direction / playerDistance)
-        let wallHit = world.hitTest(ray)
-        let wallDistance = (wallHit - position).length
+        direction /= playerDistance
+        let orthogonal = direction.orthogonal
         
-        return wallDistance > playerDistance
+        /**
+         The ray direction is the same as before, but we now create two rays, each offset by 0.2 world units from the monster's center. This coincides with the position of the eyes in the monster sprite, which means that if you can see either of the monster's eyes, it can probably see you.
+         */
+        for offset in [-0.2, 0.2] {
+            let origin = position + orthogonal * offset
+            let ray = Ray(origin: origin, direction: direction)
+            let wallHit = world.hitTest(ray)
+            let wallDistance = (wallHit - position).length
+            
+            if wallDistance > playerDistance {
+                return true
+            }
+        }
+        
+        return false
     }
     
     func canReachPlayer(in world: World) -> Bool {
