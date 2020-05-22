@@ -7,7 +7,7 @@
 //
 
 public enum MonsterState {
-    case idle, chasing, scratching
+    case idle, chasing, scratching, blocked
     case hurt, dead
 }
 
@@ -57,6 +57,16 @@ public extension Monster {
             }
             let direction = destination - position
             velocity = direction * (speed / direction.length)
+            if world.monsters.contains(where: isBlocked(by:)) {
+                state = .blocked
+                animation = .monsterBlocked
+                velocity = Vector(x: 0, y: 0)
+            }
+        case .blocked:
+            if animation.isCompleted {
+                state = .chasing
+                animation = .monsterWalk
+            }
         case .scratching:
             guard canReachPlayer(in: world) else {
                 state = .chasing
@@ -78,6 +88,24 @@ public extension Monster {
                 animation = .monsterDead
             }
         }
+    }
+    
+    func isBlocked(by other: Monster) -> Bool {
+        // Ignore dead or inactive monsters
+        if other.isDead || other.state != .chasing {
+            return false
+        }
+        
+        // Ignore if too far away
+        let direction = other.position - position
+        let distance = direction.length
+        let threshold = 0.5
+        if distance > radius + other.radius + threshold {
+            return false
+        }
+        
+        // Is standing in the direction we're moving
+        return (direction / distance).dot(velocity / velocity.length) > threshold
     }
     
     func canSeePlayer(in world: World) -> Bool {
@@ -120,6 +148,10 @@ public extension Animation {
     static let monsterIdle = Animation(frames: [
         .monster
     ], duration: 0)
+    
+    static let monsterBlocked = Animation(frames: [
+        .monster
+    ], duration: 1)
     
     static let monsterWalk = Animation(frames: [
         .monsterWalk1,
