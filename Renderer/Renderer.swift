@@ -176,8 +176,8 @@ public extension Renderer {
         
         // MARK: Crosshair
         let crosshair = textures[.crosshair]
-        let crosshairScale = bitmap.size.y / crosshair.size.y
-        let crosshairSize = crosshair.size * crosshairScale
+        let hudScale = bitmap.size.y / 64
+        let crosshairSize = crosshair.size * hudScale
         bitmap.drawImage(crosshair, at: (bitmap.size - crosshairSize) / 2, size: crosshairSize)
         
         // MARK: Effects
