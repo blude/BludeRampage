@@ -180,6 +180,14 @@ public extension Renderer {
         let crosshairSize = crosshair.size * hudScale
         bitmap.drawImage(crosshair, at: (bitmap.size - crosshairSize) / 2, size: crosshairSize)
         
+        // MARK: Health
+        let healthIcon = textures[.healthIcon]
+        let health = Int(max(0, world.player.health / 100 * 5))
+        for i in 0 ..< health {
+            let offset = Vector(x: healthIcon.size.x * Double(i), y: 0)
+            bitmap.drawImage(healthIcon, at: offset, size: healthIcon.size)
+        }
+        
         // MARK: Effects
         for effect in world.effects {
             switch effect.type {
