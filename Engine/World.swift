@@ -261,6 +261,12 @@ public extension World {
         map.things[y * map.width + x] == .door
     }
     
+    func pushwall(at x: Int, _ y: Int) -> Pushwall? {
+        pushwalls.first {
+            Int($0.position.x) == x && Int($0.position.y) == y
+        }
+    }
+    
     func `switch`(at x: Int, _ y: Int) -> Switch? {
         guard map.things[y * map.width + x] == .switch else {
             return nil
@@ -353,5 +359,30 @@ public extension World {
                 }
             }
         }
+    }
+}
+
+extension World: Graph {
+    public typealias Node = Vector
+
+    public func nodesConnectedTo(_ node: Vector) -> [Vector] {
+        [
+            Node(x: node.x - 1, y: node.y),
+            Node(x: node.x + 1, y: node.y),
+            Node(x: node.x, y: node.y - 1),
+            Node(x: node.x, y: node.y + 1)
+        ].filter { node in
+            let x = Int(node.x)
+            let y = Int(node.y)
+            return map[x, y].isWall == false && pushwall(at: x, y) == nil
+        }
+    }
+    
+    public func estimateDistance(from a: Vector, to b: Vector) -> Double {
+        abs(b.x - a.x) + abs(b.y - a.y)
+    }
+    
+    public func stepDistance(from a: Vector, to b: Vector) -> Double {
+        1
     }
 }
