@@ -147,8 +147,7 @@ public extension Monster {
         guard world.player.state == .firing else {
             return false
         }
-        let path = world.findPath(from: position, to: world.player.position)
-        return path.count < 8
+        return world.findPath(from: position, to: world.player.position, maxDistance: 12).isEmpty == false
     }
     
     func canReachPlayer(in world: World) -> Bool {

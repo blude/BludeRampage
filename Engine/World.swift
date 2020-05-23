@@ -261,6 +261,15 @@ public extension World {
         map.things[y * map.width + x] == .door
     }
     
+    func door(at x: Int, _ y: Int) -> Door? {
+        guard isDoor(at: x, y) else {
+            return nil
+        }
+        return doors.first {
+            Int($0.position.x) == x && Int($0.position.y) == y
+        }
+    }
+    
     func pushwall(at x: Int, _ y: Int) -> Pushwall? {
         pushwalls.first {
             Int($0.position.x) == x && Int($0.position.y) == y
@@ -372,8 +381,8 @@ extension World: Graph {
         }
     }
     
-    public func findPath(from start: Vector, to end: Vector) -> [Vector] {
-        findPath(from: Node(x: start.x, y: start.y), to: Node(x: end.x, y: end.y)).map { node in
+    public func findPath(from start: Vector, to end: Vector, maxDistance: Double = 50) -> [Vector] {
+        findPath(from: Node(x: start.x, y: start.y), to: Node(x: end.x, y: end.y), maxDistance: maxDistance).map { node in
             Vector(x: node.x, y: node.y)
         }
     }
@@ -396,6 +405,13 @@ extension World: Graph {
     }
     
     public func stepDistance(from a: Node, to b: Node) -> Double {
-        1
+        let x = Int(b.x)
+        let y = Int(b.y)
+        
+        if door(at: x, y)?.state == .closed {
+            return 5
+        }
+        
+        return 1
     }
 }
