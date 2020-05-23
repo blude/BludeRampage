@@ -36,6 +36,7 @@ private class Path<Node> {
             tail = path.tail
         }
         
+        nodes.removeFirst()
         return nodes
     }
 }
