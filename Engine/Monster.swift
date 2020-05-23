@@ -56,7 +56,12 @@ public extension Monster {
                 break
             }
             let direction = destination - position
-            velocity = direction * (speed / direction.length)
+            let distance = direction.length
+            if distance < 0.1 {
+                path.removeFirst()
+                break
+            }
+            velocity = direction * (speed / distance)
             if world.monsters.contains(where: isBlocked(by:)) {
                 state = .blocked
                 animation = .monsterBlocked
