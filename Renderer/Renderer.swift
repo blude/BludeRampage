@@ -174,6 +174,12 @@ public extension Renderer {
         let weaponSize = weaponTexture.size * weaponScale
         bitmap.drawImage(weaponTexture, at: (bitmap.size - weaponSize) / 2, size: weaponSize)
         
+        // MARK: Crosshair
+        let crosshair = textures[.crosshair]
+        let crosshairScale = bitmap.size.y / crosshair.size.y
+        let crosshairSize = crosshair.size * crosshairScale
+        bitmap.drawImage(crosshair, at: (bitmap.size - crosshairSize) / 2, size: crosshairSize)
+        
         // MARK: Effects
         for effect in world.effects {
             switch effect.type {
