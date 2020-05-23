@@ -23,6 +23,10 @@ public struct Bitmap {
 }
 
 public extension Bitmap {
+    var size: Vector {
+        Vector(x: Double(width), y: Double(height))
+    }
+    
     init(width: Int, height: Int, color: Color) {
         self.pixels = Array(repeating: color, count: width * height)
         self.width = width
