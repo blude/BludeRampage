@@ -363,9 +363,22 @@ public extension World {
 }
 
 extension World: Graph {
-    public typealias Node = Vector
+    public struct Node: Hashable {
+        public let x, y: Double
+        
+        public init(x: Double, y: Double) {
+            self.x = x.rounded(.down) + 0.5
+            self.y = y.rounded(.down) + 0.5
+        }
+    }
+    
+    public func findPath(from start: Vector, to end: Vector) -> [Vector] {
+        findPath(from: Node(x: start.x, y: start.y), to: Node(x: end.x, y: end.y)).map { node in
+            Vector(x: node.x, y: node.y)
+        }
+    }
 
-    public func nodesConnectedTo(_ node: Vector) -> [Vector] {
+    public func nodesConnectedTo(_ node: Node) -> [Node] {
         [
             Node(x: node.x - 1, y: node.y),
             Node(x: node.x + 1, y: node.y),
@@ -378,11 +391,11 @@ extension World: Graph {
         }
     }
     
-    public func estimateDistance(from a: Vector, to b: Vector) -> Double {
+    public func estimateDistance(from a: Node, to b: Node) -> Double {
         abs(b.x - a.x) + abs(b.y - a.y)
     }
     
-    public func stepDistance(from a: Vector, to b: Vector) -> Double {
+    public func stepDistance(from a: Node, to b: Node) -> Double {
         1
     }
 }

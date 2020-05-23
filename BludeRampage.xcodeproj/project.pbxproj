@@ -322,6 +322,7 @@
 				F1FDF1382459E4EA00D6FBE3 /* Info.plist */,
 				F17946E6245E2C54008A2E31 /* Input.swift */,
 				F1ABB1E22464C7A7003CF10A /* Monster.swift */,
+				F102F32B2478938E0055E38A /* Pathfinder.swift */,
 				F1757F9F24768BFC002908A7 /* Pickup.swift */,
 				F1E07F0D245CD6F10093EA94 /* Player.swift */,
 				F13D5876246DEE0B008396B4 /* Pushwall.swift */,
@@ -330,14 +331,13 @@
 				F1C5E69B24635C3100B9441F /* Rotation.swift */,
 				F1757F8024734CDC002908A7 /* Sounds.swift */,
 				F1E021C824707B6A00EE5E75 /* Switch.swift */,
+				F102F329247722030055E38A /* Texture.swift */,
 				F17946E4245E2878008A2E31 /* Thing.swift */,
 				F17946DC245DBD46008A2E31 /* Tile.swift */,
 				F17946DE245DBD67008A2E31 /* Tilemap.swift */,
 				F1730203245CA9340031949F /* Vector.swift */,
 				F102F30D2476E34B0055E38A /* Weapon.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
-				F102F329247722030055E38A /* Texture.swift */,
-				F102F32B2478938E0055E38A /* Pathfinder.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
