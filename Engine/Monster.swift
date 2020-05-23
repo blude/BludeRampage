@@ -36,13 +36,13 @@ public extension Monster {
     mutating func update(in world: inout World) {
         switch state {
         case .idle:
-            if canSeePlayer(in: world) {
+            if canSeePlayer(in: world) || canHearPlayer(in: world) {
                 world.playSound(.monsterGroan, at: position)
                 state = .chasing
                 animation = .monsterWalk
             }
         case .chasing:
-            if canSeePlayer(in: world) {
+            if canSeePlayer(in: world) || canHearPlayer(in: world) {
                 path = world.findPath(from: position, to: world.player.position)
                 if canReachPlayer(in: world) {
                     state = .scratching
@@ -141,6 +141,14 @@ public extension Monster {
         }
         
         return false
+    }
+    
+    func canHearPlayer(in world: World) -> Bool {
+        guard world.player.state == .firing else {
+            return false
+        }
+        let path = world.findPath(from: position, to: world.player.position)
+        return path.count < 8
     }
     
     func canReachPlayer(in world: World) -> Bool {
