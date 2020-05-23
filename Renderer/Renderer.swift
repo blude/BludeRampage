@@ -172,11 +172,7 @@ public extension Renderer {
         let weaponTexture = textures[world.player.animation.texture]
         let weaponScale = bitmap.size.y / weaponTexture.size.y
         let weaponSize = weaponTexture.size * weaponScale
-        bitmap.drawImage(
-            weaponTexture,
-            at: (bitmap.size - weaponSize) / 2,
-            size: weaponSize
-        )
+        bitmap.drawImage(weaponTexture, at: (bitmap.size - weaponSize) / 2, size: weaponSize)
         
         // MARK: Effects
         for effect in world.effects {
