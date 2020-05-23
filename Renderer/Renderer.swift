@@ -184,8 +184,8 @@ public extension Renderer {
         let healthIcon = textures[.healthIcon]
         let health = Int(max(0, world.player.health / 100 * 5))
         for i in 0 ..< health {
-            let offset = Vector(x: healthIcon.size.x * Double(i), y: 0)
-            bitmap.drawImage(healthIcon, at: offset, size: healthIcon.size)
+            let offset = Vector(x: healthIcon.size.x * Double(i) + 1, y: 1) * hudScale
+            bitmap.drawImage(healthIcon, at: offset, size: healthIcon.size * hudScale)
         }
         
         // MARK: Effects
