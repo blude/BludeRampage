@@ -6,9 +6,14 @@
 //  Copyright © 2020 Pratti Design. All rights reserved.
 //
 
+public enum GameState {
+    case title, playing
+}
+
 public struct Game {
     public let levels: [Tilemap]
     public private(set) var world: World
+    public private(set) var state: GameState = .title
     
     public init(levels: [Tilemap]) {
         self.levels = levels
