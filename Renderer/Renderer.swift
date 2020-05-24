@@ -198,6 +198,17 @@ public extension Renderer {
             offset.x += charSize.x * hudScale
         }
         
+        // MARK: Ammunition
+        offset.x = bitmap.size.x
+        let ammo = Int(max(0, min(99, world.player.ammo)))
+        for char in String(ammo).reversed() {
+            let index = Int(char.asciiValue!) - 48
+            let step = Int(charSize.x)
+            let rangeOfX = index * step ..< (index + 1) * step
+            offset.x -= charSize.x * hudScale
+            bitmap.drawImage(font, rangeOfX: rangeOfX, at: offset, size: charSize * hudScale)
+        }
+        
         // MARK: Effects
         for effect in world.effects {
             switch effect.type {
