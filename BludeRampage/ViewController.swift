@@ -19,8 +19,7 @@ class ViewController: UIViewController {
     private let textures = loadTextures()
     private let panGesture = UIPanGestureRecognizer()
     private let tapGesture = UITapGestureRecognizer()
-    private let levels = loadLevels()
-    private lazy var world = World(map: levels[0])
+    private var game = Game(levels: loadLevels())
     private var lastFrameTime = CACurrentMediaTime()
     private var lastFiredTime = 0.0
     
@@ -52,6 +51,8 @@ class ViewController: UIViewController {
         
         let displayLink = CADisplayLink(target: self, selector: #selector(update))
         displayLink.add(to: .main, forMode: .common)
+        
+        game.delegate = self
     }
     
     func setUpImageView() {
@@ -79,7 +80,7 @@ class ViewController: UIViewController {
         )
 
         let inputVector = self.inputVector
-        let rotation = inputVector.x * world.player.turningSpeed * worldTimeStep
+        let rotation = inputVector.x * game.world.player.turningSpeed * worldTimeStep
         let input = Input(
             speed: -inputVector.y,
             rotation: Rotation(sine: sin(rotation), cosine: cos(rotation)),
@@ -88,29 +89,10 @@ class ViewController: UIViewController {
         
         let worldSteps = (timeStep / worldTimeStep).rounded(.up)
         for _ in 0 ..< Int(worldSteps) {
-            if let action = world.update(timeStep: timeStep / worldSteps, input: input) {
-                switch action {
-                case .loadLevel(let index):
-                    let index = index % levels.count
-                    world.setLevel(levels[index])
-                    SoundManager.shared.clearAllChannels()
-                case .playSounds(let sounds):
-                    for sound in sounds {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + sound.delay) {
-                            guard let url = sound.name?.url else {
-                                if let channel = sound.channel {
-                                    SoundManager.shared.clearChannel(channel)
-                                }
-                                return
-                            }
-                            try? SoundManager.shared.play(url, channel: sound.channel, volume: sound.volume, pan: sound.pan)
-                        }
-                    }
-                }
-            }
+            game.update(timeStep: timeStep / worldSteps, input: input)
         }
         
-        renderer.draw(world)
+        renderer.draw(game.world)
         
         lastFrameTime = displayLink.timestamp
         
@@ -172,5 +154,23 @@ extension ViewController: UIGestureRecognizerDelegate {
         shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
     ) -> Bool {
         true
+    }
+}
+
+extension ViewController: GameDelegate {
+    func playSound(_ sound: Sound) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + sound.delay) {
+            guard let url = sound.name?.url else {
+                if let channel = sound.channel {
+                    SoundManager.shared.clearChannel(channel)
+                }
+                return
+            }
+            try? SoundManager.shared.play(url, channel: sound.channel, volume: sound.volume, pan: sound.pan)
+        }
+    }
+    
+    func clearSounds() {
+        SoundManager.shared.clearAllChannels()
     }
 }
