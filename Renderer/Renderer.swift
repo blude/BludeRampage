@@ -181,12 +181,13 @@ public extension Renderer {
         bitmap.drawImage(crosshair, at: (bitmap.size - crosshairSize) / 2, size: crosshairSize)
         
         // MARK: Health
+        let font = textures[.font]
+        let charSize = Vector(x: font.size.x / 10, y: font.size.y)
         let healthIcon = textures[.healthIcon]
-        let health = Int(max(0, world.player.health / 100 * 5))
-        for i in 0 ..< health {
-            let offset = Vector(x: healthIcon.size.x * Double(i) + 1, y: 1) * hudScale
-            bitmap.drawImage(healthIcon, at: offset, size: healthIcon.size * hudScale)
-        }
+        var offset = Vector(x: 1, y: 1) * hudScale
+        bitmap.drawImage(healthIcon, at: offset, size: healthIcon.size * hudScale)
+        offset.x += healthIcon.size.x * hudScale
+        bitmap.drawImage(font, at: offset, size: charSize * hudScale)
         
         // MARK: Effects
         for effect in world.effects {
