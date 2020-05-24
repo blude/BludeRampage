@@ -192,11 +192,22 @@ public extension Renderer {
         let font = textures[.font]
         let charSize = Vector(x: font.size.x / 10, y: font.size.y)
         let health = Int(max(0, world.player.health))
+        let healthTint: Color
+        
+        switch health {
+        case ...10:
+            healthTint = .red
+        case 10 ... 30:
+            healthTint = .yellow
+        default:
+            healthTint = .green
+        }
+        
         for char in String(health) {
             let index = Int(char.asciiValue!) - 48
             let step = Int(charSize.x)
             let rangeOfX = index * step ..< (index + 1) * step
-            bitmap.drawImage(font, rangeOfX: rangeOfX, at: offset, size: charSize * hudScale, tint: .green)
+            bitmap.drawImage(font, rangeOfX: rangeOfX, at: offset, size: charSize * hudScale, tint: healthTint)
             offset.x += charSize.x * hudScale
         }
         
