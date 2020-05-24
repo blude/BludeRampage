@@ -198,7 +198,7 @@ public extension Renderer {
             offset.x += charSize.x * hudScale
         }
         
-        // MARK: Ammunition
+        // MARK: Ammunition info
         offset.x = bitmap.size.x
         let ammo = Int(max(0, min(99, world.player.ammo)))
         for char in String(ammo).reversed() {
@@ -208,6 +208,11 @@ public extension Renderer {
             offset.x -= charSize.x * hudScale
             bitmap.drawImage(font, rangeOfX: rangeOfX, at: offset, size: charSize * hudScale)
         }
+        
+        // MARK: Ammunition icon
+        let weaponIcon = textures[world.player.weapon.attributes.hudIcon]
+        offset.x -= weaponIcon.size.x * hudScale
+        bitmap.drawImage(weaponIcon, at: offset, size: weaponIcon.size * hudScale)
         
         // MARK: Effects
         for effect in world.effects {
