@@ -80,10 +80,7 @@ public extension Bitmap {
                 let sourceY = max(0, Double(y) - point.y) * stepY
                 var sourceColor = source[sourceX, Int(sourceY)]
                 if let tint = tint {
-                    sourceColor.r = UInt8(UInt16(sourceColor.r) * UInt16(tint.r) / 255)
-                    sourceColor.g = UInt8(UInt16(sourceColor.g) * UInt16(tint.g) / 255)
-                    sourceColor.b = UInt8(UInt16(sourceColor.b) * UInt16(tint.b) / 255)
-                    sourceColor.a = UInt8(UInt16(sourceColor.a) * UInt16(tint.a) / 255)
+                    sourceColor.tint(with: tint)
                 }
                 pixels[offset + y] = sourceColor
             }
@@ -92,10 +89,7 @@ public extension Bitmap {
                 let sourceY = max(0, Double(y) - point.y) * stepY
                 var sourceColor = source[sourceX, Int(sourceY)]
                 if let tint = tint {
-                    sourceColor.r = UInt8(UInt16(sourceColor.r) * UInt16(tint.r) / 255)
-                    sourceColor.g = UInt8(UInt16(sourceColor.g) * UInt16(tint.g) / 255)
-                    sourceColor.b = UInt8(UInt16(sourceColor.b) * UInt16(tint.b) / 255)
-                    sourceColor.a = UInt8(UInt16(sourceColor.a) * UInt16(tint.a) / 255)
+                    sourceColor.tint(with: tint)
                 }
                 blendPixel(at: offset + y, with: sourceColor)
             }

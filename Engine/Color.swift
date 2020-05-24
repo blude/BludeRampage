@@ -29,4 +29,11 @@ public extension Color {
     static let red   = Color(r: 255, g: 0, b: 0)
     static let green = Color(r: 0, g: 255, b: 0)
     static let blue  = Color(r: 0, g: 0, b: 255)
+    
+    mutating func tint(with color: Color) {
+        self.r = UInt8(UInt16(self.r) * UInt16(color.r) / 255)
+        self.g = UInt8(UInt16(self.g) * UInt16(color.g) / 255)
+        self.b = UInt8(UInt16(self.b) * UInt16(color.b) / 255)
+        self.a = UInt8(UInt16(self.a) * UInt16(color.a) / 255)
+    }
 }
