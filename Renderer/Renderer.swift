@@ -187,7 +187,9 @@ public extension Renderer {
         var offset = Vector(x: 1, y: 1) * hudScale
         bitmap.drawImage(healthIcon, at: offset, size: healthIcon.size * hudScale)
         offset.x += healthIcon.size.x * hudScale
-        bitmap.drawImage(font, at: offset, size: charSize * hudScale)
+        
+        let rangeOfX = 0 ..< Int(charSize.x)
+        bitmap.drawImage(font, rangeOfX: rangeOfX, at: offset, size: charSize * hudScale)
         
         // MARK: Effects
         for effect in world.effects {

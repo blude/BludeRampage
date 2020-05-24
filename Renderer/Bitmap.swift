@@ -84,14 +84,15 @@ public extension Bitmap {
         }
     }
     
-    mutating func drawImage(_ source: Bitmap, at point: Vector, size: Vector) {
+    mutating func drawImage(_ source: Bitmap, rangeOfX: Range<Int>? = nil, at point: Vector, size: Vector) {
+        let rangeOfX = rangeOfX ?? 0 ..< source.width
         let start = Int(point.x)
         let end = Int(point.x + size.x)
-        let stepX = Double(source.width) / size.x
-        for x in max(0, start) ..< min(width, end) {
-            let sourceX = (Double(x) - point.x) * stepX
+        let stepX = Double(rangeOfX.count) / size.x
+        for x in max(0, start) ..< max(0, start, min(width, end)) {
+            let sourceX = Int(max(0, Double(x) - point.x) * stepX) + rangeOfX.lowerBound
             let outputPosition = Vector(x: Double(x), y: point.y)
-            drawColumn(Int(sourceX), of: source, at: outputPosition, height: size.y)
+            drawColumn(sourceX, of: source, at: outputPosition, height: size.y)
         }
     }
     
