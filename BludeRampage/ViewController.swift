@@ -23,6 +23,14 @@ class ViewController: UIViewController {
     private lazy var world = World(map: levels[0])
     private var lastFrameTime = CACurrentMediaTime()
     private var lastFiredTime = 0.0
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        .landscape
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
