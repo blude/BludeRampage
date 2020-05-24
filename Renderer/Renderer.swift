@@ -196,7 +196,7 @@ public extension Renderer {
             let index = Int(char.asciiValue!) - 48
             let step = Int(charSize.x)
             let rangeOfX = index * step ..< (index + 1) * step
-            bitmap.drawImage(font, rangeOfX: rangeOfX, at: offset, size: charSize * hudScale)
+            bitmap.drawImage(font, rangeOfX: rangeOfX, at: offset, size: charSize * hudScale, tint: .green)
             offset.x += charSize.x * hudScale
         }
         
