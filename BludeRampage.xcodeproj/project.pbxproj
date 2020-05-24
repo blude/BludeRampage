@@ -18,6 +18,7 @@
 		F102F328247721B60055E38A /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5E69D246372F200B9441F /* Texture.swift */; };
 		F102F32A247722030055E38A /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102F329247722030055E38A /* Texture.swift */; };
 		F102F32C2478938E0055E38A /* Pathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102F32B2478938E0055E38A /* Pathfinder.swift */; };
+		F1040616247B01D9002D77C1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1040615247B01D9002D77C1 /* Game.swift */; };
 		F120F490245D8A2F00264600 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120F48F245D8A2F00264600 /* World.swift */; };
 		F120F492245D8B9200264600 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120F491245D8B9200264600 /* Rect.swift */; };
 		F12184D924674A8500326F6C /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12184D824674A8500326F6C /* Actor.swift */; };
@@ -124,6 +125,7 @@
 		F102F31B24771DE70055E38A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F102F329247722030055E38A /* Texture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
 		F102F32B2478938E0055E38A /* Pathfinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pathfinder.swift; sourceTree = "<group>"; };
+		F1040615247B01D9002D77C1 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		F120F48F245D8A2F00264600 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		F120F491245D8B9200264600 /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 		F12184D824674A8500326F6C /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				F1730203245CA9340031949F /* Vector.swift */,
 				F102F30D2476E34B0055E38A /* Weapon.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
+				F1040615247B01D9002D77C1 /* Game.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				F120F492245D8B9200264600 /* Rect.swift in Sources */,
 				F102F32A247722030055E38A /* Texture.swift in Sources */,
 				F120F490245D8A2F00264600 /* World.swift in Sources */,
+				F1040616247B01D9002D77C1 /* Game.swift in Sources */,
 				F1757F8124734CDC002908A7 /* Sounds.swift in Sources */,
 				F1757FA024768BFC002908A7 /* Pickup.swift in Sources */,
 				F13D5877246DEE0B008396B4 /* Pushwall.swift in Sources */,
