@@ -63,6 +63,12 @@ class ViewController: UIViewController {
         let width = Int(imageView.bounds.width)
         let height = Int(imageView.bounds.height)
         var renderer = Renderer(width: width, height: height, textures: textures)
+        
+        let insets = self.view.safeAreaInsets
+        renderer.safeArea = Rect(
+            min: Vector(x: Double(insets.left), y: Double(insets.top)),
+            max: renderer.bitmap.size - Vector(x: Double(insets.left), y: Double(insets.bottom))
+        )
 
         let inputVector = self.inputVector
         let rotation = inputVector.x * world.player.turningSpeed * worldTimeStep

@@ -13,10 +13,12 @@ private let fizzle = (0 ..< 10000).shuffled()
 public struct Renderer {
     public private(set) var bitmap: Bitmap
     private let textures: Textures
+    public var safeArea: Rect
     
     public init(width: Int, height: Int, textures: Textures) {
         self.bitmap = Bitmap(width: width, height: height, color: .black)
         self.textures = textures
+        self.safeArea = Rect(min: Vector(x: 0, y: 0), max: bitmap.size)
     }
 }
 
@@ -182,7 +184,7 @@ public extension Renderer {
         
         // MARK: Health icon
         let healthIcon = textures[.healthIcon]
-        var offset = Vector(x: 1, y: 1) * hudScale
+        var offset = safeArea.min + Vector(x: 1, y: 1) * hudScale
         bitmap.drawImage(healthIcon, at: offset, size: healthIcon.size * hudScale)
         offset.x += healthIcon.size.x * hudScale
         
@@ -199,7 +201,7 @@ public extension Renderer {
         }
         
         // MARK: Ammunition info
-        offset.x = bitmap.size.x
+        offset.x = safeArea.max.x
         let ammo = Int(max(0, min(99, world.player.ammo)))
         for char in String(ammo).reversed() {
             let index = Int(char.asciiValue!) - 48
