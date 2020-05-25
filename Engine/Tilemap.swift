@@ -10,11 +10,14 @@ public struct MapData: Decodable {
     fileprivate let tiles: [Tile]
     fileprivate let things: [Thing]
     fileprivate let width: Int
+    public let monsters: Int?
+    public let medkits: Int?
+    public let shotguns: Int?
 }
 
 public struct Tilemap {
     private(set) var tiles: [Tile]
-    public let things: [Thing]
+    private var things: [Thing]
     public let width: Int
     public let index: Int
     
@@ -42,6 +45,11 @@ public extension Tilemap {
         set {
             tiles[y * width + x] = newValue
         }
+    }
+    
+    subscript(thing x: Int, y: Int) -> Thing {
+        get { things[y * width + x] }
+        set { things[y * width + x] = newValue }
     }
     
     func tileCoords(at position: Vector, from direction: Vector) -> (x: Int, y: Int) {

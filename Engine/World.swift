@@ -258,7 +258,7 @@ public extension World {
     }
     
     func isDoor(at x: Int, _ y: Int) -> Bool {
-        map.things[y * map.width + x] == .door
+        map[thing: x, y] == .door
     }
     
     func door(at x: Int, _ y: Int) -> Door? {
@@ -277,7 +277,7 @@ public extension World {
     }
     
     func `switch`(at x: Int, _ y: Int) -> Switch? {
-        guard map.things[y * map.width + x] == .switch else {
+        guard map[thing: x, y] == .switch else {
             return nil
         }
         return switches.first {
@@ -322,7 +322,7 @@ public extension World {
         for y in 0 ..< map.height {
             for x in 0 ..< map.width {
                 let position = Vector(x: Double(x) + 0.5, y: Double(y) + 0.5)
-                let thing = map.things[y * map.width + x]
+                let thing = map[thing: x, y]
                 switch thing {
                 case .nothing:
                     break
