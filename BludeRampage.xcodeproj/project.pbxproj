@@ -65,6 +65,8 @@
 		F1E07F0C245CD5F20093EA94 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F1E07F0B245CD5EB0093EA94 /* .gitignore */; };
 		F1E07F0E245CD6F10093EA94 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E07F0D245CD6F10093EA94 /* Player.swift */; };
 		F1E77B1C247BC8CF00DE0178 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E77B1B247BC8CF00DE0178 /* HUD.swift */; };
+		F1E77B1E247BCBA300DE0178 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E77B1D247BCBA300DE0178 /* Font.swift */; };
+		F1E77B20247BCC0B00DE0178 /* Font.json in Resources */ = {isa = PBXBuildFile; fileRef = F1E77B1F247BCC0B00DE0178 /* Font.json */; };
 		F1FDF13C2459E4EA00D6FBE3 /* Engine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1FDF1352459E4EA00D6FBE3 /* Engine.framework */; };
 		F1FDF13D2459E4EA00D6FBE3 /* Engine.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F1FDF1352459E4EA00D6FBE3 /* Engine.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F1FDF1432459E75600D6FBE3 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FDF1422459E75600D6FBE3 /* Color.swift */; };
@@ -178,6 +180,8 @@
 		F1E07F0B245CD5EB0093EA94 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F1E07F0D245CD6F10093EA94 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F1E77B1B247BC8CF00DE0178 /* HUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		F1E77B1D247BCBA300DE0178 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		F1E77B1F247BCC0B00DE0178 /* Font.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Font.json; sourceTree = "<group>"; };
 		F1FDF1352459E4EA00D6FBE3 /* Engine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Engine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1FDF1382459E4EA00D6FBE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1FDF1422459E75600D6FBE3 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 		F1A5DB2D2459E449005F70D2 /* BludeRampage */ = {
 			isa = PBXGroup;
 			children = (
+				F1E77B1F247BCC0B00DE0178 /* Font.json */,
 				F17946E2245DCCB9008A2E31 /* Levels.json */,
 				F1A5DB3C2459E44A005F70D2 /* Info.plist */,
 				F1A5DB2E2459E449005F70D2 /* AppDelegate.swift */,
@@ -344,6 +349,7 @@
 				F120F48F245D8A2F00264600 /* World.swift */,
 				F1040615247B01D9002D77C1 /* Game.swift */,
 				F1E77B1B247BC8CF00DE0178 /* HUD.swift */,
+				F1E77B1D247BCBA300DE0178 /* Font.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 				F1757F9A24751AD8002908A7 /* monsterGroan.mp3 in Resources */,
 				F17946E3245DCCB9008A2E31 /* Levels.json in Resources */,
 				F1757F9B24751AD8002908A7 /* switchFlip.mp3 in Resources */,
+				F1E77B20247BCC0B00DE0178 /* Font.json in Resources */,
 				F1757F9924751AD8002908A7 /* playerDeath.mp3 in Resources */,
 				F102F3122476EE540055E38A /* shotgunFire.mp3 in Resources */,
 				F102F3112476EE540055E38A /* shotgunPickup.mp3 in Resources */,
@@ -594,6 +601,7 @@
 				F1730204245CA9340031949F /* Vector.swift in Sources */,
 				F1E07F0E245CD6F10093EA94 /* Player.swift in Sources */,
 				F1E77B1C247BC8CF00DE0178 /* HUD.swift in Sources */,
+				F1E77B1E247BCBA300DE0178 /* Font.swift in Sources */,
 				F1C5E69C24635C3100B9441F /* Rotation.swift in Sources */,
 				F102F30E2476E34B0055E38A /* Weapon.swift in Sources */,
 				F1ABB1E32464C7A7003CF10A /* Monster.swift in Sources */,
