@@ -42,5 +42,17 @@ public struct MapGenerator {
                 emptyTiles.remove(position)
             }
         }
+        
+        // MARK: Add medkits
+        for _ in 0 ..< (mapData.medkits ?? 0) {
+            if let position = emptyTiles.filter({ tile in
+                (playerPosition - tile).length > 2.5
+            }).randomElement() {
+                let x = Int(position.x)
+                let y = Int(position.y)
+                map[thing: x, y] = .medkit
+                emptyTiles.remove(position)
+            }
+        }
     }
 }
