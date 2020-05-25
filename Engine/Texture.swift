@@ -6,7 +6,7 @@
 //  Copyright © 2020 Pratti Design. All rights reserved.
 //
 
-public enum Texture: String, CaseIterable {
+public enum Texture: String, CaseIterable, Decodable {
     case wall, wall2
     case crackWall, crackWall2
     case slimeWall, slimeWall2
