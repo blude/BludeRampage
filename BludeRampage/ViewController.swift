@@ -130,8 +130,8 @@ class ViewController: UIViewController {
 
 public func loadLevels() -> [Tilemap] {
     let levels = Bundle.main.decode([MapData].self, from: "Levels.json")
-    return levels.enumerated().map {
-        Tilemap($0.element, index: $0.offset)
+    return levels.enumerated().map { index, mapData in
+        MapGenerator(mapData: mapData, index: index).map
     }
 }
 

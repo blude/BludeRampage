@@ -61,6 +61,7 @@
 		F1ABB1E52464CD1B003CF10A /* Billboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ABB1E42464CD1B003CF10A /* Billboard.swift */; };
 		F1ACB6DF245EEEBF0078275D /* Bundle+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */; };
 		F1C5E69C24635C3100B9441F /* Rotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C5E69B24635C3100B9441F /* Rotation.swift */; };
+		F1CC2E6A247C7D9C002ADEDF /* MapGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CC2E69247C7D9C002ADEDF /* MapGenerator.swift */; };
 		F1E021C924707B6A00EE5E75 /* Switch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E021C824707B6A00EE5E75 /* Switch.swift */; };
 		F1E07F0C245CD5F20093EA94 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F1E07F0B245CD5EB0093EA94 /* .gitignore */; };
 		F1E07F0E245CD6F10093EA94 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E07F0D245CD6F10093EA94 /* Player.swift */; };
@@ -176,6 +177,7 @@
 		F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Decodable.swift"; sourceTree = "<group>"; };
 		F1C5E69B24635C3100B9441F /* Rotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rotation.swift; sourceTree = "<group>"; };
 		F1C5E69D246372F200B9441F /* Texture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
+		F1CC2E69247C7D9C002ADEDF /* MapGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGenerator.swift; sourceTree = "<group>"; };
 		F1E021C824707B6A00EE5E75 /* Switch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Switch.swift; sourceTree = "<group>"; };
 		F1E07F0B245CD5EB0093EA94 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		F1E07F0D245CD6F10093EA94 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -328,6 +330,9 @@
 				F1A8F036246B735500023F9D /* Door.swift */,
 				F1A8F0262468B8FB00023F9D /* Easing.swift */,
 				F17E1F6B24682029003E14CD /* Effect.swift */,
+				F1E77B1D247BCBA300DE0178 /* Font.swift */,
+				F1040615247B01D9002D77C1 /* Game.swift */,
+				F1E77B1B247BC8CF00DE0178 /* HUD.swift */,
 				F1FDF1382459E4EA00D6FBE3 /* Info.plist */,
 				F17946E6245E2C54008A2E31 /* Input.swift */,
 				F1ABB1E22464C7A7003CF10A /* Monster.swift */,
@@ -347,9 +352,7 @@
 				F1730203245CA9340031949F /* Vector.swift */,
 				F102F30D2476E34B0055E38A /* Weapon.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
-				F1040615247B01D9002D77C1 /* Game.swift */,
-				F1E77B1B247BC8CF00DE0178 /* HUD.swift */,
-				F1E77B1D247BCBA300DE0178 /* Font.swift */,
+				F1CC2E69247C7D9C002ADEDF /* MapGenerator.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -603,6 +606,7 @@
 				F1E77B1C247BC8CF00DE0178 /* HUD.swift in Sources */,
 				F1E77B1E247BCBA300DE0178 /* Font.swift in Sources */,
 				F1C5E69C24635C3100B9441F /* Rotation.swift in Sources */,
+				F1CC2E6A247C7D9C002ADEDF /* MapGenerator.swift in Sources */,
 				F102F30E2476E34B0055E38A /* Weapon.swift in Sources */,
 				F1ABB1E32464C7A7003CF10A /* Monster.swift in Sources */,
 				F10061DA2462FB0700142F74 /* Ray.swift in Sources */,
