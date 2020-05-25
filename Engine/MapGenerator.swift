@@ -13,18 +13,29 @@ public struct MapGenerator {
         self.map = Tilemap(mapData, index: index)
         
         // MARK: Find empty tiles
+        var playerPosition: Vector!
         var emptyTiles = Set<Vector>()
         for y in 0 ..< map.height {
             for x in 0 ..< map.width {
-                if map[x, y].isWall == false, map[thing: x, y] == .nothing {
-                    emptyTiles.insert(Vector(x: Double(x) + 0.5, y: Double(y) + 0.5))
+                let position = Vector(x: Double(x) + 0.5, y: Double(y) + 0.5)
+                if map[x, y].isWall == false {
+                    switch map[thing: x, y] {
+                    case .nothing:
+                        emptyTiles.insert(position)
+                    case .player:
+                        playerPosition = position
+                    default:
+                        break
+                    }
                 }
             }
         }
         
         // MARK: Add monsters
         for _ in 0 ..< (mapData.monsters ?? 0) {
-            if let position = emptyTiles.randomElement() {
+            if let position = emptyTiles.filter({ tile in
+                (playerPosition - tile).length > 2.5
+            }).randomElement() {
                 let x = Int(position.x)
                 let y = Int(position.y)
                 map[thing: x, y] = .monster
