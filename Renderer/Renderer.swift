@@ -25,7 +25,7 @@ public struct Renderer {
 public extension Renderer {
     mutating func draw(_ game: Game) {
         switch game.state {
-        case .title:
+        case .title, .starting:
             // MARK: Title background
             let background = textures[.titleBackground]
             let backgroundScale = bitmap.size.y / background.size.y
@@ -41,6 +41,11 @@ public extension Renderer {
             bitmap.drawImage(logo, at: logoPosition, size: logoSize)
         case .playing:
             draw(game.world)
+        }
+        
+        // Transition
+        if let effect = game.transition {
+            draw(effect)
         }
     }
     
@@ -250,21 +255,25 @@ public extension Renderer {
         
         // MARK: Effects
         for effect in world.effects {
-            switch effect.type {
-            case .fadeIn:
-                bitmap.tint(with: effect.color, opacity: 1 - effect.progress)
-            case .fadeOut:
-                bitmap.tint(with: effect.color, opacity: effect.progress)
-            case .fizzleOut:
-                let threshold = Int(effect.progress * Double(fizzle.count))
-                for x in 0 ..< bitmap.width {
-                    for y in 0 ..< bitmap.height {
-                        let granularity = 4
-                        let index = y / granularity * bitmap.width + x / granularity
-                        let fizzledIndex = fizzle[index % fizzle.count]
-                        if fizzledIndex <= threshold {
-                            bitmap[x, y] = effect.color
-                        }
+            draw(effect)
+        }
+    }
+    
+    mutating func draw(_ effect: Effect) {
+        switch effect.type {
+        case .fadeIn:
+            bitmap.tint(with: effect.color, opacity: 1 - effect.progress)
+        case .fadeOut:
+            bitmap.tint(with: effect.color, opacity: effect.progress)
+        case .fizzleOut:
+            let threshold = Int(effect.progress * Double(fizzle.count))
+            for x in 0 ..< bitmap.width {
+                for y in 0 ..< bitmap.height {
+                    let granularity = 4
+                    let index = y / granularity * bitmap.width + x / granularity
+                    let fizzledIndex = fizzle[index % fizzle.count]
+                    if fizzledIndex <= threshold {
+                        bitmap[x, y] = effect.color
                     }
                 }
             }

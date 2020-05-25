@@ -12,7 +12,7 @@ public protocol GameDelegate: AnyObject {
 }
 
 public enum GameState {
-    case title, playing
+    case title, starting, playing
 }
 
 public struct Game {
@@ -20,6 +20,7 @@ public struct Game {
     public let levels: [Tilemap]
     public private(set) var world: World
     public private(set) var state: GameState = .title
+    public private(set) var transition: Effect?
     
     public init(levels: [Tilemap]) {
         self.levels = levels
@@ -33,10 +34,22 @@ public extension Game {
             return
         }
         
+        // MARK: Update transitions
+        if var effect = transition {
+            effect.time += timeStep
+            transition = effect
+        }
+        
         // MARK: Update state
         switch state {
         case .title:
             if input.isFiring {
+                transition = Effect(type: .fadeOut, color: .black, duration: 0.5)
+                state = .starting
+            }
+        case .starting:
+            if transition?.isCompleted == true {
+                transition = Effect(type: .fadeIn, color: .black, duration: 0.5)
                 state = .playing
             }
         case .playing:
