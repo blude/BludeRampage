@@ -30,6 +30,10 @@ class ViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         true
     }
+    
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
