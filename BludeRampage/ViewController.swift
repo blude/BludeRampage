@@ -77,29 +77,32 @@ class ViewController: UIViewController {
         let height = Int(imageView.bounds.height)
         var renderer = Renderer(width: width, height: height, textures: textures)
         
+        // MARK: Set screen safe area
         let insets = self.view.safeAreaInsets
         renderer.safeArea = Rect(
             min: Vector(x: Double(insets.left), y: Double(insets.top)),
             max: renderer.bitmap.size - Vector(x: Double(insets.left), y: Double(insets.bottom))
         )
-
+        
+        // MARK: Handle input and timing
         let inputVector = self.inputVector
         let rotation = inputVector.x * game.world.player.turningSpeed * worldTimeStep
-        let input = Input(
+        var input = Input(
             speed: -inputVector.y,
             rotation: Rotation(sine: sin(rotation), cosine: cos(rotation)),
             isFiring: lastFiredTime > lastFrameTime
         )
-        
+        lastFrameTime = displayLink.timestamp
+        lastFiredTime = min(lastFiredTime, displayLink.timestamp)
+
         let worldSteps = (timeStep / worldTimeStep).rounded(.up)
         for _ in 0 ..< Int(worldSteps) {
             game.update(timeStep: timeStep / worldSteps, input: input)
+            input.isFiring = false
         }
         
+        // MARK: Render
         renderer.draw(game)
-        
-        lastFrameTime = displayLink.timestamp
-        
         imageView.image = UIImage(bitmap: renderer.bitmap)
     }
     
