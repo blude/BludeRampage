@@ -96,7 +96,7 @@ class ViewController: UIViewController {
             game.update(timeStep: timeStep / worldSteps, input: input)
         }
         
-        renderer.draw(game.world)
+        renderer.draw(game)
         
         lastFrameTime = displayLink.timestamp
         
