@@ -37,7 +37,7 @@ public extension Renderer {
             let logo = textures[.titleLogo]
             let logoScale = bitmap.size.y / logo.size.y / 2
             let logoSize = logo.size * logoScale
-            let logoPosition = (bitmap.size - logoSize) / 2
+            let logoPosition = Vector(x: (bitmap.size.x - logoSize.x) / 2, y: bitmap.size.y * 0.15)
             bitmap.drawImage(logo, at: logoPosition, size: logoSize)
             
             // MARK: Text
