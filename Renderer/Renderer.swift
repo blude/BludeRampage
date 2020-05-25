@@ -23,6 +23,27 @@ public struct Renderer {
 }
 
 public extension Renderer {
+    mutating func draw(_ game: Game) {
+        switch game.state {
+        case .title:
+            // MARK: Title background
+            let background = textures[.titleBackground]
+            let backgroundScale = bitmap.size.y / background.size.y
+            let backgroundSize = background.size * backgroundScale
+            let backgroundPosition = (bitmap.size - backgroundSize) / 2
+            bitmap.drawImage(background, at: backgroundPosition, size: backgroundSize)
+            
+            // MARK: Title logo
+            let logo = textures[.titleLogo]
+            let logoScale = bitmap.size.y / logo.size.y / 2
+            let logoSize = logo.size * logoScale
+            let logoPosition = (bitmap.size - logoSize) / 2
+            bitmap.drawImage(logo, at: logoPosition, size: logoSize)
+        case .playing:
+            draw(game.world)
+        }
+    }
+    
     mutating func draw(_ world: World) {
         /**
          The length of the line represents the view width in world units. This has no direct relationship

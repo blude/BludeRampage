@@ -24,4 +24,5 @@ public enum Texture: String, CaseIterable {
     case shotgun, shotgunFire1, shotgunFire2, shotgunFire3, shotgunFire4
     case medkit, shotgunPickup
     case crosshair, healthIcon, pistolIcon, shotgunIcon, font
+    case titleBackground, titleLogo
 }
