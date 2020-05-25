@@ -18,19 +18,22 @@ public enum GameState {
 public struct Game {
     public weak var delegate: GameDelegate?
     public let levels: [Tilemap]
+    public let font: Font
+    public var titleText = "TAP TO START"
     public private(set) var world: World
     public private(set) var state: GameState = .title
     public private(set) var transition: Effect?
     
-    public init(levels: [Tilemap]) {
+    public init(levels: [Tilemap], font: Font) {
         self.levels = levels
+        self.font = font
         self.world = World(map: levels[0])
     }
 }
 
 public extension Game {
     var hud: HUD {
-        HUD(player: world.player)
+        HUD(player: world.player, font: font)
     }
     
     mutating func update(timeStep: Double, input: Input) {

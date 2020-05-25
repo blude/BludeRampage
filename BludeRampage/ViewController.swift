@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     private let textures = loadTextures()
     private let panGesture = UIPanGestureRecognizer()
     private let tapGesture = UITapGestureRecognizer()
-    private var game = Game(levels: loadLevels())
+    private var game = Game(levels: loadLevels(), font: loadFont())
     private var lastFrameTime = CACurrentMediaTime()
     private var lastFiredTime = 0.0
     
@@ -133,6 +133,10 @@ public func loadLevels() -> [Tilemap] {
     return levels.enumerated().map {
         Tilemap($0.element, index: $0.offset)
     }
+}
+
+public func loadFont() -> Font {
+    Bundle.main.decode(Font.self, from: "Font.json")
 }
 
 public func loadTextures() -> Textures {

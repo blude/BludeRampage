@@ -222,12 +222,12 @@ public extension Renderer {
         offset.x += healthIcon.size.x * hudScale
         
         // MARK: Health info
-        let font = textures[.font]
-        let charSize = Vector(x: font.size.x / 10, y: font.size.y)
+        let font = textures[hud.font.texture]
+        let charSize = Vector(x: Double(font.width / hud.font.characters.count), y: font.size.y)
         let healthTint = hud.healthTint
         
         for char in hud.healthString {
-            let index = Int(char.asciiValue!) - 48
+            let index = hud.font.characters.firstIndex(of: String(char)) ?? 0
             let step = Int(charSize.x)
             let rangeOfX = index * step ..< (index + 1) * step
             bitmap.drawImage(font, rangeOfX: rangeOfX, at: offset, size: charSize * hudScale, tint: healthTint)
@@ -237,7 +237,7 @@ public extension Renderer {
         // MARK: Ammunition info
         offset.x = safeArea.max.x
         for char in hud.ammoString.reversed() {
-            let index = Int(char.asciiValue!) - 48
+            let index = hud.font.characters.firstIndex(of: String(char)) ?? 0
             let step = Int(charSize.x)
             let rangeOfX = index * step ..< (index + 1) * step
             offset.x -= charSize.x * hudScale
