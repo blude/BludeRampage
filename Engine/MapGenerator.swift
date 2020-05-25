@@ -8,13 +8,13 @@
 
 public struct MapGenerator {
     public private(set) var map: Tilemap
+    private var playerPosition: Vector!
+    private var emptyTiles: Set<Vector> = []
     
     public init(mapData: MapData, index: Int) {
         self.map = Tilemap(mapData, index: index)
         
         // MARK: Find empty tiles
-        var playerPosition: Vector!
-        var emptyTiles = Set<Vector>()
         for y in 0 ..< map.height {
             for x in 0 ..< map.width {
                 let position = Vector(x: Double(x) + 0.5, y: Double(y) + 0.5)
@@ -33,26 +33,28 @@ public struct MapGenerator {
         
         // MARK: Add monsters
         for _ in 0 ..< (mapData.monsters ?? 0) {
-            if let position = emptyTiles.filter({ tile in
-                (playerPosition - tile).length > 2.5
-            }).randomElement() {
-                let x = Int(position.x)
-                let y = Int(position.y)
-                map[thing: x, y] = .monster
-                emptyTiles.remove(position)
-            }
+            add(.monster, at: emptyTiles.filter({
+                (playerPosition - $0).length > 2.5
+            }).randomElement())
         }
         
         // MARK: Add medkits
         for _ in 0 ..< (mapData.medkits ?? 0) {
-            if let position = emptyTiles.filter({ tile in
-                (playerPosition - tile).length > 2.5
-            }).randomElement() {
-                let x = Int(position.x)
-                let y = Int(position.y)
-                map[thing: x, y] = .medkit
-                emptyTiles.remove(position)
-            }
+            add(.medkit, at: emptyTiles.randomElement())
+        }
+        
+        // MARK: Add shotguns
+        for _ in 0 ..< (mapData.shotguns ?? 0) {
+            add(.shotgun, at: emptyTiles.randomElement())
+        }
+    }
+}
+
+private extension MapGenerator {
+    mutating func add(_ thing: Thing, at position: Vector?) {
+        if let position = position {
+            map[thing: Int(position.x), Int(position.y)] = thing
+            emptyTiles.remove(position)
         }
     }
 }
