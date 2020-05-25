@@ -29,6 +29,10 @@ public struct Game {
 }
 
 public extension Game {
+    var hud: HUD {
+        HUD(player: world.player)
+    }
+    
     mutating func update(timeStep: Double, input: Input) {
         guard let delegate = delegate else {
             return

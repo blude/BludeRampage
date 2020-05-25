@@ -41,6 +41,11 @@ public extension Renderer {
             bitmap.drawImage(logo, at: logoPosition, size: logoSize)
         case .playing:
             draw(game.world)
+            draw(game.hud)
+            // Effects
+            for effect in game.world.effects {
+                draw(effect)
+            }
         }
         
         // Transition
@@ -195,9 +200,11 @@ public extension Renderer {
             
             columnPosition += step
         }
-        
+    }
+    
+    mutating func draw(_ hud: HUD) {
         // MARK: Player weapon
-        let weaponTexture = textures[world.player.animation.texture]
+        let weaponTexture = textures[hud.playerWeapon]
         let weaponScale = bitmap.size.y / weaponTexture.size.y
         let weaponSize = weaponTexture.size * weaponScale
         bitmap.drawImage(weaponTexture, at: (bitmap.size - weaponSize) / 2, size: weaponSize)
@@ -217,19 +224,9 @@ public extension Renderer {
         // MARK: Health info
         let font = textures[.font]
         let charSize = Vector(x: font.size.x / 10, y: font.size.y)
-        let health = Int(max(0, world.player.health))
-        let healthTint: Color
+        let healthTint = hud.healthTint
         
-        switch health {
-        case ...10:
-            healthTint = .red
-        case 10 ... 30:
-            healthTint = .yellow
-        default:
-            healthTint = .green
-        }
-        
-        for char in String(health) {
+        for char in hud.healthString {
             let index = Int(char.asciiValue!) - 48
             let step = Int(charSize.x)
             let rangeOfX = index * step ..< (index + 1) * step
@@ -239,8 +236,7 @@ public extension Renderer {
         
         // MARK: Ammunition info
         offset.x = safeArea.max.x
-        let ammo = Int(max(0, min(99, world.player.ammo)))
-        for char in String(ammo).reversed() {
+        for char in hud.ammoString.reversed() {
             let index = Int(char.asciiValue!) - 48
             let step = Int(charSize.x)
             let rangeOfX = index * step ..< (index + 1) * step
@@ -249,14 +245,9 @@ public extension Renderer {
         }
         
         // MARK: Ammunition icon
-        let weaponIcon = textures[world.player.weapon.attributes.hudIcon]
+        let weaponIcon = textures[hud.weaponIcon]
         offset.x -= weaponIcon.size.x * hudScale
         bitmap.drawImage(weaponIcon, at: offset, size: weaponIcon.size * hudScale)
-        
-        // MARK: Effects
-        for effect in world.effects {
-            draw(effect)
-        }
     }
     
     mutating func draw(_ effect: Effect) {
