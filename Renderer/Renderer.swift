@@ -39,6 +39,21 @@ public extension Renderer {
             let logoSize = logo.size * logoScale
             let logoPosition = (bitmap.size - logoSize) / 2
             bitmap.drawImage(logo, at: logoPosition, size: logoSize)
+            
+            // MARK: Text
+            let textScale = bitmap.size.y / 64
+            let font = textures[game.font.texture]
+            let charSize = Vector(x: Double(font.width / game.font.characters.count), y: font.size.y)
+            let textWidth = charSize.x * Double(game.titleText.count) * textScale
+            var offset = Vector(x: (bitmap.size.x - textWidth) / 2, y: bitmap.size.y * 0.75)
+            
+            for char in game.titleText {
+                let index = game.font.characters.firstIndex(of: String(char)) ?? 0
+                let step = Int(charSize.x)
+                let rangeOfX = index * step ..< (index + 1) * step
+                bitmap.drawImage(font, rangeOfX: rangeOfX, at: offset, size: charSize * textScale, tint: .yellow)
+                offset.x += charSize.x * textScale
+            }
         case .playing:
             draw(game.world)
             draw(game.hud)
