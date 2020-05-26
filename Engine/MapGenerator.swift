@@ -20,6 +20,9 @@ public struct MapGenerator {
             for x in 0 ..< map.width {
                 let position = Vector(x: Double(x) + 0.5, y: Double(y) + 0.5)
                 if map[x, y].isWall {
+                    if map[x, y] == .elevatorBackWall {
+                        map[thing: x, y] = .switch
+                    }
                     wallTiles.insert(position)
                 } else {
                     switch map[thing: x, y] {
