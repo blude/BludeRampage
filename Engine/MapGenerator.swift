@@ -31,6 +31,22 @@ public struct MapGenerator {
             }
         }
         
+        // MARK: Add doors
+        for position in emptyTiles {
+            let (x, y) = (
+                Int(position.x), Int(position.y)
+            )
+            let (left, right, up, down) = (
+                map[x - 1, y], map[x + 1, y],
+                map[x, y - 1], map[x, y + 1]
+            )
+            
+            if (left.isWall && right.isWall && !up.isWall && !down.isWall)
+                || (!left.isWall && !right.isWall && up.isWall && down.isWall) {
+                add(.door, at: position)
+            }
+        }
+        
         // MARK: Add monsters
         for _ in 0 ..< (mapData.monsters ?? 0) {
             add(.monster, at: emptyTiles.filter({

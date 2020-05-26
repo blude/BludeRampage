@@ -335,6 +335,7 @@
 				F1E77B1B247BC8CF00DE0178 /* HUD.swift */,
 				F1FDF1382459E4EA00D6FBE3 /* Info.plist */,
 				F17946E6245E2C54008A2E31 /* Input.swift */,
+				F1CC2E69247C7D9C002ADEDF /* MapGenerator.swift */,
 				F1ABB1E22464C7A7003CF10A /* Monster.swift */,
 				F102F32B2478938E0055E38A /* Pathfinder.swift */,
 				F1757F9F24768BFC002908A7 /* Pickup.swift */,
@@ -352,7 +353,6 @@
 				F1730203245CA9340031949F /* Vector.swift */,
 				F102F30D2476E34B0055E38A /* Weapon.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
-				F1CC2E69247C7D9C002ADEDF /* MapGenerator.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
