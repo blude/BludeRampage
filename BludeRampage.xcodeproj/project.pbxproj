@@ -19,6 +19,7 @@
 		F102F32A247722030055E38A /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102F329247722030055E38A /* Texture.swift */; };
 		F102F32C2478938E0055E38A /* Pathfinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F102F32B2478938E0055E38A /* Pathfinder.swift */; };
 		F1040616247B01D9002D77C1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1040615247B01D9002D77C1 /* Game.swift */; };
+		F113B1F1247DDF4900636E06 /* RNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = F113B1F0247DDF4900636E06 /* RNG.swift */; };
 		F120F490245D8A2F00264600 /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120F48F245D8A2F00264600 /* World.swift */; };
 		F120F492245D8B9200264600 /* Rect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F120F491245D8B9200264600 /* Rect.swift */; };
 		F12184D924674A8500326F6C /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12184D824674A8500326F6C /* Actor.swift */; };
@@ -130,6 +131,7 @@
 		F102F329247722030055E38A /* Texture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
 		F102F32B2478938E0055E38A /* Pathfinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pathfinder.swift; sourceTree = "<group>"; };
 		F1040615247B01D9002D77C1 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		F113B1F0247DDF4900636E06 /* RNG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RNG.swift; sourceTree = "<group>"; };
 		F120F48F245D8A2F00264600 /* World.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
 		F120F491245D8B9200264600 /* Rect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rect.swift; sourceTree = "<group>"; };
 		F12184D824674A8500326F6C /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 				F1730203245CA9340031949F /* Vector.swift */,
 				F102F30D2476E34B0055E38A /* Weapon.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
+				F113B1F0247DDF4900636E06 /* RNG.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -617,6 +620,7 @@
 				F12184DB246764B000326F6C /* Animation.swift in Sources */,
 				F1E021C924707B6A00EE5E75 /* Switch.swift in Sources */,
 				F1FDF1432459E75600D6FBE3 /* Color.swift in Sources */,
+				F113B1F1247DDF4900636E06 /* RNG.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
