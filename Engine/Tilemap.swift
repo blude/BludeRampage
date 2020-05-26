@@ -8,7 +8,7 @@
 
 public struct MapData: Decodable {
     fileprivate let tiles: [Tile]
-    fileprivate let things: [Thing]
+    fileprivate let things: [Thing]?
     fileprivate let width: Int
     public let monsters: Int?
     public let medkits: Int?
@@ -24,7 +24,7 @@ public struct Tilemap {
     
     public init(_ map: MapData, index: Int) {
         self.tiles = map.tiles
-        self.things = map.things
+        self.things = map.things ?? Array(repeating: .nothing, count: map.tiles.count)
         self.width = map.width
         self.index = index
     }
