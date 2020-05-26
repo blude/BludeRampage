@@ -9,6 +9,7 @@
 public struct MapGenerator {
     public private(set) var map: Tilemap
     private var playerPosition: Vector!
+    private var elevatorPosition: Vector!
     private var emptyTiles: Set<Vector> = []
     private var wallTiles: Set<Vector> = []
     
@@ -33,6 +34,9 @@ public struct MapGenerator {
                     default:
                         break
                     }
+                }
+                if map[x, y] == .elevatorFloor {
+                    elevatorPosition = position
                 }
             }
         }
@@ -90,6 +94,14 @@ public struct MapGenerator {
             }).randomElement())
         }
         
+        // MARK: Add player
+        if playerPosition == nil {
+            playerPosition = emptyTiles.filter({
+                findPath(from: $0, to: elevatorPosition, maxDistance: 1000).isEmpty == false
+            }).randomElement()
+            add(.player, at: playerPosition)
+        }
+        
         // MARK: Add medkits
         for _ in 0 ..< (mapData.medkits ?? 0) {
             add(.medkit, at: emptyTiles.randomElement())
@@ -108,5 +120,30 @@ private extension MapGenerator {
             map[thing: Int(position.x), Int(position.y)] = thing
             emptyTiles.remove(position)
         }
+    }
+}
+
+extension MapGenerator: Graph {
+    public typealias Node = Vector
+    
+    public func nodesConnectedTo(_ node: Node) -> [Node] {
+        return [
+            Node(x: node.x - 1, y: node.y),
+            Node(x: node.x + 1, y: node.y),
+            Node(x: node.x, y: node.y - 1),
+            Node(x: node.x, y: node.y + 1),
+        ].filter({ node in
+            let (x, y) = (Int(node.x), Int(node.y))
+            return map[x, y].isWall == false
+        })
+        
+    }
+    
+    public func estimateDistance(from a: Node, to b: Node) -> Double {
+        abs(b.x - a.x) - abs(b.y - a.y)
+    }
+    
+    public func stepDistance(from a: Node, to b: Node) -> Double {
+        1
     }
 }
