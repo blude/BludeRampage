@@ -10,6 +10,7 @@ public struct MapGenerator {
     public private(set) var map: Tilemap
     private var playerPosition: Vector!
     private var emptyTiles: Set<Vector> = []
+    private var wallTiles: Set<Vector> = []
     
     public init(mapData: MapData, index: Int) {
         self.map = Tilemap(mapData, index: index)
@@ -18,7 +19,9 @@ public struct MapGenerator {
         for y in 0 ..< map.height {
             for x in 0 ..< map.width {
                 let position = Vector(x: Double(x) + 0.5, y: Double(y) + 0.5)
-                if map[x, y].isWall == false {
+                if map[x, y].isWall {
+                    wallTiles.insert(position)
+                } else {
                     switch map[thing: x, y] {
                     case .nothing:
                         emptyTiles.insert(position)
@@ -45,6 +48,36 @@ public struct MapGenerator {
                 || (!left.isWall && !right.isWall && up.isWall && down.isWall) {
                 add(.door, at: position)
             }
+        }
+        
+        // MARK: Add push-walls
+        for _ in 0 ..< (mapData.pushwalls ?? 0) {
+            add(.pushwall, at: wallTiles.filter({ position in
+                let (x, y) = (
+                    Int(position.x), Int(position.y)
+                )
+                
+                guard x > 0, x < map.width - 1, y > 0, y < map.height - 1 else {
+                    return false // Outer wall
+                }
+                
+                let (left, right, up, down) = (
+                    map[x - 1, y], map[x + 1, y],
+                    map[x, y - 1], map[x, y + 1]
+                )
+                
+                if left.isWall, right.isWall, !up.isWall, !down.isWall,
+                    !map[x, y - 2].isWall, !map[x, y + 2].isWall {
+                    return true
+                }
+                
+                if !left.isWall, !right.isWall, up.isWall, down.isWall,
+                    !map[x - 2, y].isWall, !map[x + 2, y].isWall {
+                    return true
+                }
+                
+                return false
+            }).randomElement())
         }
         
         // MARK: Add monsters

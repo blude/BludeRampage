@@ -13,6 +13,7 @@ public struct MapData: Decodable {
     public let monsters: Int?
     public let medkits: Int?
     public let shotguns: Int?
+    public let pushwalls: Int?
 }
 
 public struct Tilemap {
