@@ -11,8 +11,8 @@ public struct MapGenerator {
     private var rng: RNG
     private var playerPosition: Vector!
     private var elevatorPosition: Vector!
-    private var emptyTiles: Set<Vector> = []
-    private var wallTiles: Set<Vector> = []
+    private var emptyTiles: [Vector] = []
+    private var wallTiles: [Vector] = []
     
     public init(mapData: MapData, index: Int) {
         self.map = Tilemap(mapData, index: index)
@@ -26,11 +26,11 @@ public struct MapGenerator {
                     if map[x, y] == .elevatorBackWall {
                         map[thing: x, y] = .switch
                     }
-                    wallTiles.insert(position)
+                    wallTiles.append(position)
                 } else {
                     switch map[thing: x, y] {
                     case .nothing:
-                        emptyTiles.insert(position)
+                        emptyTiles.append(position)
                     case .player:
                         playerPosition = position
                     default:
@@ -120,7 +120,9 @@ private extension MapGenerator {
     mutating func add(_ thing: Thing, at position: Vector?) {
         if let position = position {
             map[thing: Int(position.x), Int(position.y)] = thing
-            emptyTiles.remove(position)
+            if let index = emptyTiles.lastIndex(of: position) {
+                emptyTiles.remove(at: index)
+            }
         }
     }
 }
