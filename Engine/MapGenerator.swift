@@ -8,6 +8,7 @@
 
 public struct MapGenerator {
     public private(set) var map: Tilemap
+    private var rng: RNG
     private var playerPosition: Vector!
     private var elevatorPosition: Vector!
     private var emptyTiles: Set<Vector> = []
@@ -15,6 +16,7 @@ public struct MapGenerator {
     
     public init(mapData: MapData, index: Int) {
         self.map = Tilemap(mapData, index: index)
+        self.rng = RNG(seed: 0)
         
         // MARK: Find empty tiles
         for y in 0 ..< map.height {
@@ -84,32 +86,32 @@ public struct MapGenerator {
                 }
                 
                 return false
-            }).randomElement())
+            }).randomElement(using: &rng))
         }
         
         // MARK: Add monsters
         for _ in 0 ..< (mapData.monsters ?? 0) {
             add(.monster, at: emptyTiles.filter({
                 (playerPosition - $0).length > 2.5
-            }).randomElement())
+            }).randomElement(using: &rng))
         }
         
         // MARK: Add player
         if playerPosition == nil {
             playerPosition = emptyTiles.filter({
                 findPath(from: $0, to: elevatorPosition, maxDistance: 1000).isEmpty == false
-            }).randomElement()
+            }).randomElement(using: &rng)
             add(.player, at: playerPosition)
         }
         
         // MARK: Add medkits
         for _ in 0 ..< (mapData.medkits ?? 0) {
-            add(.medkit, at: emptyTiles.randomElement())
+            add(.medkit, at: emptyTiles.randomElement(using: &rng))
         }
         
         // MARK: Add shotguns
         for _ in 0 ..< (mapData.shotguns ?? 0) {
-            add(.shotgun, at: emptyTiles.randomElement())
+            add(.shotgun, at: emptyTiles.randomElement(using: &rng))
         }
     }
 }
