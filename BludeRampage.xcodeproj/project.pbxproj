@@ -345,6 +345,7 @@
 				F13D5876246DEE0B008396B4 /* Pushwall.swift */,
 				F10061D92462FB0700142F74 /* Ray.swift */,
 				F120F491245D8B9200264600 /* Rect.swift */,
+				F113B1F0247DDF4900636E06 /* RNG.swift */,
 				F1C5E69B24635C3100B9441F /* Rotation.swift */,
 				F1757F8024734CDC002908A7 /* Sounds.swift */,
 				F1E021C824707B6A00EE5E75 /* Switch.swift */,
@@ -355,7 +356,6 @@
 				F1730203245CA9340031949F /* Vector.swift */,
 				F102F30D2476E34B0055E38A /* Weapon.swift */,
 				F120F48F245D8A2F00264600 /* World.swift */,
-				F113B1F0247DDF4900636E06 /* RNG.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
