@@ -16,7 +16,7 @@ public struct MapGenerator {
     
     public init(mapData: MapData, index: Int) {
         self.map = Tilemap(mapData, index: index)
-        self.rng = RNG(seed: 0)
+        self.rng = RNG(seed: mapData.seed ?? .random(in: 0 ... .max))
         
         // MARK: Find empty tiles
         for y in 0 ..< map.height {

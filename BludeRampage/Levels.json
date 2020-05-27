@@ -1,6 +1,7 @@
 [
     {
         "width": 8,
+        "seed": 1,
         "monsters": 5,
         "medkits": 2,
         "shotguns": 1,

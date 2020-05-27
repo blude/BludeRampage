@@ -10,6 +10,7 @@ public struct MapData: Decodable {
     fileprivate let tiles: [Tile]
     fileprivate let things: [Thing]?
     fileprivate let width: Int
+    public let seed: UInt64?
     public let monsters: Int?
     public let medkits: Int?
     public let shotguns: Int?
