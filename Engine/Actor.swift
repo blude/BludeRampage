@@ -40,27 +40,30 @@ public extension Actor {
     }
     
     func intersection(with door: Door) -> Vector? {
-        rect.intersection(with: door.rect)
+        return rect.intersection(with: door.rect)
     }
     
     func intersection(with pushwall: Pushwall) -> Vector? {
-        rect.intersection(with: pushwall.rect)
+        return rect.intersection(with: pushwall.rect)
     }
     
     func intersection(with world: World) -> Vector? {
         if let intersection = intersection(with: world.map) {
             return intersection
         }
+        
         for door in world.doors {
             if let intersection = intersection(with: door) {
                 return intersection
             }
         }
+        
         for pushwall in world.pushwalls where pushwall.position != position {
             if let intersection = intersection(with: pushwall) {
                 return intersection
             }
         }
+        
         return nil
     }
     
@@ -68,6 +71,7 @@ public extension Actor {
         if isDead || actor.isDead {
             return nil
         }
+        
         return rect.intersection(with: actor.rect)
     }
     
@@ -94,7 +98,7 @@ public extension Actor {
         
         // If stuck in a pushwall
         return world.pushwalls.contains {
-            abs(position.x - $0.position.x) < 0.6 && abs(position.y - $0.position.y) < 0.6
+            return abs(position.x - $0.position.x) < 0.6 && abs(position.y - $0.position.y) < 0.6
         }
     }
 }

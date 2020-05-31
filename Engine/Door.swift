@@ -54,7 +54,7 @@ public extension Door {
     }
     
     var billboard: Billboard {
-        Billboard(
+        return Billboard(
             start: position + direction * (offset - 0.5),
             direction: direction,
             length: 1,
@@ -63,7 +63,7 @@ public extension Door {
     }
     
     func hitTest(_ ray: Ray) -> Vector? {
-        billboard.hitTest(ray)
+        return billboard.hitTest(ray)
     }
     
     mutating func update(in world: inout World) {

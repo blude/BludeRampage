@@ -22,7 +22,7 @@ public struct Billboard {
 
 public extension Billboard {
     var end: Vector {
-        start + direction * length
+        return start + direction * length
     }
     
     func hitTest(_ ray: Ray) -> Vector? {

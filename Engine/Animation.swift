@@ -19,7 +19,7 @@ public struct Animation {
 
 public extension Animation {
     var isCompleted: Bool {
-        time >= duration
+        return time >= duration
     }
     
     var texture: Texture {

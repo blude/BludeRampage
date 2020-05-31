@@ -25,7 +25,7 @@ public struct Effect {
 
 public extension Effect {
     var isCompleted: Bool {
-        time >= duration
+        return time >= duration
     }
     
     var progress: Double {

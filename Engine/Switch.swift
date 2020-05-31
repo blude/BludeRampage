@@ -22,7 +22,7 @@ public struct Switch {
 
 public extension Switch {
     var rect: Rect {
-        Rect(
+        return Rect(
             min: position - Vector(x: 0.5, y: 0.5),
             max: position + Vector(x: 0.5, y: 0.5)
         )

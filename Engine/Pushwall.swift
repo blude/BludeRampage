@@ -23,7 +23,13 @@ public struct Pushwall: Actor {
 }
 
 public extension Pushwall {
-    var isDead: Bool { false }
+    var isDead: Bool {
+        return false
+    }
+    
+    var isMoving: Bool {
+        return velocity.x != 0 || velocity.y != 0
+    }
     
     func billboards(facing viewpoint: Vector) -> [Billboard] {
         let topLeft = rect.min
@@ -42,10 +48,6 @@ public extension Pushwall {
             let faceNormal = billboard.direction.orthogonal
             return ray.dot(faceNormal) < 0
         }
-    }
-    
-    var isMoving: Bool {
-        velocity.x != 0 || velocity.y != 0
     }
     
     mutating func update(in world: inout World) {

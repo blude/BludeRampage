@@ -24,15 +24,15 @@ class ViewController: UIViewController {
     private var lastFiredTime = 0.0
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        .landscape
+        return .landscape
     }
     
     override var prefersStatusBarHidden: Bool {
-        true
+        return true
     }
     
     override var prefersHomeIndicatorAutoHidden: Bool {
-        true
+        return true
     }
 
     override func viewDidLoad() {
@@ -131,17 +131,17 @@ class ViewController: UIViewController {
 public func loadLevels() -> [Tilemap] {
     let levels = Bundle.main.decode([MapData].self, from: "Levels.json")
     return levels.enumerated().map { index, mapData in
-        MapGenerator(mapData: mapData, index: index).map
+        return MapGenerator(mapData: mapData, index: index).map
     }
 }
 
 public func loadFont() -> Font {
-    Bundle.main.decode(Font.self, from: "Font.json")
+    return Bundle.main.decode(Font.self, from: "Font.json")
 }
 
 public func loadTextures() -> Textures {
-    Textures { name in
-        Bitmap(image: UIImage(named: name)!)!
+    return Textures { name in
+        return Bitmap(image: UIImage(named: name)!)!
     }
 }
 
@@ -155,7 +155,7 @@ func setUpAudio() {
 
 public extension SoundName {
     var url: URL? {
-        Bundle.main.url(forResource: rawValue, withExtension: "mp3")
+        return Bundle.main.url(forResource: rawValue, withExtension: "mp3")
     }
 }
 
@@ -164,7 +164,7 @@ extension ViewController: UIGestureRecognizerDelegate {
         _ gestureRecognizer: UIGestureRecognizer,
         shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
     ) -> Bool {
-        true
+        return true
     }
 }
 

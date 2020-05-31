@@ -49,11 +49,11 @@ public struct Player: Actor {
 
 public extension Player {
     var isDead: Bool {
-        health <= 0
+        return health <= 0
     }
     
     var isMoving: Bool {
-        velocity.x != 0 || velocity.y != 0
+        return velocity.x != 0 || velocity.y != 0
     }
     
     var canFire: Bool {

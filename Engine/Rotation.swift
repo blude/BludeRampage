@@ -34,7 +34,7 @@ public extension Rotation {
 
 public extension Vector {
     func rotated(by rotation: Rotation) -> Vector {
-        Vector(
+        return Vector(
             x: x * rotation.m1 + y * rotation.m2,
             y: x * rotation.m3 + y * rotation.m4
         )

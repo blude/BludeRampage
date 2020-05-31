@@ -33,7 +33,7 @@ public struct Game {
 
 public extension Game {
     var hud: HUD {
-        HUD(player: world.player, font: font)
+        return HUD(player: world.player, font: font)
     }
     
     mutating func update(timeStep: Double, input: Input) {

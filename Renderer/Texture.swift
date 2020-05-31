@@ -24,6 +24,6 @@ public extension Textures {
     }
     
     subscript(_ texture: Texture) -> Bitmap {
-        textures[texture]!
+        return textures[texture]!
     }
 }

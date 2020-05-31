@@ -33,16 +33,16 @@ public struct Tilemap {
 
 public extension Tilemap {
     var height: Int {
-        tiles.count / width
+        return tiles.count / width
     }
     
     var size: Vector {
-        Vector(x: Double(width), y: Double(height))
+        return Vector(x: Double(width), y: Double(height))
     }
     
     subscript(x: Int, y: Int) -> Tile {
         get {
-            tiles[y * width + x]
+            return tiles[y * width + x]
         }
         set {
             tiles[y * width + x] = newValue
@@ -50,8 +50,12 @@ public extension Tilemap {
     }
     
     subscript(thing x: Int, y: Int) -> Thing {
-        get { things[y * width + x] }
-        set { things[y * width + x] = newValue }
+        get {
+            return things[y * width + x]
+        }
+        set {
+            things[y * width + x] = newValue
+        }
     }
     
     func tileCoords(at position: Vector, from direction: Vector) -> (x: Int, y: Int) {

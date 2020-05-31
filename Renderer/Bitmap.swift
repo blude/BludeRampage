@@ -24,7 +24,7 @@ public struct Bitmap {
 
 public extension Bitmap {
     var size: Vector {
-        Vector(x: Double(width), y: Double(height))
+        return Vector(x: Double(width), y: Double(height))
     }
     
     init(width: Int, height: Int, color: Color) {
@@ -148,7 +148,7 @@ public extension Bitmap {
     
     subscript(x: Int, y: Int) -> Color {
         get {
-            pixels[x * height + y]
+            return pixels[x * height + y]
         }
         set {
             guard x >= 0, y >= 0, x < width, y < height else { return }
@@ -157,7 +157,7 @@ public extension Bitmap {
     }
     
     subscript(normalized x: Double, y: Double) -> Color {
-        self[Int(x * Double(width)), Int(y * Double(height))]
+        return self[Int(x * Double(width)), Int(y * Double(height))]
     }
     
 }

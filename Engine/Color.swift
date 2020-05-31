@@ -19,7 +19,7 @@ public struct Color {
 
 public extension Color {
     var isOpaque: Bool {
-        a == 255
+        return a == 255
     }
     
     static let clear = Color(r: 0, g: 0, b: 0, a: 0)

@@ -144,10 +144,10 @@ extension MapGenerator: Graph {
     }
     
     public func estimateDistance(from a: Node, to b: Node) -> Double {
-        abs(b.x - a.x) - abs(b.y - a.y)
+        return abs(b.x - a.x) - abs(b.y - a.y)
     }
     
     public func stepDistance(from a: Node, to b: Node) -> Double {
-        1
+        return 1
     }
 }

@@ -37,8 +37,8 @@ public extension Rect {
             return nil
         }
         
-        return [left, right, up, down]
-            .sorted { $0.length < $1.length }
-            .first
+        return [left, right, up, down].sorted {
+            $0.length < $1.length
+        }.first
     }
 }

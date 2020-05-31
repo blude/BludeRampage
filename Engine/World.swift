@@ -38,7 +38,7 @@ public struct World {
 
 public extension World {
     var size: Vector {
-        map.size
+        return map.size
     }
     
     var sprites: [Billboard] {
@@ -258,7 +258,7 @@ public extension World {
     }
     
     func isDoor(at x: Int, _ y: Int) -> Bool {
-        map[thing: x, y] == .door
+        return map[thing: x, y] == .door
     }
     
     func door(at x: Int, _ y: Int) -> Door? {
@@ -382,8 +382,11 @@ extension World: Graph {
     }
     
     public func findPath(from start: Vector, to end: Vector, maxDistance: Double = 50) -> [Vector] {
-        findPath(from: Node(x: start.x, y: start.y), to: Node(x: end.x, y: end.y), maxDistance: maxDistance).map { node in
-            Vector(x: node.x, y: node.y)
+        findPath(
+            from: Node(x: start.x, y: start.y),
+            to: Node(x: end.x, y: end.y),
+            maxDistance: maxDistance).map { node in
+                return Vector(x: node.x, y: node.y)
         }
     }
 
@@ -401,7 +404,7 @@ extension World: Graph {
     }
     
     public func estimateDistance(from a: Node, to b: Node) -> Double {
-        abs(b.x - a.x) + abs(b.y - a.y)
+        return abs(b.x - a.x) + abs(b.y - a.y)
     }
     
     public func stepDistance(from a: Node, to b: Node) -> Double {

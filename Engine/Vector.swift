@@ -17,11 +17,11 @@ public struct Vector: Hashable {
 
 public extension Vector {
     var length: Double {
-        (x * x + y * y).squareRoot()
+        return (x * x + y * y).squareRoot()
     }
     
     func dot(_ rhs: Vector) -> Double {
-        x * rhs.x + y * rhs.y
+        return x * rhs.x + y * rhs.y
     }
     
     /**
@@ -30,30 +30,31 @@ public extension Vector {
      The orthogonal vector can be computed as (-Y, X).
     */
     var orthogonal: Vector {
-        Vector(x: -y, y: x)
+        return Vector(x: -y, y: x)
     }
     
     static func + (lhs: Vector, rhs: Vector) -> Vector {
-        Vector(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+        return Vector(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
     }
     
     static func - (lhs: Vector, rhs: Vector) -> Vector {
-        Vector(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
+        return Vector(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
     }
     
     static func * (lhs: Vector, rhs: Double) -> Vector {
-        Vector(x: lhs.x * rhs, y: lhs.y * rhs)
+        return Vector(x: lhs.x * rhs, y: lhs.y * rhs)
     }
     
     static func / (lhs: Vector, rhs: Double) -> Vector {
-        Vector(x: lhs.x / rhs, y: lhs.y / rhs)
+        return Vector(x: lhs.x / rhs, y: lhs.y / rhs)
     }
     
     static func * (lhs: Double, rhs: Vector) -> Vector {
-        Vector(x: lhs * rhs.x, y: lhs * rhs.y)
+        return Vector(x: lhs * rhs.x, y: lhs * rhs.y)
     }
+
     static func / (lhs: Double, rhs: Vector) -> Vector {
-        Vector(x: lhs / rhs.x, y: lhs / rhs.y)
+        return Vector(x: lhs / rhs.x, y: lhs / rhs.y)
     }
     
     static func += (lhs: inout Vector, rhs: Vector) {
@@ -77,6 +78,6 @@ public extension Vector {
     }
     
     static prefix func - (rhs: Vector) -> Vector {
-        Vector(x: -rhs.x, y: -rhs.y)
+        return Vector(x: -rhs.x, y: -rhs.y)
     }
 }

@@ -22,7 +22,9 @@ public struct Pickup: Actor {
 }
 
 public extension Pickup {
-    var isDead: Bool { false }
+    var isDead: Bool {
+        return false
+    }
     
     var texture: Texture {
         switch type {
