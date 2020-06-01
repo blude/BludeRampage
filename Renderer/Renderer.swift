@@ -23,6 +23,8 @@ public struct Renderer {
 }
 
 public extension Renderer {
+    /// Draw game
+    /// - Parameter game: game instance
     mutating func draw(_ game: Game) {
         switch game.state {
         case .title, .starting:
@@ -69,6 +71,8 @@ public extension Renderer {
         }
     }
     
+    /// Draw world
+    /// - Parameter world: World instance
     mutating func draw(_ world: World) {
         /**
          The length of the line represents the view width in world units. This has no direct relationship
@@ -221,6 +225,8 @@ public extension Renderer {
         }
     }
     
+    /// Draw HUD interface
+    /// - Parameter hud: HUD instance
     mutating func draw(_ hud: HUD) {
         // MARK: Player weapon
         let weaponTexture = textures[hud.playerWeapon]
@@ -269,6 +275,8 @@ public extension Renderer {
         bitmap.drawImage(weaponIcon, at: offset, size: weaponIcon.size * hudScale)
     }
     
+    /// Draw visual effects
+    /// - Parameter effect: Effect instance
     mutating func draw(_ effect: Effect) {
         switch effect.type {
         case .fadeIn:
