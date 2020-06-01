@@ -42,12 +42,12 @@
 		F1757F9E24751B8F002908A7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F9D24751B8F002908A7 /* SoundManager.swift */; };
 		F1757FA024768BFC002908A7 /* Pickup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F9F24768BFC002908A7 /* Pickup.swift */; };
 		F1757FA224769637002908A7 /* medkit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1757FA124769637002908A7 /* medkit.mp3 */; };
-		F1757FA424769666002908A7 /* playerWalk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1757FA324769666002908A7 /* playerWalk.mp3 */; };
 		F17946DD245DBD46008A2E31 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946DC245DBD46008A2E31 /* Tile.swift */; };
 		F17946DF245DBD67008A2E31 /* Tilemap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946DE245DBD67008A2E31 /* Tilemap.swift */; };
 		F17946E3245DCCB9008A2E31 /* Levels.json in Resources */ = {isa = PBXBuildFile; fileRef = F17946E2245DCCB9008A2E31 /* Levels.json */; };
 		F17946E5245E2878008A2E31 /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946E4245E2878008A2E31 /* Thing.swift */; };
 		F17946E7245E2C54008A2E31 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946E6245E2C54008A2E31 /* Input.swift */; };
+		F17B7B10248512640005A95A /* playerWalk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F17B7B0F248512640005A95A /* playerWalk.mp3 */; };
 		F17E1F6C24682029003E14CD /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17E1F6B24682029003E14CD /* Effect.swift */; };
 		F1A5DB2F2459E449005F70D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5DB2E2459E449005F70D2 /* AppDelegate.swift */; };
 		F1A5DB312459E449005F70D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A5DB302459E449005F70D2 /* SceneDelegate.swift */; };
@@ -154,12 +154,12 @@
 		F1757F9D24751B8F002908A7 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		F1757F9F24768BFC002908A7 /* Pickup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickup.swift; sourceTree = "<group>"; };
 		F1757FA124769637002908A7 /* medkit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = medkit.mp3; sourceTree = "<group>"; };
-		F1757FA324769666002908A7 /* playerWalk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = playerWalk.mp3; path = "../../../../../Downloads/RetroRampage-master/Source/Rampage/Sounds/playerWalk.mp3"; sourceTree = "<group>"; };
 		F17946DC245DBD46008A2E31 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F17946DE245DBD67008A2E31 /* Tilemap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tilemap.swift; sourceTree = "<group>"; };
 		F17946E2245DCCB9008A2E31 /* Levels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Levels.json; sourceTree = "<group>"; };
 		F17946E4245E2878008A2E31 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		F17946E6245E2C54008A2E31 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		F17B7B0F248512640005A95A /* playerWalk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playerWalk.mp3; sourceTree = "<group>"; };
 		F17E1F6B24682029003E14CD /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		F1A5DB2B2459E449005F70D2 /* BludeRampage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BludeRampage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A5DB2E2459E449005F70D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -247,12 +247,12 @@
 				F1757F8B24751AD8002908A7 /* monsterDeath.mp3 */,
 				F1757F8D24751AD8002908A7 /* monsterGroan.mp3 */,
 				F1757F8824751AD8002908A7 /* monsterHit.mp3 */,
+				F17B7B0F248512640005A95A /* playerWalk.mp3 */,
 				F1757F8324751AD8002908A7 /* monsterSwipe.mp3 */,
 				F102F3102476EE540055E38A /* shotgunFire.mp3 */,
 				F102F30F2476EE540055E38A /* shotgunPickup.mp3 */,
 				F1757F8424751AD8002908A7 /* pistolFire.mp3 */,
 				F1757F8C24751AD8002908A7 /* playerDeath.mp3 */,
-				F1757FA324769666002908A7 /* playerWalk.mp3 */,
 				F1757F8A24751AD8002908A7 /* ricochet.mp3 */,
 				F1757F8924751AD8002908A7 /* squelch.mp3 */,
 				F1757F8E24751AD8002908A7 /* switchFlip.mp3 */,
@@ -514,6 +514,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F17B7B10248512640005A95A /* playerWalk.mp3 in Resources */,
 				F1757F9024751AD8002908A7 /* monsterSwipe.mp3 in Resources */,
 				F1757F9324751AD8002908A7 /* doorSlide.mp3 in Resources */,
 				F1757F9624751AD8002908A7 /* squelch.mp3 in Resources */,
@@ -522,7 +523,6 @@
 				F1E07F0C245CD5F20093EA94 /* .gitignore in Resources */,
 				F1A5DB3B2459E44A005F70D2 /* LaunchScreen.storyboard in Resources */,
 				F1757F9724751AD8002908A7 /* ricochet.mp3 in Resources */,
-				F1757FA424769666002908A7 /* playerWalk.mp3 in Resources */,
 				F1757F9824751AD8002908A7 /* monsterDeath.mp3 in Resources */,
 				F1757F9124751AD8002908A7 /* pistolFire.mp3 in Resources */,
 				F1757F9224751AD8002908A7 /* wallSlide.mp3 in Resources */,
