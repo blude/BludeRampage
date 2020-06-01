@@ -28,6 +28,9 @@ public struct MapGenerator {
                     }
                     wallTiles.append(position)
                 } else {
+                    if map[x, y] == .elevatorFloor {
+                        elevatorPosition = position
+                    }
                     switch map[thing: x, y] {
                     case .nothing:
                         emptyTiles.append(position)
@@ -36,9 +39,6 @@ public struct MapGenerator {
                     default:
                         break
                     }
-                }
-                if map[x, y] == .elevatorFloor {
-                    elevatorPosition = position
                 }
             }
         }
@@ -89,19 +89,19 @@ public struct MapGenerator {
             }).randomElement(using: &rng))
         }
         
-        // MARK: Add monsters
-        for _ in 0 ..< (mapData.monsters ?? 0) {
-            add(.monster, at: emptyTiles.filter({
-                (playerPosition - $0).length > 2.5
-            }).randomElement(using: &rng))
-        }
-        
         // MARK: Add player
         if playerPosition == nil {
             playerPosition = emptyTiles.filter({
                 findPath(from: $0, to: elevatorPosition, maxDistance: 1000).isEmpty == false
             }).randomElement(using: &rng)
             add(.player, at: playerPosition)
+        }
+        
+        // MARK: Add monsters
+        for _ in 0 ..< (mapData.monsters ?? 0) {
+            add(.monster, at: emptyTiles.filter({
+                (playerPosition - $0).length > 2.5
+            }).randomElement(using: &rng))
         }
         
         // MARK: Add medkits
