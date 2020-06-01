@@ -71,7 +71,7 @@ public extension Door {
         case .closed:
             if world.player.intersection(with: self) != nil ||
                 world.monsters.contains(where: { monster in
-                    monster.isDead == false && monster.intersection(with: self) != nil
+                    return monster.isDead == false && monster.intersection(with: self) != nil
                 }) {
                 state = .opening
                 world.playSound(.doorSlide, at: position)

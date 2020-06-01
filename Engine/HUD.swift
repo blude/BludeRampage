@@ -16,6 +16,7 @@ public struct HUD {
     
     public init(player: Player, font: Font) {
         let health = Int(max(0, player.health))
+        
         switch health {
         case ...10:
             self.healthTint = .red
@@ -24,6 +25,7 @@ public struct HUD {
         default:
             self.healthTint = .green
         }
+        
         self.healthString = String(health)
         self.ammoString = String(Int(max(0, min(99, player.ammo))))
         self.playerWeapon = player.animation.texture

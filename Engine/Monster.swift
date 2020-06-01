@@ -30,7 +30,7 @@ public struct Monster: Actor {
 
 public extension Monster {
     var isDead: Bool {
-        health <= 0
+        return health <= 0
     }
     
     mutating func update(in world: inout World) {

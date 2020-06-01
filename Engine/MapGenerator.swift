@@ -48,6 +48,7 @@ public struct MapGenerator {
             let (x, y) = (
                 Int(position.x), Int(position.y)
             )
+            
             let (left, right, up, down) = (
                 map[x - 1, y], map[x + 1, y],
                 map[x, y - 1], map[x, y + 1]
@@ -92,7 +93,7 @@ public struct MapGenerator {
         // MARK: Add player
         if playerPosition == nil {
             playerPosition = emptyTiles.filter({
-                findPath(from: $0, to: elevatorPosition, maxDistance: 1000).isEmpty == false
+                return findPath(from: $0, to: elevatorPosition, maxDistance: 1000).isEmpty == false
             }).randomElement(using: &rng)
             add(.player, at: playerPosition)
         }
@@ -100,7 +101,7 @@ public struct MapGenerator {
         // MARK: Add monsters
         for _ in 0 ..< (mapData.monsters ?? 0) {
             add(.monster, at: emptyTiles.filter({
-                (playerPosition - $0).length > 2.5
+                return (playerPosition - $0).length > 2.5
             }).randomElement(using: &rng))
         }
         
