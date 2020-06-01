@@ -160,6 +160,7 @@
 		F17946E4245E2878008A2E31 /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		F17946E6245E2C54008A2E31 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		F17B7B0F248512640005A95A /* playerWalk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playerWalk.mp3; sourceTree = "<group>"; };
+		F17B7B1124854A0E0005A95A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F17E1F6B24682029003E14CD /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
 		F1A5DB2B2459E449005F70D2 /* BludeRampage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BludeRampage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1A5DB2E2459E449005F70D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -265,6 +266,7 @@
 		F1A5DB222459E449005F70D2 = {
 			isa = PBXGroup;
 			children = (
+				F17B7B1124854A0E0005A95A /* README.md */,
 				F1E07F0A245CD5EB0093EA94 /* Git */,
 				F1A5DB2D2459E449005F70D2 /* BludeRampage */,
 				F1FDF1362459E4EA00D6FBE3 /* Engine */,
