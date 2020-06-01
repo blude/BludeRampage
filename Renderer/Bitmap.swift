@@ -65,8 +65,8 @@ public extension Bitmap {
     
     /// Draw a column of pixels
     /// - Parameters:
-    ///   - sourceX: x component of the bitmap
-    ///   - source: bitmap texture
+    ///   - sourceX: the `x` component of the bitmap
+    ///   - source: the bitmap texture
     ///   - point: beginning from this location
     ///   - height: calculated height of the screen
     ///   - tint: a Color modifier for tinting the mapped texture
