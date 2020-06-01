@@ -9,17 +9,36 @@
 public protocol Graph {
     associatedtype Node: Hashable
     
+    /// Return a list of connected nodes
+    /// - Parameter node: desired node
     func nodesConnectedTo(_ node: Node) -> [Node]
+    
+    /// Return the estimated distance between two nodes in the game.
+    /// - Parameters:
+    ///   - a: first node
+    ///   - b: second node
     func estimateDistance(from a: Node, to b: Node) -> Double
+    
+    /// Return the number of steps between two different nodes.
+    /// - Parameters:
+    ///   - a: first node
+    ///   - b: second node
     func stepDistance(from a: Node, to b: Node) -> Double
 }
 
+/// A path is used to describe a collection of `Node` points in the game.
 private class Path<Node> {
     let head: Node
     let tail: Path?
     let distanceTravelled: Double
     let totalDistance: Double
     
+    /// Create a `Path` instance
+    /// - Parameters:
+    ///   - head: the first item of the linked-list
+    ///   - tail: the remaining part of the list
+    ///   - stepDistance: the distance between nodes
+    ///   - remaining: remaining steps
     init(head: Node, tail: Path?, stepDistance: Double, remaining: Double) {
         self.head = head
         self.tail = tail
@@ -27,6 +46,7 @@ private class Path<Node> {
         self.totalDistance = distanceTravelled + remaining
     }
     
+    /// List of nodes in the current `Path`.
     var nodes: [Node] {
         var nodes = [head]
         var tail = self.tail

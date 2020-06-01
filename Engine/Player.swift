@@ -69,18 +69,26 @@ public extension Player {
         }
     }
     
+    /// Set the player's weapon
+    /// - Parameter weapon: one of the available weapons
     mutating func setWeapon(_ weapon: Weapon) {
         self.weapon = weapon
         self.animation = weapon.attributes.idleAnimation
         self.ammo = weapon.attributes.defaultAmmo
     }
     
+    /// Gives the player the ability to inherit properties across different game levels
+    /// - Parameter player: the player instance
     mutating func inherit(from player: Player) {
         health = player.health
         setWeapon(player.weapon)
         ammo = player.ammo
     }
     
+    /// Update the player instance based on live input and acting in the world
+    /// - Parameters:
+    ///   - input: input passed by virtual game controllers
+    ///   - world: world environment
     mutating func update(with input: Input, in world: inout World) {
         let wasMoving = isMoving
         

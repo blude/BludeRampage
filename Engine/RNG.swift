@@ -16,6 +16,7 @@ public struct RNG {
         self.seed = seed
     }
     
+    /// Get the next iteration of random number generator
     public mutating func next() -> UInt64 {
         seed = seed &* multiplier &+ increment
         return seed
@@ -23,6 +24,8 @@ public struct RNG {
 }
 
 public extension Collection where Index == Int {
+    /// Get a random element in a collection using a custom generator
+    /// - Parameter generator: a random number generator instance
     func randomElement(using generator: inout RNG) -> Element? {
         if isEmpty {
             return nil

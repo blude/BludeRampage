@@ -20,6 +20,8 @@ public extension Vector {
         return (x * x + y * y).squareRoot()
     }
     
+    /// Return the dot product of vector multiplication
+    /// - Parameter rhs: the right-hand side argument of the multiplication
     func dot(_ rhs: Vector) -> Double {
         return x * rhs.x + y * rhs.y
     }

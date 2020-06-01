@@ -128,6 +128,7 @@ class ViewController: UIViewController {
 
 }
 
+/// Load levels from a decoded json file and return a array of tilemap objects
 public func loadLevels() -> [Tilemap] {
     let levels = Bundle.main.decode([MapData].self, from: "Levels.json")
     return levels.enumerated().map { index, mapData in
@@ -135,6 +136,7 @@ public func loadLevels() -> [Tilemap] {
     }
 }
 
+/// Load bitmap font from decoded json file
 public func loadFont() -> Font {
     return Bundle.main.decode(Font.self, from: "Font.json")
 }
@@ -145,6 +147,7 @@ public func loadTextures() -> Textures {
     }
 }
 
+/// Check if sound files are present and pre-warm cache for gapless playback
 func setUpAudio() {
     for soundName in SoundName.allCases {
         precondition(soundName.url != nil, "Missing mp3 file for \(soundName.rawValue)")
