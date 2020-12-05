@@ -6,6 +6,7 @@
 //  Copyright © 2020 Pratti Design. All rights reserved.
 //
 
+/// The `Rect` is structure used to delimit areas on the screen.
 public struct Rect {
     public var min, max: Vector
     
