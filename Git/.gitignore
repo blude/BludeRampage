@@ -2,7 +2,9 @@
 xcuserdata/
 
 ## Avoid checking in source code from the Xcode workspace
-*.xcworkspace
+project.xcworkspace/
+*.xcuserstate
+*.pbxuser
 
 ## macOS files
 .DS_Store
