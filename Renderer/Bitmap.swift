@@ -70,13 +70,7 @@ public extension Bitmap {
     ///   - point: beginning from this location
     ///   - height: calculated height of the screen
     ///   - tint: a Color modifier for tinting the mapped texture
-    mutating func drawColumn(
-        _ sourceX: Int,
-        of source: Bitmap,
-        at point: Vector,
-        height: Double,
-        tint: Color? = nil
-    ) {
+    mutating func drawColumn(_ sourceX: Int, of source: Bitmap, at point: Vector, height: Double, tint: Color? = nil) {
         let start = Int(point.y)
         let end = Int((point.y + height).rounded(.up))
         let stepY = Double(source.height) / height
@@ -103,13 +97,7 @@ public extension Bitmap {
         }
     }
     
-    mutating func drawImage(
-        _ source: Bitmap,
-        rangeOfX: Range<Int>? = nil,
-        at point: Vector,
-        size: Vector,
-        tint: Color? = nil
-    ) {
+    mutating func drawImage(_ source: Bitmap, rangeOfX: Range<Int>? = nil, at point: Vector, size: Vector, tint: Color? = nil) {
         let rangeOfX = rangeOfX ?? 0 ..< source.width
         let start = Int(point.x)
         let end = Int(point.x + size.x)
