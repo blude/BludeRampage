@@ -1,5 +1,8 @@
 ## User settings
 xcuserdata/
 
+## Avoid checking in source code from the Xcode workspace
+*.xcworkspace
+
 ## macOS files
 .DS_Store
