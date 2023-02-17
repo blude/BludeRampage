@@ -42,6 +42,8 @@
 		F1757F9E24751B8F002908A7 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F9D24751B8F002908A7 /* SoundManager.swift */; };
 		F1757FA024768BFC002908A7 /* Pickup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1757F9F24768BFC002908A7 /* Pickup.swift */; };
 		F1757FA224769637002908A7 /* medkit.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1757FA124769637002908A7 /* medkit.mp3 */; };
+		F17598EE25CE11AD00896398 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17598ED25CE11AD00896398 /* MetalView.swift */; };
+		F17598F325CE1C1200896398 /* MetalView.metal in Sources */ = {isa = PBXBuildFile; fileRef = F17598F225CE1C1200896398 /* MetalView.metal */; };
 		F17946DD245DBD46008A2E31 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946DC245DBD46008A2E31 /* Tile.swift */; };
 		F17946DF245DBD67008A2E31 /* Tilemap.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17946DE245DBD67008A2E31 /* Tilemap.swift */; };
 		F17946E3245DCCB9008A2E31 /* Levels.json in Resources */ = {isa = PBXBuildFile; fileRef = F17946E2245DCCB9008A2E31 /* Levels.json */; };
@@ -153,6 +155,9 @@
 		F1757F9D24751B8F002908A7 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		F1757F9F24768BFC002908A7 /* Pickup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickup.swift; sourceTree = "<group>"; };
 		F1757FA124769637002908A7 /* medkit.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = medkit.mp3; sourceTree = "<group>"; };
+		F17598ED25CE11AD00896398 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
+		F17598F225CE1C1200896398 /* MetalView.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = MetalView.metal; sourceTree = "<group>"; };
+		F17598F725CE1D0700896398 /* MetalView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalView.h; sourceTree = "<group>"; };
 		F17946DC245DBD46008A2E31 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		F17946DE245DBD67008A2E31 /* Tilemap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tilemap.swift; sourceTree = "<group>"; };
 		F17946E2245DCCB9008A2E31 /* Levels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Levels.json; sourceTree = "<group>"; };
@@ -266,10 +271,10 @@
 			children = (
 				F17B7B1124854A0E0005A95A /* README.md */,
 				F1A5DB2D2459E449005F70D2 /* BludeRampage */,
-				F1FDF1362459E4EA00D6FBE3 /* Engine */,
 				F1A8F02D246B3DBB00023F9D /* BludeRampageTests */,
-				F102F31924771DE70055E38A /* Renderer */,
+				F1FDF1362459E4EA00D6FBE3 /* Engine */,
 				F1A5DB2C2459E449005F70D2 /* Products */,
+				F102F31924771DE70055E38A /* Renderer */,
 			);
 			sourceTree = "<group>";
 		};
@@ -287,11 +292,14 @@
 		F1A5DB2D2459E449005F70D2 /* BludeRampage */ = {
 			isa = PBXGroup;
 			children = (
+				F17598F725CE1D0700896398 /* MetalView.h */,
 				F1E77B1F247BCC0B00DE0178 /* Font.json */,
 				F17946E2245DCCB9008A2E31 /* Levels.json */,
+				F17598F225CE1C1200896398 /* MetalView.metal */,
 				F1A5DB3C2459E44A005F70D2 /* Info.plist */,
 				F1A5DB2E2459E449005F70D2 /* AppDelegate.swift */,
 				F1ACB6DE245EEEBF0078275D /* Bundle+Decodable.swift */,
+				F17598ED25CE11AD00896398 /* MetalView.swift */,
 				F1A5DB302459E449005F70D2 /* SceneDelegate.swift */,
 				F1757F9D24751B8F002908A7 /* SoundManager.swift */,
 				F1FDF1462459EA0000D6FBE3 /* UIImage+Bitmap.swift */,
@@ -561,10 +569,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1FDF1472459EA0000D6FBE3 /* UIImage+Bitmap.swift in Sources */,
+				F17598EE25CE11AD00896398 /* MetalView.swift in Sources */,
 				F1A5DB332459E449005F70D2 /* ViewController.swift in Sources */,
 				F1A5DB2F2459E449005F70D2 /* AppDelegate.swift in Sources */,
 				F1ACB6DF245EEEBF0078275D /* Bundle+Decodable.swift in Sources */,
 				F1A5DB312459E449005F70D2 /* SceneDelegate.swift in Sources */,
+				F17598F325CE1C1200896398 /* MetalView.metal in Sources */,
 				F1757F9E24751B8F002908A7 /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -841,7 +851,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4TUQHC8PUG;
 				INFOPLIST_FILE = BludeRampage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -849,6 +861,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prattidesign.BludeRampage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = BludeRampage/MetalView.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -859,7 +873,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4TUQHC8PUG;
 				INFOPLIST_FILE = BludeRampage/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -867,6 +883,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.prattidesign.BludeRampage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = BludeRampage/MetalView.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

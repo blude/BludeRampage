@@ -7,7 +7,7 @@
 //
 
 private let multiplier: UInt64 = 6364136223846793005
-private let increment: UInt64 = 1442695040888963407
+private let increment: UInt64  = 1442695040888963407
 
 public struct RNG {
     private var seed: UInt64 = 0

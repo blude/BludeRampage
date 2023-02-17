@@ -11,7 +11,7 @@ public protocol Graph {
     
     /// Return a list of connected nodes
     /// - Parameter node: desired node
-    func nodesConnectedTo(_ node: Node) -> [Node]
+    func nodesConnected(to node: Node) -> [Node]
     
     /// Return the estimated distance between two nodes in the game.
     /// - Parameters:
@@ -78,7 +78,7 @@ public extension Graph {
             }
             
             // Get connected nodes
-            for node in nodesConnectedTo(path.head) where !visited.contains(node) {
+            for node in nodesConnected(to: path.head) where !visited.contains(node) {
                 visited.insert(node)
                 
                 let next = Path(

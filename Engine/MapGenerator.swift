@@ -131,7 +131,7 @@ private extension MapGenerator {
 extension MapGenerator: Graph {
     public typealias Node = Vector
     
-    public func nodesConnectedTo(_ node: Node) -> [Node] {
+    public func nodesConnected(to node: Node) -> [Node] {
         return [
             Node(x: node.x - 1, y: node.y),
             Node(x: node.x + 1, y: node.y),
